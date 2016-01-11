@@ -13,7 +13,7 @@ app.set('views', './views');
 app.use(express.static('./public'));
 
 app.get('/',function(req,res){
-  Quiz.findOne({quizId:"akssan"})
+  Quiz.findOne({quizId:"3"})
       .populate('questions')
         .exec(function(err,data){
           console.log(data);

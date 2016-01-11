@@ -1,1 +1,3 @@
-dont use this controller
+angular.module('quizRT').controller('demoController', function($scope){
+  $scope.time=8;
+});

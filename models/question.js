@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var questionSchema = mongoose.Schema({
   questionId: {type:String, unique:true},
   question : {type:String},
-  option:[],
+  options:[],
   correctIndex: Number,
   image: {type:String},
   topicId:[]
