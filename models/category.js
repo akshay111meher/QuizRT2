@@ -1,13 +1,15 @@
 var mongoose = require('mongoose');
 
-var categorySchema = mongoose.Schema({
+
+var topicsMainSchema = mongoose.Schema({
 
   categoryId: {type:String, unique:true},
   categoryName:String,
-  categoryIcon: String,
+  categoryFilterCriteria : String,
+  categoryLogo: String,
   categoryTopics: Array
 },{strict:false});
 
-Category = mongoose.model('category', categorySchema, "category_collection");
+topicsMain = mongoose.model('topicsMain', topicsMainSchema, "topics_main_collection");
 
-module.exports = Category;
+module.exports = topicsMain;
