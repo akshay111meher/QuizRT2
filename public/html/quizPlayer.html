@@ -1,3 +1,51 @@
-<div>
-  quiz player here
+<link rel="stylesheet" href="css/quizPlayer.css">
+
+  <div  class="container" id="main">
+    <div class="navbar">
+      <div class="row">
+        <div class="col-sm-5 col-xs-5 pull-left myStatus">
+          <h4 class="pull-left"><strong>#1</strong></h4>
+          <img src="/images/userProfileImages/akshayk.jpg" alt="" class="img-circle pull-left"/>
+          <h5 class="score pull-left" id="top-score">0</h5>
+        </div>
+        <div   id="timer" class="col-sm-2 col-xs-2 myStatus">{{message}}</div>
+
+        <div class="pull-right col-sm-5 col-xs-5 myStatus">
+          <h5 class="score pull-right" id="myScore">0</h5>
+          <img src="/images/userProfileImages/akshay.jpg" alt="" class="img-circle pull-right"/>
+          <h4 class="pull-right" id="myRank"><strong>#143</strong></h4>
+        </div>
+      </div>
+    </div><!--end navigation bar -->
+
+    <div class="row" id="statusInfo">
+      <div class="col-xs-4 col-sm-4 myPadding">
+        <button type="button" class="btn btn-large btn-success btn-block myPadding" id="correct-answers">Correct 0</button>
+      </div>
+      <div class="col-xs-3 col-sm-3 myPadding">
+        <button type="button" class="btn btn-large btn-danger btn-block myPadding" id="incorrect-answers">Wrong 0</button>
+      </div>
+      <div class="col-xs-5 col-sm-5 myPadding">
+        <button type="button" class="btn btn-large btn-primary btn-block myPadding" id="unanswered">Unattempted 1</button>
+      </div>
+    </div><!-- others status -->
+
+    <div class="row" id="questionInfo">
+      <div class="col-xs-12 col-sm-12" id="questionInfoPanel">
+        <h4><strong></strong></h4>
+        <!-- <img src="akshay.jpg" alt=""> -->
+      </div>
+    </div><!-- end question info -->
+
+    <div  class="row myRow">
+
+    </div>
+
+  </div><!--End Answers -->
+
+</div><!-- end container -->
+<div id="scoreBoard">
+  14
 </div>
+
+<!-- <script src="js/controllers/demoController.js"></script> -->
