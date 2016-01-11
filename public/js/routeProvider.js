@@ -9,7 +9,10 @@ angular.module('quizRT', ['ngRoute'])
           .when('/categories',{
             'templateUrl': 'html/categories.html'
           })
-          .when('/topicsMain',{
-            'templateUrl': 'html/topicsMain.html'
+          .when('/category',{
+            'templateUrl': 'html/category.html'
+          })
+          .when('/topic',{
+            'templateUrl': 'html/topic.html'
           });
         });
