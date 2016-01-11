@@ -1,15 +1,16 @@
 var mongoose = require('mongoose');
+var Topic = require('topic');
 
 
 var categorySchema = mongoose.Schema({
-
+  
   categoryId: {type:String, unique:true},
   categoryName:String,
   categoryFilterCriteria : String,
-  categoryLogo: String,
-  categoryTopics: Array
+  categoryIcon: String,
+  categoryTopics: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Topic' }]
 },{strict:false});
 
-category = mongoose.model('category', categorySchema, "category_collection");
+Category = mongoose.model('category', categorySchema, "category_collection");
 
-module.exports = category;
+module.exports = Category;
