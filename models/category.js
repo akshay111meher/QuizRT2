@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 
-var topicsMainSchema = mongoose.Schema({
+var categorySchema = mongoose.Schema({
 
   categoryId: {type:String, unique:true},
   categoryName:String,
@@ -10,6 +10,6 @@ var topicsMainSchema = mongoose.Schema({
   categoryTopics: Array
 },{strict:false});
 
-topicsMain = mongoose.model('topicsMain', topicsMainSchema, "topics_main_collection");
+category = mongoose.model('category', categorySchema, "category_collection");
 
-module.exports = topicsMain;
+module.exports = category;
