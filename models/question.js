@@ -10,6 +10,6 @@ var questionSchema = mongoose.Schema({
   topicId:[]
 });
 
-Question = mongoose.model('Question', questionSchema,'questions_demo_collection');
+Question = mongoose.model('Question', questionSchema,'question_bank_collection');
 
-module.exports = Quiz;
+module.exports = Question;
