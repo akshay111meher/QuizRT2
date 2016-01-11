@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-
+var Topic=require('./Topic');
 
 var profileSchema = mongoose.Schema({
   userId: {type:String, unique:true},
@@ -11,7 +11,13 @@ var profileSchema = mongoose.Schema({
   badge:String,
   totalGames:Number,
   wins:Number,
-  topicsPlayed:[]
+  topicsPlayed:[{
+    gamesWon: Number,
+    gamesPlayed:Number,
+    level:Number,
+    isFollowed:Number,
+    points:Number,
+    topicId: {type:mongoose.Schema.Types.ObjectId, ref: 'Topic'}}]
 },{strict:false}
 );
 
