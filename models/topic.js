@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 
-var topicSchema = mongoose.Schema({
-
+var topicSchema =  mongoose.Schema({
   topicId: {type:String, unique:true},
   topicName: String,
   topicIcon: String,

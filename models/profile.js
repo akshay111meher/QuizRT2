@@ -10,12 +10,8 @@ var profileSchema = mongoose.Schema({
   flagLink:String,
   badge:String,
   totalGames:Number,
-  followers:Number,
-  following:Number,
   wins:Number,
-  topicsPlayed:[],
-  questions:[],
-  games:[]
+  topicsPlayed:[]
 },{strict:false}
 );
 
