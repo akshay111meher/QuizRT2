@@ -1,31 +1,36 @@
-var mongoose = require('mongoose');
-var fs = require('fs');
-var questionData = JSON.parse(fs.readFileSync('questionBank.json'));
-mongoose.connect('mongodb://localhost/quizRT');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-
-db.once('open', function (callback) {
-
-var questionBank = require("../models/question.js");
+fs = require('fs');
+var slugify = require('slugify');
+var Question = require('../models/question.js');
 
 
-questionData.forEach(function(data){
-  	var question= new questionBank(data);
-  	question.save(function(err){
+ fs.readFile('questionBank.json', 'utf8', function (err,data) {
+  if (err) {
+    return console.log(err);
+  }
+  var json=JSON.parse(data);
+
+  var mongoose = require('mongoose');
+  mongoose.connect('mongodb://localhost/quizRT');
+
+  var db = mongoose.connection;
+  db.on('error', console.error.bind(console, 'connection error:'));
+  db.once('open', function (callback) {
+  // console.log('connection open');
+//console.log(json);
+
+console.log(json.length);
+ for(i=0;i<json.length;++i)
+ {
+ var question1 = new Question(json[i]);
+
+    question1.save(function(err){
     if ( err ) console.log(err);
-    console.log(" quiestion bank Saved Successfully");
-});
-});
-// for(var i=0; i<questionData.length ; i++){
-// 	var question= new questionBank(questionData[i]);
-// 	console.log(questionData[i]);
-//    	question.save(function(err){
-//      if ( err ) console.log(err);
-//      console.log(" quiestion bank Saved Successfully");
-// });
-// }
+    console.log("Question Saved Successfully");
+ });
+ }
+ console.log('closing mongo');
+ //mongoose.disconnect();
+ });//end once
 
-  console.log('closing mongo');
-  mongoose.disconnect();
-});
+
+});//end readfile
