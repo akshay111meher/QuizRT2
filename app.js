@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 var http = require('http');
 var server = http.createServer(app);
 var topicsHandler = require('./routes/topicsHandler');
