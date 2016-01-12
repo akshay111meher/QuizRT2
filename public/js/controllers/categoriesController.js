@@ -1,6 +1,6 @@
 angular.module('quizRT')
 
-  .controller('categoriesController', function($scope){
+  .controller('categoriesController', function($scope,$http){
 
     $scope.categories="";
 
@@ -11,7 +11,5 @@ angular.module('quizRT')
           .error(function(data, status, headers, config) {
             console.log(error);
           });
-
-    });
 
     });
