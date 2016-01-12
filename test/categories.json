@@ -9,7 +9,7 @@
       "Rodrigo-Dickens-Mrs.",
       "Augusta-Yost",
       "Noelia-Walsh"
-    ],
+    ]
     },
 
     {
@@ -22,7 +22,7 @@
         "Rodrigo-Dickens-Mrs.",
         "Augusta-Yost",
         "Noelia-Walsh"
-      ],
+      ]
       },
       {
 
@@ -34,7 +34,7 @@
         "Rodrigo-Dickens-Mrs.",
         "Augusta-Yost",
         "Noelia-Walsh"
-      ],
+      ]
       },
       {
 
@@ -46,22 +46,21 @@
           "Rodrigo-Dickens-Mrs.",
           "Augusta-Yost",
           "Noelia-Walsh"
-        ],
+        ]
         },
         {
-
           "categoryName": "category5",
           "categoryIcon": "https://s3.amazonaws.com/uifaces/faces/twitter/ratbus/128.jpg",
           "categoryTopics": [
-            "Lizeth-Mraz"
-            "Zola-Jakubowski"
-            "Henderson-McLaughlin"
-            "Allan-Altenwerth"
-            "Tyreek-Treutel"
-            "Scarlett-Wolf"
-            "Robbie-Beer"
+            "Lizeth-Mraz",
+            "Zola-Jakubowski",
+            "Henderson-McLaughlin",
+            "Allan-Altenwerth",
+            "Tyreek-Treutel",
+            "Scarlett-Wolf",
+            "Robbie-Beer",
             "Sigrid-Thiel"
-          ],
+          ]
           },
       {
 
@@ -73,7 +72,7 @@
           "Rodrigo-Dickens-Mrs.",
           "Augusta-Yost",
           "Noelia-Walsh"
-        ],
+        ]
         },
       {
 
@@ -85,23 +84,23 @@
           "Rodrigo-Dickens-Mrs.",
           "Augusta-Yost",
           "Noelia-Walsh"
-        ],
+        ]
         },
 
     {
 
       "categoryName": "category8",
       "categoryIcon": "https://s3.amazonaws.com/uifaces/faces/twitter/ratbus/128.jpg",
-      "topicCategory": [
-        "Lizeth-Mraz"
-        "Zola-Jakubowski"
-        "Henderson-McLaughlin"
-        "Allan-Altenwerth"
-        "Tyreek-Treutel"
-        "Scarlett-Wolf"
-        "Robbie-Beer"
+      "categoryTopics": [
+        "Lizeth-Mraz",
+        "Zola-Jakubowski",
+        "Henderson-McLaughlin",
+        "Allan-Altenwerth",
+        "Tyreek-Treutel",
+        "Scarlett-Wolf",
+        "Robbie-Beer",
         "Sigrid-Thiel"
-      ],
+      ]
       },
 
 
@@ -109,44 +108,32 @@
 
         "categoryName": "category9",
         "categoryIcon": "https://s3.amazonaws.com/uifaces/faces/twitter/ratbus/128.jpg",
-        "topicCategory": [
-          "Lizeth-Mraz"
-          "Zola-Jakubowski"
-          "Henderson-McLaughlin"
-          "Allan-Altenwerth"
-          "Tyreek-Treutel"
-          "Scarlett-Wolf"
-          "Robbie-Beer"
+        "categoryTopics": [
+          "Lizeth-Mraz",
+          "Zola-Jakubowski",
+          "Henderson-McLaughlin",
+          "Allan-Altenwerth",
+          "Tyreek-Treutel",
+          "Scarlett-Wolf",
+          "Robbie-Beer",
           "Sigrid-Thiel"
-        ],
+        ]
         },
 
       {
 
-        "categoryName": "category11",
+        "categoryName": "category10",
         "categoryIcon": "https://s3.amazonaws.com/uifaces/faces/twitter/ratbus/128.jpg",
         "categoryTopics": [
-          "Mercedes-Moore"
-          "Myrtice-Raynor"
-          "Miss-Philip-Kemmer"
-          "Marietta-Farrell"
-          "Margot-Runolfsdottir"
-          "Ms.-Nayeli-Stoltenberg"
-          "Ernesto-Klocko"
-                  ],
-        },
 
-  {
-    "topicName": "Amos Rau",
-    "topicIcon": "https://s3.amazonaws.com/uifaces/faces/twitter/ratbus/128.jpg",
-    "topicCategory": [
-      "Mercedes-Moore"
-      "Myrtice-Raynor"
-      "Miss-Philip-Kemmer"
-      "Marietta-Farrell"
-      "Margot-Runolfsdottir"
-      "Ms.-Nayeli-Stoltenberg"
-      "Ernesto-Klocko"
-    ],
-  },
-]
+          "Mercedes-Moore",
+          "Myrtice-Raynor",
+          "Miss-Philip-Kemmer",
+          "Marietta-Farrell",
+          "Margot-Runolfsdottir",
+          "Ms.-Nayeli-Stoltenberg",
+          "Ernesto-Klocko"
+                  ]
+        }
+
+  ]

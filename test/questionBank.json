@@ -1,6 +1,5 @@
 [
   {
-    "questionId": "web301_q11",
     "image": "images/questionImages/akshayk.jpg",
     "question": "Which of the following is a valid property in a hibernate configuration?",
     "correctIndex": 4,
@@ -8,7 +7,6 @@
     "topicId": ["T1"]
   },
   {
-    "questionId": "web301_q14",
     "image": "null",
     "question": "<p>How are Associations between Hibernate entities realized in Database?</p>",
     "correctIndex": 4,
@@ -16,7 +14,6 @@
     "topicId": ["T1"]
   },
   {
-    "questionId": "web301_q16",
     "image": "null",
     "question": "<p>What is the example of one-to-one relation?</p>",
     "correctIndex": 3,
@@ -24,7 +21,6 @@
     "topicId": ["T1"]
   },
   {
-    "questionId": "web301_q17",
     "image": "null",
     "question": "<p>Why is cascade relationship applied between entities Book and Publication?</p>",
     "correctIndex": 3,
@@ -32,7 +28,6 @@
     "topicId": ["T2"]
   },
   {
-    "questionId": "web301_q18",
     "image": "null",
     "question": "<p>Book has _mandatory_ association an Author. Meaning Book must have author.</p><p>Which hibernate option is used to specify this?</p>",
     "correctIndex": 1,

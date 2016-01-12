@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Topic = require('topic');
+var Topic = require('./topic');
 
 
 var categorySchema = mongoose.Schema({
@@ -7,7 +7,7 @@ var categorySchema = mongoose.Schema({
   _id: String,
   categoryName:String,
   categoryIcon: String,
-  categoryTopics: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Topic' }]
+  categoryTopics: [{ type: String, ref: 'Topic' }]
 });
 
 Category = mongoose.model('category', categorySchema, "category_collection");
