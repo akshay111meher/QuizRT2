@@ -2,3 +2,74 @@
     write categories here
     <div>{{message}}</div>
 </div>
+
+
+
+	<div class="container" id="main" >
+
+
+		<div class="navbar navbar-fixed-top">
+
+ 				<div class="heading pull-left"><span id="heading-name">Topic Store</span></div>
+				<button type="submit" class="btn btn-default pull-right search-topic"><span class="glyphicon glyphicon-search"></span></button>
+
+		</div><!--end navbar-->
+
+    <div class="content">
+	    <div class="row collection-widget" ng-repeat ="category in categories">
+
+			   <div class="row">
+
+					 <h4 class ="topic-category-name col-xs-9 pull-left ">{{category.categoryName}}</h4>
+
+					 <a href="/topicsHandler/category"  class="col-xs-3 btn btn-default more-button pull-right">More..</a>
+
+         </div>
+
+         <div class="row topics-container" >
+
+
+				 <div class="topics-container-inside">
+
+				   <div class="topic col-xs-3" ng-repeat ="topic in category.topics">
+							 <div class="topic-icon">
+								 <a href="/topicsHandler/topic-play" class="topicPlay"><img ng-src="{{topic.topicIcon}}" alt=""></a>
+							 </div><!--end topic-icon-->
+
+							 <div>
+										 <a href=""><span class="topic-name">{{topic.topicName}}</span><br/></a>
+							 </div>
+
+							 <div>
+							 		<a href=""><span class="category-name">{{topic.topicCategoryName}}</span></a>
+							 </div>
+
+				 </div><!--end topic-->
+
+			   </div><!--end topics-container-inside-->
+
+			</div><!--end topics-container-->
+
+
+	   </div><!--end collection-widget-->
+
+
+
+
+	<!-- All Javascript at the bottom of the page for faster page loading -->
+			<script src="/js/jquery-2.1.4.js"></script>
+	<!-- Bootstrap JS -->
+	  <script src="/js/bootstrap.min.js"></script>
+
+	<!-- Custom JS -->
+
+	<script src="/js/jquery-2.1.4.js"></script>
+
+	<script src="/js/topics-main.js"></script>
+	<script>
+	$(document).ready(loadPlayPage("<%= userId %>"));
+	</script>
+
+</div><!--end content-->
+
+</div><!--end main-->
