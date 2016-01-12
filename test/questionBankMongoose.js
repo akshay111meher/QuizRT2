@@ -1,16 +1,16 @@
 fs = require('fs');
 var slugify = require('slugify');
-var Topic = require('../models/topic.js');
+var Question = require('../models/question.js');
 
 
-fs.readFile('topics.json', 'utf8', function (err,data) {
+ fs.readFile('questionBank.json', 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
   }
   var json=JSON.parse(data);
 
   var mongoose = require('mongoose');
-  mongoose.connect('mongodb://172.23.238.253/quizRT');
+  mongoose.connect('mongodb://localhost/quizRT');
 
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
@@ -21,15 +21,11 @@ fs.readFile('topics.json', 'utf8', function (err,data) {
 console.log(json.length);
  for(i=0;i<json.length;++i)
  {
- var topic1 = new Topic(json[i]);
+ var question1 = new Question(json[i]);
 
-    topic1.pre('save', function(next) {
-      topic1._id=slugify(json[i].topicName);
-    next();
-    });
-    topic1.save(function(err){
+    question1.save(function(err){
     if ( err ) console.log(err);
-    console.log("Topic Saved Successfully");
+    console.log("Question Saved Successfully");
  });
  }
  console.log('closing mongo');
