@@ -4,7 +4,7 @@ var http = require('http');
 var server = http.createServer(app);
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/quizRT');
+mongoose.connect('mongodb://172.23.238.253/quizRT');
 var db = mongoose.connection;
 var Quiz = require("./models/quiz");
 

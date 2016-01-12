@@ -17,6 +17,6 @@ var db = mongoose.connection;
       .populate("topicsPlayed.topicId")
           .exec(function(err,data){
             profileData = data;
-            console.log(JSON.stringify(profileData,null,2));
+            console.log(JSON.stringify(profileData, null, 4));
 
           });
