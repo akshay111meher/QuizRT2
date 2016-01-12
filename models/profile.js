@@ -17,7 +17,7 @@ var profileSchema = mongoose.Schema({
     level:Number,
     isFollowed:Number,
     points:Number,
-    topicId: {type:mongoose.Schema.Types.ObjectId, ref: 'Topic'}}]
+    topicId: {type:String, ref: 'Topic'}}]
 },{strict:false}
 );
 
