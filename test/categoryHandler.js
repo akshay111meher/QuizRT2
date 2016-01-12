@@ -2,10 +2,10 @@ var express = require('express');
 var fs = require('fs');
 var router = express.Router();
 var mongoose = require('mongoose');
-var Profile;
-var profileData;
+var Category;
+var categoryData;
 
-var Profile = require("../models/profile");
+var Category = require("../models/category");
 // var Topic=require("../models/Topic");
 
 var mongoose = require('mongoose');
@@ -13,9 +13,9 @@ mongoose.connect('mongodb://172.23.238.253/quizRT');
 
 var db = mongoose.connection;
   // console.log("this is form profile data"+req.params.id);
-    Profile.findOne({userId: "AY1"})
-      .populate("topicsPlayed.topicId")
+    Category.find()
+      .populate("categoryTopics")
           .exec(function(err,data){
-            profileData = data;
-            console.log(JSON.stringify(profileData, null, 4));
+            categoryData = data;
+            console.log(JSON.stringify(categoryData, null, 4));
           });
