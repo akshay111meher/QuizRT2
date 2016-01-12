@@ -1,42 +1,37 @@
 [
   {
-    "questionId": "web301_q11",
     "image": "images/questionImages/akshayk.jpg",
     "question": "Which of the following is a valid property in a hibernate configuration?",
     "correctIndex": 4,
     "options":["hibernate.dialect", "hibernate.connection.url", "show_sql", "All of the above"],
-    "topicId": ["T1"]
+    "topicId": ["Barbara-Schuster", "Vincenzo-Crooks"]
   },
   {
-    "questionId": "web301_q14",
     "image": "null",
     "question": "<p>How are Associations between Hibernate entities realized in Database?</p>",
     "correctIndex": 4,
     "options": ["join queries", "foreign keys", "constraints", "All of the Above"],
-    "topicId": ["T1"]
+    "topicId": ["Barbara-Schuster", "Vincenzo-Crooks"]
   },
   {
-    "questionId": "web301_q16",
     "image": "null",
     "question": "<p>What is the example of one-to-one relation?</p>",
     "correctIndex": 3,
     "options":["Book - Author", "Series - Book", "Book - BookInfo", "Author - Publisher"],
-    "topicId": ["T1"]
+    "topicId": ["Augusta-Yost", "Noelia-Walsh"]
   },
   {
-    "questionId": "web301_q17",
     "image": "null",
     "question": "<p>Why is cascade relationship applied between entities Book and Publication?</p>",
     "correctIndex": 3,
     "options": [" saved", " when Book is deleted", "saved respectively","Publication is retrieved when Book is retrieved"],
-    "topicId": ["T2"]
+    "topicId": ["Vincenzo-Crooks", "Rodrigo-Dickens-Mrs."]
   },
   {
-    "questionId": "web301_q18",
     "image": "null",
     "question": "<p>Book has _mandatory_ association an Author. Meaning Book must have author.</p><p>Which hibernate option is used to specify this?</p>",
     "correctIndex": 1,
     "options":["not-null", "lazy-load", "cascade", "None of the Above"],
-    "topicId": ["T1"]
+    "topicId": ["Allan-Altenwerth", "Tyreek-Treutel"]
   }
 ]

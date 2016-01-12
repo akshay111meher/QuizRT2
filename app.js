@@ -2,6 +2,10 @@ var express = require('express');
 var app = express();
 var http = require('http');
 var server = http.createServer(app);
+var topicsHandler = require('./routes/topicsHandler');
+var profileHandler = require('./routes/profileHandler');
+var index = require('./routes/index');
+var quizPlayerHandler = require('./routes/quizPlayerHandler');
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://172.23.238.253/quizRT');
@@ -12,30 +16,12 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(express.static('./public'));
 
-app.get('/',function(req,res){
-  Quiz.findOne({quizId:"3"})
-      .populate('questions')
-        .exec(function(err,data){
-          console.log(data);
-        });
-  res.render('index');
-});
+//register routers to route paths
 
-app.get('/userProfile/profileData',function(req, res, next) {
-  var Profile = require("./models/profile");
-  var mongoose = require('mongoose');
-  //mongoose.connect('mongodb://172.23.238.253/quizRT');
-  var db = mongoose.connection;
-      Profile.findOne({userId: "AY1"})
-        .populate("topicsPlayed.topicId")
-            .exec(function(err,data){
-              profileData = data;
-               var data2=JSON.stringify(profileData, null, 4);
-               console.log(data2);
-               res.json(profileData);
-            });
-
-});
+app.use('/', index);
+app.use('/userProfile', profileHandler);
+app.use('/topicsHandler', topicsHandler);
+app.use('/quizPlayerHandler',quizPlayerHandler);
 
 server.listen(3000, function() {
   console.log('App started for EJS testing!!');

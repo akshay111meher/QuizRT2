@@ -1,9 +1,9 @@
 fs = require('fs');
 var slugify = require('slugify');
-var Topic = require('../models/topic.js');
+var Quiz = require('../models/quiz.js');
 
 
- fs.readFile('topics.json', 'utf8', function (err,data) {
+ fs.readFile('quiz.json', 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
   }
@@ -21,15 +21,11 @@ var Topic = require('../models/topic.js');
 console.log(json.length);
  for(i=0;i<json.length;++i)
  {
- var topic1 = new Topic(json[i]);
+ var quiz1 = new Quiz(json[i]);
 
-    topic1.pre('save', function(next) {
-      topic1._id=slugify(json[i].topicName);
-    next();
-    });
-    topic1.save(function(err){
+    quiz1.save(function(err){
     if ( err ) console.log(err);
-    console.log("Topic Saved Successfully");
+    console.log("Quiz Saved Successfully");
  });
  }
  console.log('closing mongo');
