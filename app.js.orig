@@ -1,7 +1,14 @@
 var express = require('express');
 var app = express();
+<<<<<<< HEAD
+var bodyParser = require('body-parser');
+=======
+var path = require('path');
+
+>>>>>>> c0607c88f2670d72ac20441d9cf4530fdfb06007
 var http = require('http');
 var server = http.createServer(app);
+var bodyParser = require('body-parser');
 var topicsHandler = require('./routes/topicsHandler');
 var profileHandler = require('./routes/profileHandler');
 var index = require('./routes/index');
@@ -16,36 +23,12 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(express.static('./public'));
 
-<<<<<<< HEAD
 //register routers to route paths
 
 app.use('/', index);
-app.use('/profileHandler', profileHandler);
+app.use('/userProfile', profileHandler);
 app.use('/topicsHandler', topicsHandler);
-app.user('/quizPlayerHandler',quizPlayerHandler);
-
-=======
-app.get('/',function(req,res){
-
-  res.render('index');
-});
->>>>>>> 75f2fc0530779424112a10f19d1b53a39bee9cc8
-
- app.post('/userProfile/profileData',function(req, res, next) {
-   var Profile = require("./models/profile");
-   var mongoose = require('mongoose');
-   //mongoose.connect('mongodb://172.23.238.253/quizRT');
-   var db = mongoose.connection;
-       Profile.findOne({userId: "AY1"})
-         .populate("topicsPlayed.topicId")
-             .exec(function(err,data){
-               profileData = data;
-                var data2=JSON.stringify(profileData, null, 4);
-                console.log(data2);
-                res.json(profileData);
-             });
-
- });
+app.use('/quizPlayerHandler',quizPlayerHandler);
 
 server.listen(3000, function() {
   console.log('App started for EJS testing!!');
