@@ -4,7 +4,11 @@ var Topic = require('topic');
 
 var categorySchema = mongoose.Schema({
 
+<<<<<<< HEAD
   _id: String,
+=======
+  categoryId: {type:String, unique:true},
+>>>>>>> 71e460f80cb40df949ec2572c2b1a73c285c4eb2
   categoryName:String,
   categoryIcon: String,
   categoryTopics: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Topic' }]
