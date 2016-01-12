@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Topic=require('./Topic');
+var Topic=require('./topic');
 
 var profileSchema = mongoose.Schema({
   userId: {type:String, unique:true},
