@@ -4,8 +4,7 @@ var mongoose = require( 'mongoose' );
 var bodyParser = require('body-parser');
 
 
-console.log(router);
-var Category = require()
+
 
 // router.route('/categories')
  	//gets all categories
