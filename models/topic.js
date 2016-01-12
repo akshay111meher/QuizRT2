@@ -1,12 +1,13 @@
 var mongoose = require('mongoose');
 
 var topicSchema = new mongoose.Schema({
-  topicId: {type:String, unique:true},
+
+  _id: String,
   topicName: String,
   topicIcon: String,
   topicCategory: Array,
   topicDescription: String,
-},{strict:false});
+});
 
 Topic = mongoose.model('Topic', topicSchema, "topics_collection");
 

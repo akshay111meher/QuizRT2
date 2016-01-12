@@ -1,8 +1,9 @@
 fs = require('fs');
-var Topics = require('../models/topic.js');
+var slugify = require('slugify');
+var Topic = require('../models/topic.js');
 
 
-fs.readFile('topicPlay.json', 'utf8', function (err,data) {
+fs.readFile('topics.json', 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
   }
@@ -14,13 +15,23 @@ fs.readFile('topicPlay.json', 'utf8', function (err,data) {
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function (callback) {
-   console.log('connection open');
-console.log(json);
- var topic1 = new Topics(json);
+  // console.log('connection open');
+//console.log(json);
+
+console.log(json.length);
+ for(i=0;i<json.length;++i)
+ {
+ var topic1 = new Topic(json[i]);
+
+    topic1.pre('save', function(next) {
+      topic1._id=slugify(json[i].topicName);
+    next();
+    });
     topic1.save(function(err){
     if ( err ) console.log(err);
-    console.log("Topics Saved Successfully");
+    console.log("Topic Saved Successfully");
  });
+ }
  console.log('closing mongo');
  //mongoose.disconnect();
  });//end once
