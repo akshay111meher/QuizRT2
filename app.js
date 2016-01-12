@@ -13,29 +13,25 @@ app.set('views', './views');
 app.use(express.static('./public'));
 
 app.get('/',function(req,res){
-  Quiz.findOne({quizId:"3"})
-      .populate('questions')
-        .exec(function(err,data){
-          console.log(data);
-        });
+
   res.render('index');
 });
 
-app.get('/userProfile/profileData',function(req, res, next) {
-  var Profile = require("./models/profile");
-  var mongoose = require('mongoose');
-  //mongoose.connect('mongodb://172.23.238.253/quizRT');
-  var db = mongoose.connection;
-      Profile.findOne({userId: "AY1"})
-        .populate("topicsPlayed.topicId")
-            .exec(function(err,data){
-              profileData = data;
-               var data2=JSON.stringify(profileData, null, 4);
-               console.log(data2);
-               res.json(profileData);
-            });
+ app.post('/userProfile/profileData',function(req, res, next) {
+   var Profile = require("./models/profile");
+   var mongoose = require('mongoose');
+   //mongoose.connect('mongodb://172.23.238.253/quizRT');
+   var db = mongoose.connection;
+       Profile.findOne({userId: "AY1"})
+         .populate("topicsPlayed.topicId")
+             .exec(function(err,data){
+               profileData = data;
+                var data2=JSON.stringify(profileData, null, 4);
+                console.log(data2);
+                res.json(profileData);
+             });
 
-});
+ });
 
 server.listen(3000, function() {
   console.log('App started for EJS testing!!');
