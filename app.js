@@ -19,18 +19,9 @@ app.use(express.static('./public'));
 //register routers to route paths
 
 app.use('/', index);
-app.use('/profileHandler', profileHandler);
+app.use('/userProfile', profileHandler);
 app.use('/topicsHandler', topicsHandler);
 app.use('/quizPlayerHandler',quizPlayerHandler);
-
-   var mongoose = require('mongoose');
-   //mongoose.connect('mongodb://172.23.238.253/quizRT');
-   var db = mongoose.connection;
-       Profile.findOne({userId: "AY1"})
-         .populate("topicsPlayed.topicId")
-                var data2=JSON.stringify(profileData, null, 4);
-                console.log(data2);
-                res.json(profileData);
 
 server.listen(3000, function() {
   console.log('App started for EJS testing!!');
