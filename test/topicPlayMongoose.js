@@ -9,7 +9,7 @@ fs.readFile('topicPlay.json', 'utf8', function (err,data) {
   var json=JSON.parse(data);
 
   var mongoose = require('mongoose');
-  mongoose.connect('mongodb://localhost/quizRT');
+  mongoose.connect('mongodb://172.23.238.253/quizRT');
 
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
