@@ -1,9 +1,9 @@
 fs = require('fs');
 var slugify = require('slugify');
-var Question = require('../models/question.js');
+var Quiz = require('../models/quiz.js');
 
 
- fs.readFile('questionBank.json', 'utf8', function (err,data) {
+ fs.readFile('quiz.json', 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
   }
@@ -21,11 +21,11 @@ var Question = require('../models/question.js');
 console.log(json.length);
  for(i=0;i<json.length;++i)
  {
- var question1 = new Question(json[i]);
+ var quiz1 = new Quiz(json[i]);
 
-    question1.save(function(err){
+    quiz1.save(function(err){
     if ( err ) console.log(err);
-    console.log("Question Saved Successfully");
+    console.log("Quiz Saved Successfully");
  });
  }
  console.log('closing mongo');
