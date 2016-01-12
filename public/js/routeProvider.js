@@ -7,8 +7,7 @@ angular.module('quizRT', ['ngRoute'])
 
           .when('/userProfile',{
             'templateUrl': 'html/userProfile.html',
-            'controller': 'userProfileController',
-            'controllerAs':'ProfileController'
+            'controller': 'userProfileController'
           })
 
           .when('/categories',{

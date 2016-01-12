@@ -16,7 +16,6 @@ module.exports= router;
                 console.log(data2);
                 res.json(profileData);
                            });
-
  });
 
 module.exports = router;

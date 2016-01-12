@@ -18,4 +18,5 @@ var db = mongoose.connection;
           .exec(function(err,data){
             profileData = data;
             console.log(JSON.stringify(profileData, null, 4));
+
           });
