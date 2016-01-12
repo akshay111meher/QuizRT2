@@ -5,7 +5,6 @@ var router = express.Router();
 console.log(router);
 
 var Profile = require("../models/profile");
-module.exports= router;
  router.get('/profileData', function(req, res, next) {
        Profile.findOne({userId: "AY1"})
          .populate("topicsPlayed.topicId")

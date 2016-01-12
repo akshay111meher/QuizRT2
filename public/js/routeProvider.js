@@ -1,14 +1,16 @@
 angular.module('quizRT', ['ngRoute'])
         .config(function($routeProvider){
-          $routeProvider.when('/quizPlayer',{
+
+          $routeProvider
+
+          .when('/quizPlayer',{
             'templateUrl': 'html/quizPlayer.html',
             'controller': 'quizPlayerController'
           })
 
           .when('/userProfile',{
             'templateUrl': 'html/userProfile.html',
-            'controller': 'userProfileController',
-            'controllerAs':'ProfileController'
+            'controller': 'userProfileController'
           })
 
           .when('/categories',{
