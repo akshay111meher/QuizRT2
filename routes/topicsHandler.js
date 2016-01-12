@@ -7,7 +7,6 @@ var Category = require("../models/category");
 
 
 //console.log(router);
-var Category = require()
 
  router.route('/categories')
 
