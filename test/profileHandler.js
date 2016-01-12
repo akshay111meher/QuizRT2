@@ -9,7 +9,7 @@ var Profile = require("../models/profile");
 // var Topic=require("../models/Topic");
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/quizRT');
+mongoose.connect('mongodb://172.23.238.253/quizRT');
 
 var db = mongoose.connection;
   // console.log("this is form profile data"+req.params.id);
