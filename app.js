@@ -21,7 +21,7 @@ app.use(express.static('./public'));
 app.use('/', index);
 app.use('/profileHandler', profileHandler);
 app.use('/topicsHandler', topicsHandler);
-app.user('/quizPlayerHandler',quizPlayerHandler);
+app.use('/quizPlayerHandler',quizPlayerHandler);
 
    var mongoose = require('mongoose');
    //mongoose.connect('mongodb://172.23.238.253/quizRT');
