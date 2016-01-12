@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
-console.log(router);
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	//console.log("request is " + req.user.username);

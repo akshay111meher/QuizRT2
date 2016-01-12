@@ -27,5 +27,5 @@ app.use('/topicsHandler', topicsHandler);
 app.use('/quizPlayerHandler',quizPlayerHandler);
 
 server.listen(3000, function() {
-  console.log('App started for EJS testing!!');
+  console.log('App started for Quiz Play Testing!!');
 });
