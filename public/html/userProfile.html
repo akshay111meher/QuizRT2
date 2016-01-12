@@ -1,4 +1,173 @@
-<div>
-    user profile here
-    <div>{{message}}</div>
-</div>
+<!DOCTYPE html>
+<html ng-app="quizRTApp">
+<head>
+
+
+	<title></title>
+	<meta name="description" content="">
+
+	<!-- Mobile viewport optimized -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<!--<script src="/js/jquery-2.1.4.js"></script>-->
+	<!-- Bootstrap CSS -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="/css/userprofilestyle.css" rel="stylesheet">
+
+
+	<!-- Custom JS -->
+</head>
+<body ng-controller="ProfileController as profile">
+
+
+	<div class="container" id="main">
+		<div class="row" id="Quizzer">
+			<div class="col-xs-12">
+				Quizart
+			</div>
+		</div>
+
+		<div class="row user">
+			<div class="col-xs-3">
+				<img ng-src="{{profile.data.imageLink}}"  width="120px" height="120px"  class="img-circle img-responsive pull-right">
+			</div>
+			<div class="col-xs-4 usermiddle">
+				<span id="UserName">{{profile.data.name}}
+				</span>
+				<span id="age">{{profile.data.age}}</span>
+				<div id="badge">{{profile.data.badge}}</div>
+				<span id="flag"><img ng-src="{{profile.data.flagLink}}" alt="user image" width="30px" height="30px" class="img-rounded">
+				</span>
+				<span id="country">{{profile.data.country}}</span>
+
+			</div>
+
+			<div class="col-xs-5 Followinfo">
+
+				<div class="game">
+					<span>Games: </span>
+					<span>{{profile.data.totalGames}}</span>
+				</div>
+				<div class="Followers">
+					<span>Followers:  </span>
+					<span>23</span>
+				</div>
+				<div class="Following">
+					<span>Following: </span>
+					<span>58</span>
+				</div>
+
+			</div>
+		</div>
+
+
+		<div class="row" id="Games">
+			<div class="col-xs-12" id="cent">
+				Games
+			</div>
+		</div>
+		<div class="row" id="GamesInfo">
+			<div class="col-xs-2 col-xs-offset-1" id="win">
+				<img  src ="/images/userProfileImages/win.png" class="img-circle img-responsive" height="150px">
+
+				<p>Wins</br>{{profile.data.wins}}
+				</p>
+			</div>
+			<div class="col-xs-2 col-xs-offset-2" id="loss">
+				<img src ="/images/userProfileImages/loss.png" class="img-circle img-responsive" height="150px">
+
+				<p>Losses</br>{{profile.data.totalGames - profile.data.wins}}
+				</p>
+			</div>
+			<div class="col-xs-2 col-xs-offset-2" id="winpercentage">
+				<img  src ="/images/userProfileImages/winpercent.png" class="img-circle img-responsive" height="150px">
+
+				<p>Win%<br>{{profile.data.wins/profile.data.totalGames*100 | number : 2}}%
+				</p>
+			</div>
+		</div>
+		<div class="row" id="topics">
+			<div class="col-xs-12">
+				Followed Topics
+			</div>
+		</div>
+		<div class="row topicsinfo"  ng-if="{{profile.data.topicsPlayed.length}}>6" >
+			<div class="col-xs-2 topicholder" ng-repeat="i in [0,1,2,3,4,5]" ng-show="{{profile.data.topicsPlayed[i].isFollowed}}">
+				<div>
+					<a href="#"><img ng-src="{{profile.data.topicsPlayed[i].topicIcon}}" class="img-rounded img-responsive" height="150px"></a>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-8">
+						<span class="topic">{{profile.data.topicsPlayed[i].topicName}}</span>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<span class="wins">{{profile.data.topicsPlayed[i].gamesWon}}+"/"+{{profile.data.topicsPlayed[i].gamesPlayed}}</span>
+					</div>
+				</div>
+				<span class="badge">{{profile.data.topicsPlayed[i].level}}</span>
+			</div>
+		</div> <!-- end topicinfo row -->
+		<div class="row topicsinfo"  ng-if="{{profile.data.topicsPlayed.length}}>6 && {{profile.data.topicsPlayed.length}}>12" ng-repeat="i in [0,1,2,3,4,5]">
+			<div class="col-xs-2 topicholder" ng-show="{{profile.data.topicsPlayed.isFollowed}}" >
+				<div>
+					<a href="#"><img ng-src="{{profile.data.topicsPlayed[i].topicIcon}}"  class="img-rounded img-responsive" height="150px"></a>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-8">
+						<span class="topic">{{profile.data.topicsPlayed[i].topicName}}</span>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<span class="wins">{{profile.data.topicsPlayed[i].gamesWon}}+"/"+{{profile.data.topicsPlayed[i].gamesPlayed}}</span>
+					</div>
+				</div>
+				<span class="badge">{{profile.data.topicsPlayed[i].level}}</span>
+			</div>
+		</div>  <!--end topicsinfo row-->
+		<div class="newrows">
+		</div>
+
+		<div>
+			<a><img  class="img-rounded img-responsive" height="150px"></a>
+
+			<div class="row" id="button-height">
+				<div class="col-xs-4 btn1">
+					<a type="button" class="btn">Home</a>
+				</div>
+				<div class="col-xs-4 btn2">
+					<a id = "topicHandler" type="button" class="btn">Play it</a>
+				</div>
+				<div class="col-xs-4 btn3">
+					<a type="button" class="btn">Activity</a>
+				</div>
+
+			</div>
+		</div>
+
+
+	</div> <!-- end container -->
+
+
+	<script src="/js/libs/jquery-2.1.4.js"></script>
+
+	<!-- All Javascript at the bottom of the page for faster page loading -->
+
+	<!-- First try for the online version of jQuery-->
+
+
+	<!-- If no online access, fallback to our hardcoded version of jQuery -->
+
+	<!-- Bootstrap JS -->
+
+	<script src="/js/libs/bootstrap.min.js"></script>
+
+	<script src = "/js/libs/angular.min.js"></script>
+
+	<!-- Custom JS -->
+	<!-- <script src="/js/userprofile.js"></script> -->
+  <script src="/js/controllers/profileController/profileController.js"></script>
+
+</body>
+</html>
