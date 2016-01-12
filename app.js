@@ -1,8 +1,10 @@
 var express = require('express');
 var app = express();
-var bodyParser = require('body-parser');
+var path = require('path');
+
 var http = require('http');
 var server = http.createServer(app);
+var bodyParser = require('body-parser');
 var topicsHandler = require('./routes/topicsHandler');
 var profileHandler = require('./routes/profileHandler');
 var index = require('./routes/index');

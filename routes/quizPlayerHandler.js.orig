@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require( 'mongoose' );
-module.exports= router;
+<<<<<<< HEAD
+
+=======
+>>>>>>> c0607c88f2670d72ac20441d9cf4530fdfb06007
 module.exports= router;
