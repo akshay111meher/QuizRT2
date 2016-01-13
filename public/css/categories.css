@@ -48,6 +48,10 @@ Notes:	 Hand coded for Udemy.com
     margin: 5px 1px;
   }
 
+  .collection-widget-inside{
+    margin-bottom: 20px;
+  }
+
   .topics-container{
     margin-top: 10px;
     text-align: center;
