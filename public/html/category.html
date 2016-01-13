@@ -3,7 +3,7 @@
 
     <div class="navbar navbar-fixed-top">
 
-      <div class="heading pull-left"><span id="heading-name">Topic Store</span></div>
+      <div class="heading pull-left"><span id="heading-name">{{category.categoryName}}</span></div>
       <button type="submit" class="btn btn-default pull-right search-topic"><span class="glyphicon glyphicon-search"></span></button>
 
     </div><!--end navbar-->
@@ -13,16 +13,16 @@
     <div class="content">
       <div class="row topic-row">
 
-        <div class="col-sm-4 topic">
+        <div class="col-sm-4 topic ng-repeat="topic in category.categoryTopics"">
 
-          <div class="topic-icon col-xs-3"><img src="images/topics/cricket.png">
+          <div class="topic-icon col-xs-3"><img ng-src="{{topic.topicIcon}}">
           </div><!--end topic-icon-->
           <div class="topic-data col-xs-6">
-            <span class="topic-name">Temple Run</span>
-            <span class="topic-desc">Try your Lucknow with this Delhightful quiz.</span>
+            <span class="topic-name">{{topic.topicName}}</span>
+            <span class="topic-desc">{{topic.topicDescription}}</span>
           </div><!--end topic-data-->
           <div class="topic-category col-xs-3">
-            <a href=""><small>The world</small></a>
+            <a href=""><small>{{topic.topicCategory[0]}}</small></a>
           </div><!--end topic-category-->
 
         </div><!--end topic-->
