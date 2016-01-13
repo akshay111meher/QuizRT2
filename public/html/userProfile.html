@@ -71,7 +71,7 @@
 				Followed Topics
 			</div>
 		</div>
-		<div class="row topicsinfo"  ng-if="data.topicsPlayed.length > 6" >
+		<div class="row topicsinfo"  >
 			<div class="col-xs-2 topicholder" ng-repeat="i in [0,1,2,3,4,5]" ng-show="{{data.topicsPlayed[i].isFollowed}}">
 				<div>
 					<a href="#"><img ng-src="{{data.topicsPlayed[i].topicIcon}}" class="img-rounded img-responsive" height="150px"></a>

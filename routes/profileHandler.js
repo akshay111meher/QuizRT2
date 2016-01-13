@@ -9,7 +9,6 @@ router.get('/profileData', function(req, res, next) {
              .exec(function(err,data){
                profileData = data;
                 var data2=JSON.stringify(profileData, null, 4);
-                //console.log(data2);
                 res.json(profileData);
  });
  });
