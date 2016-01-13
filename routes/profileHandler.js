@@ -4,7 +4,7 @@ var router = express.Router();
 
 var Profile = require("../models/profile");
 router.get('/profileData', function(req, res, next) {
-       Profile.findOne({userId: "AY1"})
+       Profile.findOne({userId: "LA1"})
          .populate("topicsPlayed.topicId")
              .exec(function(err,data){
                profileData = data;

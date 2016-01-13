@@ -154,11 +154,13 @@ p{
     text-align: center;
   }
 
-  .topicsinfo1,.topicsinfo2{
-    background-color: lightyellow;
-    color:black;
+  .topicsinfo{
+    margin-bottom: 5px;
   }
-
+  .topicsinfo .topicsholder
+  {
+    margin-bottom: 5px;
+  }
   #button-height{
     height:10%;
   }

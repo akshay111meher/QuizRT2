@@ -71,30 +71,31 @@
 				Followed Topics
 			</div>
 		</div>
-		<div class="row topicsinfo"  >
-			<div class="col-xs-2 topicholder" ng-repeat="i in [0,1,2,3,4,5]" ng-show="{{data.topicsPlayed[i].isFollowed}}">
+		<div class="row topicsinfo">
+			<div class="col-xs-2 topicholder" ng-repeat="topic in data.topicsPlayed">
 				<div>
-					<a href="#"><img ng-src="{{data.topicsPlayed[i].topicIcon}}" class="img-rounded img-responsive" height="150px"></a>
+					<a href="#"><img ng-src="{{topic.topicId.topicIcon}}" class="img-rounded img-responsive" height="150px"></a>
 				</div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-8">
-						<span class="topic">{{data.topicsPlayed[i].topicName}}</span>
+						<span class="topic">{{topic.topicId.topicName}}</span>
 					</div>
 					<div class="col-xs-12 col-sm-4">
-						<span class="wins">{{data.topicsPlayed[i].gamesWon}}+"/"+{{data.topicsPlayed[i].gamesPlayed}}</span>
+						<span class="wins">{{topic.gamesWon}}/{{topic.gamesPlayed}}</span>
 					</div>
 				</div>
-				<span class="badge">{{data.topicsPlayed[i].level}}</span>
+				<span class="badge">{{topic.level}}</span>
 			</div>
 		</div> <!-- end topicinfo row -->
+		<!--
 		<div class="row topicsinfo"  ng-if="data.topicsPlayed.length > 6 && data.topicsPlayed.length > 12" ng-repeat="i in [0,1,2,3,4,5]">
-			<div class="col-xs-2 topicholder" ng-show="{{data.topicsPlayed.isFollowed}}" >
+			<div class="col-xs-2 topicholder" ng-show="{{data.topicsPlayed.isFollowed==1}}" >
 				<div>
-					<a href="#"><img ng-src="{{data.topicsPlayed[i].topicIcon}}"  class="img-rounded img-responsive" height="150px"></a>
+					<a href="#"><img ng-src="{{data.topicsPlayed[i].topicId.topicIcon}}"  class="img-rounded img-responsive" height="150px"></a>
 				</div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-8">
-						<span class="topic">{{data.topicsPlayed[i].topicName}}</span>
+						<span class="topic">{{data.topicsPlayed[i].topicId.topicName}}</span>
 					</div>
 					<div class="col-xs-12 col-sm-4">
 						<span class="wins">{{data.topicsPlayed[i].gamesWon}}+"/"+{{data.topicsPlayed[i].gamesPlayed}}</span>
@@ -102,7 +103,8 @@
 				</div>
 				<span class="badge">{{data.topicsPlayed[i].level}}</span>
 			</div>
-		</div>  <!--end topicsinfo row-->
+		</div>
+	  -->
 		<div class="newrows">
 		</div>
 
