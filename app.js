@@ -3,6 +3,7 @@ var app = express();
 var path = require('path');
 var http = require('http');
 var server = http.createServer(app);
+var io = require('socket.io')(server);
 var bodyParser = require('body-parser');
 var topicsHandler = require('./routes/topicsHandler');
 var profileHandler = require('./routes/profileHandler');
@@ -23,8 +24,14 @@ app.use(express.static('./public'));
 app.use('/', index);
 app.use('/userProfile', profileHandler);
 app.use('/topicsHandler', topicsHandler);
-app.use('/quizPlayerHandler',quizPlayerHandler);
+app.use('/quizPlayer',quizPlayerHandler);
 
 server.listen(3000, function() {
   console.log('App started for Quiz Play Testing!!');
+});
+
+io.on('connection', function(client) {
+  client.on('join', function(data) {
+        console.log("players connected = "+ io.sockets.sockets.length);
+    });
 });
