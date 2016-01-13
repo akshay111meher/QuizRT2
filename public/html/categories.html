@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> c7da90d14f648d2b737853f1c60f241b319c2e1a
 
 	<div class="container" id="main" >
 
@@ -13,11 +16,12 @@
     <div class="content">
 	    <div class="row collection-widget" ng-repeat ="category in categories">
 
+				<div class="collection-widget-inside">
 			   <div class="row">
 
 					 <h4 class ="topic-category-name col-xs-9 pull-left ">{{category.categoryName}}</h4>
 
-					 <a href="/topicsHandler/category"  class="col-xs-3 btn btn-default more-button pull-right">More..</a>
+					 <a href="/topicsHandler/category" class="col-xs-3 btn btn-default more-button pull-right">More..</a>
 
          </div>
 
@@ -26,7 +30,8 @@
 
 				 <div class="topics-container-inside">
 
-				   <div class="topic col-xs-3" ng-repeat ="topic in category.categoryTopics">
+				   <div class="topic col-xs-3" ng-repeat ="topic in category.categoryTopics|limitTo:5">
+
 							 <div class="topic-icon">
 								 <a href="/topicsHandler/topic-play" class="topicPlay"><img ng-src="{{topic.topicIcon}}" alt=""></a>
 							 </div><!--end topic-icon-->
@@ -39,13 +44,13 @@
 							 		<a href=""><span class="category-name">{{topic.topicCategory[0]}}</span></a>
 							 </div>
 
-				 </div><!--end topic-->
+				 </div><!--end to  pic-->
 
 			   </div><!--end topics-container-inside-->
 
 			</div><!--end topics-container-->
 
-
+		</div><!--collection-widget-inside-->
 	   </div><!--end collection-widget-->
 
 </div><!--end content-->

@@ -4,12 +4,11 @@ var router = express.Router();
 
 var Profile = require("../models/profile");
 router.get('/profileData', function(req, res, next) {
-       Profile.findOne({userId: "AY1"})
+       Profile.findOne({userId: "LA1"})
          .populate("topicsPlayed.topicId")
              .exec(function(err,data){
                profileData = data;
                 var data2=JSON.stringify(profileData, null, 4);
-                //console.log(data2);
                 res.json(profileData);
  });
  });
