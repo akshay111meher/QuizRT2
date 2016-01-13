@@ -1,9 +1,11 @@
 angular.module('quizRT')
- .controller('userProfileController',['$http','$scope',function($http,$scope){
+
+ .controller('userProfileController',['$http',function($http){
+      var controller = this;
       console.log("In Profile controller Testing");
       $http({method : 'POST',url:'/userProfile/profileData'})
        .success(function(data){
          console.log(data);
-         $scope.data = data;
+         controller.data = data;
        });
  }]);

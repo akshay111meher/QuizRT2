@@ -57,6 +57,9 @@ Notes:	 Hand coded for Udemy.com
   }
 
   .topic-category-name{
+    font-size: 15px;
+    font-weight: bold ;
+    font-style: italic;
   }
 
   .more-button{
