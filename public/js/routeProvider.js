@@ -1,6 +1,9 @@
 angular.module('quizRT', ['ngRoute'])
         .config(function($routeProvider){
-          $routeProvider.when('/quizPlayer',{
+
+          $routeProvider
+
+          .when('/quizPlayer',{
             'templateUrl': 'html/quizPlayer.html',
             'controller': 'quizPlayerController'
           })

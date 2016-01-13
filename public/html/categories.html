@@ -31,7 +31,7 @@
 
 				 <div class="topics-container-inside">
 
-				   <div class="topic col-xs-3" ng-repeat ="topic in category.topics">
+				   <div class="topic col-xs-3" ng-repeat ="topic in category.categoryTopics">
 							 <div class="topic-icon">
 								 <a href="/topicsHandler/topic-play" class="topicPlay"><img ng-src="{{topic.topicIcon}}" alt=""></a>
 							 </div><!--end topic-icon-->
@@ -41,7 +41,7 @@
 							 </div>
 
 							 <div>
-							 		<a href=""><span class="category-name">{{topic.topicCategoryName}}</span></a>
+							 		<a href=""><span class="category-name">{{topic.topicCategory[0]}}</span></a>
 							 </div>
 
 				 </div><!--end topic-->
@@ -52,23 +52,6 @@
 
 
 	   </div><!--end collection-widget-->
-
-
-
-
-	<!-- All Javascript at the bottom of the page for faster page loading -->
-			<script src="/js/jquery-2.1.4.js"></script>
-	<!-- Bootstrap JS -->
-	  <script src="/js/bootstrap.min.js"></script>
-
-	<!-- Custom JS -->
-
-	<script src="/js/jquery-2.1.4.js"></script>
-
-	<script src="/js/topics-main.js"></script>
-	<script>
-	$(document).ready(loadPlayPage("<%= userId %>"));
-	</script>
 
 </div><!--end content-->
 

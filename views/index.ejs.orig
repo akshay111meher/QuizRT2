@@ -7,8 +7,11 @@
 	<!-- Mobile viewport optimized -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="css/lib/bootstrap.min.css">
+<<<<<<< HEAD
   <link rel="stylesheet" href="css/categories.css">
+=======
     <link rel="stylesheet" href="css/userprofilestyle.css"></script>
+>>>>>>> a1d4c6c2c670298a6e39048e2bc94f81068ea9af
 </head>
 
 <body ng-app="quizRT">
