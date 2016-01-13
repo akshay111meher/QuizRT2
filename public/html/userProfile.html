@@ -72,13 +72,13 @@
 			</div>
 		</div>
 		<div class="row topicsinfo">
-			<div class="col-xs-2 topicholder" ng-repeat="topic in data.topicsPlayed">
+			<div class="col-xs-2 topicsholder" ng-repeat="topic in data.topicsPlayed">
 				<div>
 					<a href="#"><img ng-src="{{topic.topicId.topicIcon}}" class="img-rounded img-responsive" height="150px"></a>
 				</div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-8">
-						<span class="topic">{{topic.topicId.topicName}}</span>
+						<span class="topicName">{{topic.topicId.topicName}}</span>
 					</div>
 					<div class="col-xs-12 col-sm-4">
 						<span class="wins">{{topic.gamesWon}}/{{topic.gamesPlayed}}</span>
