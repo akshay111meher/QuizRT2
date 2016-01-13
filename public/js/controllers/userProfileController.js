@@ -7,5 +7,11 @@ angular.module('quizRT')
        .success(function(data){
          console.log(data);
          $scope.data = data;
+         $scope.a=11;
+         $scope.seeall=function(length)
+         {
+           console.log(length);
+           $scope.a=length;
+         }
        });
  }]);
