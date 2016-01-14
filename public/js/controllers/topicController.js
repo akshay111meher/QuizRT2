@@ -1,5 +1,4 @@
 angular.module('quizRT')
-
   .controller('topicController', function($scope,$rootScope){
 
     $scope.topicID=$routeParams.topicID;

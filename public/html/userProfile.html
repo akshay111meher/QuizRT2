@@ -72,7 +72,7 @@
 			</div>
 		</div>
 		<div class="row topicsinfo">
-			<div class="col-xs-2 topicsholder" ng-repeat="topic in data.topicsPlayed|limitTo:a|orderBy:'-level'">
+			<div class="col-xs-2 topicsholder" ng-repeat="topic in topicsFollowed|limitTo:a|orderBy:'-level'">
 				<div>
 					<a href="#"><img ng-src="{{topic.topicId.topicIcon}}" class="img-rounded img-responsive" height="150px"></a>
 				</div>
@@ -87,9 +87,9 @@
 				<span class="badge">{{topic.level}}</span>
 			</div>
 
-				<div class="col-xs-2 topicsholder" ng-if="data.topicsPlayed.length>11">
+				<div class="col-xs-2 topicsholder" ng-if="topicsFollowed.length>11">
 					<div>
-						<button ng-if="data.topicsPlayed.length>=12" ng-click="seeHide(data.topicsPlayed.length)"><img ng-src="{{btnImg}}" class="img-rounded img-responsive" height="150px"></button>
+						<button ng-if="topicsFollowed.length>=12" ng-click="seeHide(topicsFollowed.length)"><img ng-src="{{btnImg}}" class="img-rounded img-responsive" height="150px"></button>
 					</div>
 	 	 </div>
 
