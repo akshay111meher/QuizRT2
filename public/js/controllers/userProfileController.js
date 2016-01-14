@@ -3,9 +3,20 @@ angular.module('quizRT')
  .controller('userProfileController',['$http','$scope',function($http,$scope)
  {
    $scope.a=11;
-   $scope.seeall=function(length){
-     console.log(length);
-     $scope.a=length;
+   $scope.see = true;
+   $scope.btnImg = "images/userProfileImages/seeall.jpg";
+   $scope.seeHide=function(length){
+     if($scope.see){
+       $scope.see = false;
+       $scope.btnImg = "images/userProfileImages/hide.jpg";
+       $scope.a=length;
+     }
+     else{
+       $scope.see = true;
+       $scope.btnImg = "images/userProfileImages/seeall.jpg";
+       $scope.a=11;
+     }
+
    }
       console.log("In Profile controller Testing");
       $http({method : 'GET',url:'/userProfile/profileData'})
