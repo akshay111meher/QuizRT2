@@ -6,6 +6,7 @@ angular.module('quizRT')
 
    $scope.a=11;
    $scope.see = true;
+
    $scope.btnImg = "images/userProfileImages/seeall.jpg";
    $scope.seeHide=function(length){
      if($scope.see){
@@ -20,10 +21,26 @@ angular.module('quizRT')
      }
 
    }
+
       console.log("In Profile controller Testing");
       $http({method : 'GET',url:'/userProfile/profileData'})
        .success(function(data){
          console.log(data);
          $scope.data = data;
-       });
+         $scope.topicsFollowed=[];
+                  var i=0;
+                  for(i=0;i<data.topicsPlayed.length;i++)
+                  {
+                    if(data.topicsPlayed[i].isFollowed)
+                       {
+                         $scope.topicsFollowed.push(data.topicsPlayed[i]);
+
+                       }
+                  }
+
+
+
+       console.log($scope.topicsFollowed);
+     });
+
  }]);

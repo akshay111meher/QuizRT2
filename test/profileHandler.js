@@ -13,7 +13,7 @@ mongoose.connect('mongodb://172.23.238.253/quizRT');
 
 var db = mongoose.connection;
   // console.log("this is form profile data"+req.params.id);
-    Profile.findOne({userId: "AY1"})
+    Profile.findOne({userId: "LA1"})
       .populate("topicsPlayed.topicId")
           .exec(function(err,data){
             profileData = data;

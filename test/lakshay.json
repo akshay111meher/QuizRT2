@@ -15,7 +15,7 @@
               "gamesPlayed":7,
               "gamesWon":5,
               "level":17,
-               "isFollowed":1,
+               "isFollowed":true,
                "points":200
             },
             {
@@ -23,7 +23,7 @@
               "gamesPlayed":4,
               "gamesWon":2,
               "level":23,
-               "isFollowed":1,
+               "isFollowed":true,
                "points":300
             },
             {
@@ -31,7 +31,7 @@
               "gamesPlayed":8,
               "gamesWon":3,
               "level":34,
-               "isFollowed":1,
+               "isFollowed":true,
                "points":400
             },
             {
@@ -39,7 +39,7 @@
               "gamesPlayed":15,
               "gamesWon":10,
               "level":22,
-               "isFollowed":1,
+               "isFollowed":false,
                "points":500
             },
             {
@@ -47,7 +47,7 @@
               "gamesPlayed":12,
               "gamesWon":7,
               "level":2,
-               "isFollowed":1,
+               "isFollowed":true,
                "points":600
             },
 
@@ -56,7 +56,7 @@
               "gamesPlayed":9,
               "gamesWon":3,
               "level":12,
-               "isFollowed":1,
+               "isFollowed":true,
                "points":250
             },
             {
@@ -64,7 +64,7 @@
               "gamesPlayed":16,
               "gamesWon":10,
               "level":33,
-               "isFollowed":1,
+               "isFollowed":false,
                "points":100
             },
 
@@ -73,7 +73,7 @@
               "gamesPlayed":20,
               "gamesWon":15,
               "level":27,
-               "isFollowed":1,
+               "isFollowed":true,
                "points":800
             }
       ]

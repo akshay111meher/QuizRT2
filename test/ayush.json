@@ -15,7 +15,7 @@
         "gamesPlayed":45,
         "gamesWon":38,
         "level":3,
-         "isFollowed":1,
+         "isFollowed":true,
          "points":100
       }
     ,
@@ -25,7 +25,7 @@
         "gamesPlayed":15,
         "gamesWon":9,
         "level":3,
-         "isFollowed":1,
+         "isFollowed":true,
          "points":200
       },
           {
@@ -33,7 +33,7 @@
         "gamesPlayed":20,
         "gamesWon":13,
         "level":12,
-         "isFollowed":1,
+         "isFollowed":true,
          "points":300
       }
     ]
