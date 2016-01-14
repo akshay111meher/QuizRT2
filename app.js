@@ -3,13 +3,12 @@ var app = express();
 var path = require('path');
 var http = require('http');
 var server = http.createServer(app);
-var io = require('socket.io')(server);
+// var io = require('socket.io')(server);
 var bodyParser = require('body-parser');
 var topicsHandler = require('./routes/topicsHandler');
 var profileHandler = require('./routes/profileHandler');
 var index = require('./routes/index');
 var quizPlayerHandler = require('./routes/quizPlayerHandler');
-
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://172.23.238.253/quizRT');
 var db = mongoose.connection;
@@ -30,8 +29,4 @@ server.listen(3000, function() {
   console.log('App started for Quiz Play Testing!!');
 });
 
-io.on('connection', function(client) {
-  client.on('join', function(data) {
-        console.log("players connected = "+ io.sockets.sockets.length);
-    });
-});
+require('./routes/socket.js')(server);
