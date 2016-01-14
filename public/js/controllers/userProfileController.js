@@ -35,14 +35,8 @@ angular.module('quizRT')
               k++;
             }
          }
-                       }
-                  }
-
-
-
-       console.log($scope.topicsFollowed);
-     });
-
+       }
+     );
 
 
  }]);
