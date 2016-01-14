@@ -13,7 +13,7 @@
   margin-left: 50px;
 }
 
-#heading-name{
+#heading-name-category{
   font-size: 20px;
   margin: 10px;
   margin-top: 40px;
@@ -30,7 +30,7 @@
   border-radius: 20px;
 }
 
-.topic{
+.topic-div{
   border:2px solid black;
   height:100px;
   padding: 0;
@@ -45,7 +45,7 @@
   height:100%;
 }
 
-.topic-data .topic-name{
+.topic-data .topic-name-category{
   display: block;
   max-width: 200px;
   margin-top: 15px;

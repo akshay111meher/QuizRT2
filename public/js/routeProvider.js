@@ -1,4 +1,8 @@
-angular.module('quizRT', ['ngRoute'])
+angular.module('quizRT', ['ngRoute']).run(function($rootScope) {
+
+      $rootScope.stylesheetName = "";
+
+	})
 
         .config(function($routeProvider){
 
