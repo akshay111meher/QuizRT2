@@ -1,6 +1,6 @@
 angular.module('quizRT', ['ngRoute']).run(function($rootScope) {
 
-      $rootScope.stylesheetName = "";
+      $rootScope.stylesheetName = "index";
 
 	})
 

@@ -1,7 +1,10 @@
 var questionCounter = 0;
 var temp;
 angular.module('quizRT')
-	.controller('quizPlayerController', function($scope, $interval,$http){
+	.controller('quizPlayerController', function($scope, $interval,$http,$rootScope){
+
+		$rootScope.stylesheetName="quizPlayer";
+
 
 		$http.post('/quizPlayer/quizData')
 				.success(function(data, status, headers, config) {
