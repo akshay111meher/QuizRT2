@@ -1,4 +1,5 @@
 angular.module('quizRT', ['ngRoute'])
+
         .config(function($routeProvider){
 
           $routeProvider
@@ -18,9 +19,10 @@ angular.module('quizRT', ['ngRoute'])
             'controller': 'categoriesController'
           })
 
-          .when('/category',{
+          .when('/category/:categoryID',{
             'templateUrl': 'html/category.html',
             'controller': 'categoryController'
+
           })
 
           .when('/topic',{

@@ -21,4 +21,19 @@ var Category = require("../models/category");
           });
  	});
 
+  router.route('/category/:id')
+	//gets specified post
+
+
+
+	.get(function(req, res){
+		Category.findById(req.params.id)
+      .populate("categoryTopics")
+        .exec(function(err, category){
+      			if(err)
+      				return res.send(err);
+      			return res.json(category);
+		});
+	});
+
 module.exports= router;

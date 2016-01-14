@@ -1,0 +1,137 @@
+[
+  {
+
+    "categoryName": "Animalia",
+    "categoryIcon": "https://upload.wikimedia.org/wikipedia/commons/c/cd/2007_01_3000_muchowka_sciaridae.jpg",
+    "categoryTopics": [
+      "Pet-Animals",
+      "Name-the-animal",
+      "Animal-Personalities",
+      "Citius-Fortius-Altius",
+      "Reptiles"
+    ]
+    },
+
+    {
+<<<<<<< HEAD
+
+      "categoryName": "Cars",
+      "categoryIcon": "https://commons.wikimedia.org/wiki/Category:Automobiles#/media/File:Auto_d%5E%5E39,epoca_-_panoramio.jpg",
+=======
+      "categoryName": "category2",
+      "categoryIcon": "https://s3.amazonaws.com/uifaces/faces/twitter/ratbus/128.jpg",
+>>>>>>> 5f8a5363e90e7e1132749e48aca7c954bd090ca5
+      "categoryTopics": [
+        "Dream-Sports-Cars",
+        "Vintage-Cars",
+        "Manufacturers-and-models",
+        "Races-and-winners",
+        "Weird-cars-and-trivia"
+      ]
+      },
+      {
+
+      "categoryName": "Cricket",
+      "categoryIcon": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ntini_bowls.JPG/250px-Ntini_bowls.JPG",
+      "categoryTopics": [
+        "Players",
+        "Great-games",
+        "One-day-matches",
+        "Test-cricket",
+        "20-20-matches"
+      ]
+      },
+      {
+
+        "categoryName": "Football",
+        "categoryIcon": "https://en.wikipedia.org/wiki/File:Football_iu_1996.jpg",
+        "categoryTopics": [
+          "Players",
+          "World-Cup-Games",
+          "La-Liga",
+          "Premier-League",
+          "Simple-Football-Trivia"
+        ]
+        },
+        {
+          "categoryName": "Politics",
+          "categoryIcon": "https://en.wikipedia.org/wiki/File:London_Summit_2009-1.jpg",
+          "categoryTopics": [
+            "Countries-and-leaders",
+            "Historic-figures",
+            "Parties",
+            "Indian-Politics",
+            "American-Presidents"
+          ]
+          },
+      {
+
+        "categoryName": "General Knowledge Trivia",
+        "categoryIcon": "https://s3.amazonaws.com/uifaces/faces/twitter/ratbus/128.jpg",
+        "categoryTopics": [
+          "People",
+          "Places",
+          "Movies",
+          "Disney-Movies",
+          "Events"
+        ]
+        },
+      {
+
+        "categoryName": "Music",
+        "categoryIcon": "https://en.wikipedia.org/wiki/File:P1084426.jpg",
+        "categoryTopics": [
+          "Bach-to-Beethoven",
+          "Classic-Rock",
+          "Blues",
+          "Carnatic-Classicists",
+          "Maestros-of-Hindustani-Music"
+        ]
+        },
+
+    {
+
+      "categoryName": "Indian Cinema",
+      "categoryIcon": "https://upload.wikimedia.org/wikipedia/commons/2/26/Bollywood_dance_show_in_Bristol.jpg",
+      "categoryTopics": [
+        "Modern-Bollywood",
+        "Actors-and-their-roles",
+        "Bollywood-through-the-ages",
+        "Music-in-movies",
+        "Awards"
+      ]
+      },
+
+
+      {
+
+        "categoryName": "Popular Science",
+        "categoryIcon": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Stylised_Lithium_Atom.svg/2000px-Stylised_Lithium_Atom.svg.png",
+        "categoryTopics": [
+          "The-physics-of-things",
+          "Growing-stuff",
+          "Nutcase-mechanics",
+          "Inventors",
+          "Microns-and-below",
+          "Astronomy",
+          "Machines"
+        ]
+        },
+
+      {
+
+        "categoryName": "Geography",
+        "categoryIcon": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Earth_Eastern_Hemisphere.jpg",
+        "categoryTopics": [
+
+          "Landmarks",
+          "Man-made-geography",
+          "Under-the-sea",
+          "Mountains",
+          "Acres-of-trivia",
+          "Wild-world",
+          "Cities"
+                  ]
+        }
+
+  ]
