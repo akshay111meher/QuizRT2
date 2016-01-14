@@ -1,5 +1,5 @@
 angular.module('quizRT', ['ngRoute']).run(function($rootScope) {
-.factory('socket', function ($rootScope) {
+  .factory('socket', function ($rootScope) {
           var socket = io.connect('http://172.23.238.186:3000');
           return {
             on: function (eventName, callback) {

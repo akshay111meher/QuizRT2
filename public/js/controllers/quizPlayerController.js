@@ -1,18 +1,14 @@
 var questionCounter = 0;
 var temp;
 angular.module('quizRT')
-	.controller('quizPlayerController', function(socket,$scope, $interval,$http){
+	.controller('quizPlayerController', function(socket,$scope, $interval,$http,$rootScope){
+		$rootScope.stylesheetName="quizPlayer";
 		$scope.myscore = 0;
 		socket.emit('join','player joining');
 		socket.on('startGame',function(data){
-	.controller('quizPlayerController', function($scope, $interval,$http,$rootScope){
-
-		$rootScope.stylesheetName="quizPlayer";
-
 			console.log(data);
-			$http.post('/quizPlayer/quizData')
+			$http.post('/quizPlayer/quizData'){
 					.success(function(data, status, headers, config) {
-
 
 									$scope.time=3;
 						  		var timeInterval= $interval(function(){
