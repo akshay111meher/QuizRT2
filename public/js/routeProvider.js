@@ -50,7 +50,7 @@ angular.module('quizRT', ['ngRoute']).run(function($rootScope) {
 
           })
 
-          .when('/topic',{
+          .when('/topic/:topicID',{
             'templateUrl': 'html/topic.html',
             'controller': 'topicController'
           });
