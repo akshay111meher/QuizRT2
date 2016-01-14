@@ -1,6 +1,15 @@
-angular.module('quizRT', ['ngRoute']).run(function($rootScope) {
-
+angular.module('quizRT', ['ngRoute']).run(function($rootScope,$http,$location) {
       $rootScope.stylesheetName = "index";
+
+      $rootScope.authenticated = false;
+      $rootScope.current_user = '';
+
+      $rootScope.logout = function(){
+          $http.get('auth/logout');
+          $rootScope.authenticated = false;
+          $rootScope.current_user = '';
+          $location.path('/login');
+      };
 })
   .factory('socket', function ($rootScope) {
           var socket = io.connect('http://172.23.238.186:3000');

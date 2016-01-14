@@ -9,7 +9,7 @@ angular.module('quizRT')
         if(data.state == 'success'){
           $rootScope.authenticated = true;
           $rootScope.current_user = data.user.username;
-          $location.path('/');
+          $location.path('/userProfile');
         }
         else{
           $scope.error_message = data.message;
@@ -22,7 +22,7 @@ angular.module('quizRT')
       if(data.state == 'success'){
         $rootScope.authenticated = true;
         $rootScope.current_user = data.user.username;
-        $location.path('/');
+        $location.path('/userProfile');
       }
       else{
         $scope.error_message = data.message;
