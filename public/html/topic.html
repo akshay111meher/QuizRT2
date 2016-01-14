@@ -3,13 +3,10 @@
     <div class="content">
 
       <div class="topic-info">
-        <div class="page-header">
-            <h1>Example page header<br><small>Subtext for header</small></h1>
-        </div>
 
-        <div class="topic-description">
-          <h4>Topic Description in short</h4>
-        </div><!--end topic-name-->
+        <div class="topic-header">
+            <h1>Topic Name<br><small>Topic Description in short</small></h1>
+        </div><!--end topic-header-->
 
         <hr>
         <div class="row topic-column">
@@ -99,3 +96,17 @@
   </div><!--end content-->
 
 </div><!--end container-->
+
+<script type="text/javascript">
+      var a=$('.topic-user').height();
+      var b=$('.topic-icon img').height(a);
+      var a=$('.leaderboard label').height();
+      var b=$('.leaderboard img').height(a);
+      var a=window.outerHeight;
+      var b=($('.topic-info').outerHeight());
+      $('.play-button').height(0.9*(a-b));
+      $('.play-button button').css('margin-top',0.1*(a-b));
+
+      $('.play-button button').height((0.7)*(a-b));
+
+</script>
