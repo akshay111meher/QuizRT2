@@ -6,7 +6,11 @@ module.exports = function(server) {
     client.on('join',function(data){
 
       console.log(data);
-      arrayOfPlayers.push(client);
+      console.log(arrayOfPlayers.indexOf(client));
+      
+      if(arrayOfPlayers.indexOf(client) == -1){
+        arrayOfPlayers.push(client);
+      }
       console.log(arrayOfPlayers.length +"=total players");
 
       if(arrayOfPlayers.length == maxPlayers){
@@ -15,6 +19,9 @@ module.exports = function(server) {
         });
       }
 
+    });
+    client.on('disjoin',function(data){
+      delete arrayOfPlayers[arrayOfPlayers.indexOf(client)];
     });
   });
 }

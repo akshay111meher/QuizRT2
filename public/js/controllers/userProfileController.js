@@ -27,14 +27,14 @@ angular.module('quizRT')
        .success(function(data){
          console.log(data);
          $scope.data = data;
-         $scope.topicsFollowed=[];
-                  var i=0;
-                  for(i=0;i<data.topicsPlayed.length;i++)
-                  {
-                    if(data.topicsPlayed[i].isFollowed)
-                       {
-                         $scope.topicsFollowed.push(data.topicsPlayed[i]);
-
+         $scope.topicsFollowed = [];
+         var k = 0;
+         for(var i = 0;i < $scope.data.topicsPlayed.length;i++){
+            if($scope.data.topicsPlayed[i].isFollowed){
+              $scope.topicsFollowed[k] =$scope.data.topicsPlayed[i];
+              k++;
+            }
+         }
                        }
                   }
 
@@ -42,5 +42,7 @@ angular.module('quizRT')
 
        console.log($scope.topicsFollowed);
      });
+
+
 
  }]);
