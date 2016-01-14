@@ -25,5 +25,16 @@ angular.module('quizRT')
        .success(function(data){
          console.log(data);
          $scope.data = data;
+         $scope.topicsFollowed = [];
+         var k = 0;
+         for(var i = 0;i < $scope.data.topicsPlayed.length;i++){
+            if($scope.data.topicsPlayed[i].isFollowed){
+              $scope.topicsFollowed[k] =$scope.data.topicsPlayed[i];
+              k++;
+            }
+         }
        });
+
+
+
  }]);
