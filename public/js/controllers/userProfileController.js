@@ -1,6 +1,6 @@
 angular.module('quizRT')
 
- .controller('userProfileController',['$http','$scope',function($http,$scope,$rootScope)
+ .controller('userProfileController',['$http','$scope','$rootScope',function($http,$scope,$rootScope)
  {
    $rootScope.stylesheetName="userProfile";
 

@@ -7,7 +7,7 @@ angular.module('quizRT')
 		socket.emit('join','player joining');
 		socket.on('startGame',function(data){
 			console.log(data);
-			$http.post('/quizPlayer/quizData'){
+			$http.post('/quizPlayer/quizData')
 					.success(function(data, status, headers, config) {
 
 									$scope.time=3;
