@@ -37,6 +37,14 @@ angular.module('quizRT', ['ngRoute']).run(function($rootScope) {
             'templateUrl': 'html/userProfile.html',
             'controller': 'userProfileController'
           })
+          .when('/login', {
+      			'templateUrl': 'html/login.html',
+      			'controller': 'authController'
+      		})
+          .when('/register', {
+      			'templateUrl': 'html/register.html',
+      			'controller': 'authController'
+      		})
 
           .when('/categories',{
             'templateUrl': 'html/categories.html',
