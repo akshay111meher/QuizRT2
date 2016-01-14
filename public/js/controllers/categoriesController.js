@@ -1,8 +1,9 @@
 angular.module('quizRT')
 
-  .controller('categoriesController', function($scope,$http,$location){
+  .controller('categoriesController', function($scope,$http,$location,$rootScope){
 
     $scope.categories="";
+    $rootScope.stylesheetName="categories";
 
     $scope.showCategory=function(categoryID){
       var path = '/category/'+categoryID;

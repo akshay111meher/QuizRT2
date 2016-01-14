@@ -5,6 +5,10 @@ angular.module('quizRT')
 		$scope.myscore = 0;
 		socket.emit('join','player joining');
 		socket.on('startGame',function(data){
+	.controller('quizPlayerController', function($scope, $interval,$http,$rootScope){
+
+		$rootScope.stylesheetName="quizPlayer";
+
 			console.log(data);
 			$http.post('/quizPlayer/quizData')
 					.success(function(data, status, headers, config) {
