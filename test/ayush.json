@@ -11,7 +11,7 @@
     "topicsPlayed":
       [
         {
-          "topicId":"Barbara-Schuster",
+          "topicId":"Pet-Animals",
         "gamesPlayed":45,
         "gamesWon":38,
         "level":3,
@@ -21,7 +21,7 @@
     ,
         {
 
-        "topicId":"Augusta-Yost",
+        "topicId":"Name-the-animal",
         "gamesPlayed":15,
         "gamesWon":9,
         "level":3,
@@ -29,7 +29,7 @@
          "points":200
       },
           {
-        "topicId":"Noelia-Walsh",
+        "topicId":"Citius-Fortius-Altius",
         "gamesPlayed":20,
         "gamesWon":13,
         "level":12,

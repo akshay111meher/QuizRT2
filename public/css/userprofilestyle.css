@@ -44,7 +44,7 @@ p{
     font-size: 15px;
   }
 
-  .topicsinfo .col-xs-2 .topic{
+  .topicsinfo .col-xs-2 .topicName{
     font-size: 9px;
   }
 
@@ -52,6 +52,11 @@ p{
     font-size: 7px;
     font-weight: bold;
   }
+  .topicsinfo .topicsholder
+  {
+    height:75px;
+  }
+
 }
 
 @media(min-width:550px){
@@ -77,7 +82,7 @@ p{
     padding-left: 140px;
   }
 
-  .topicsinfo .col-xs-2 .topic{
+  .topicsinfo .col-xs-2 .topicName{
     font-size: 16px;
     padding-left:2px;
   }
@@ -101,6 +106,10 @@ p{
     padding-right: 3px;
     border-right: 1px  red solid;
     font-size: 20px;
+  }
+  .topicsinfo .topicsholder
+  {
+    height:200px;
   }
 } /* end media queries */
 
@@ -157,10 +166,7 @@ p{
   .topicsinfo{
     margin-bottom: 5px;
   }
-  .topicsinfo .topicsholder
-  {
-    margin-bottom: 5px;
-  }
+
   #button-height{
     height:10%;
   }
