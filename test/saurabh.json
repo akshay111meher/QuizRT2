@@ -1,12 +1,12 @@
 {
-    "userId":"RA1",
-    "name":"Raghav",
-    "age":27,
+    "userId":"SA1",
+    "name":"Saurabh",
+    "age":21,
     "imageLink":"/images/userProfileImages/user.png",
     "country":"USA",
     "flagLink":"/images/userProfileImages/indiaflag.png",
-    "badge":"History Buff",
-    "totalGames":57,
+    "badge":"Computer Buff",
+    "totalGames":47,
     "wins":27,
     "topicsPlayed":
     [
@@ -129,6 +129,55 @@
        "level":29,
         "isFollowed":true,
          "points":800
-        }
+       },
+       {
+       "topicId": "Historic-figures",
+      "gamesPlayed":80,
+      "gamesWon":65,
+      "level":29,
+       "isFollowed":true,
+        "points":800
+      },
+      {
+      "topicId": "American-Presidents",
+     "gamesPlayed":80,
+     "gamesWon":65,
+     "level":29,
+      "isFollowed":true,
+       "points":800
+     },
+     {
+     "topicId": "La-Liga",
+    "gamesPlayed":80,
+    "gamesWon":65,
+    "level":29,
+     "isFollowed":true,
+      "points":800
+    },
+    {
+    "topicId": "Simple-Football-Trivia",
+   "gamesPlayed":80,
+   "gamesWon":65,
+   "level":29,
+    "isFollowed":true,
+     "points":800
+   },
+   {
+   "topicId": "Premier-League",
+  "gamesPlayed":80,
+  "gamesWon":65,
+  "level":29,
+   "isFollowed":true,
+    "points":800
+  },
+  {
+  "topicId": "20-20-matches",
+ "gamesPlayed":80,
+ "gamesWon":65,
+ "level":29,
+  "isFollowed":true,
+   "points":800
+ }
+
    ]
 }

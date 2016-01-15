@@ -6,6 +6,7 @@ angular.module('quizRT')
 
    $scope.a=11;
    $scope.see = true;
+
    $scope.btnImg = "images/userProfileImages/seeall.jpg";
    $scope.seeHide=function(length){
      if($scope.see){
@@ -20,6 +21,7 @@ angular.module('quizRT')
      }
 
    }
+
       console.log("In Profile controller Testing");
       $http({method : 'GET',url:'/userProfile/profileData'})
        .success(function(data){
@@ -33,8 +35,8 @@ angular.module('quizRT')
               k++;
             }
          }
-       });
-
+       }
+     );
 
 
  }]);

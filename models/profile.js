@@ -15,7 +15,7 @@ var profileSchema = mongoose.Schema({
     gamesWon: Number,
     gamesPlayed:Number,
     level:Number,
-    isFollowed:Number,
+    isFollowed:Boolean,
     points:Number,
     topicId: {type:String, ref: 'Topic'}}]
 },{strict:false}
