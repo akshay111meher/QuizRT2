@@ -79,7 +79,9 @@ var topic1={};
         topic1.topicIcon = topic.topicIcon;
         topic1.topicFollowers=topic.topicFollowers;
 
-        res.json(JSON.stringify(topic1,null,4));
+        console.log(topic1);
+
+        res.json(topic1);
 
       });
       });

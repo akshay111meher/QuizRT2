@@ -6,7 +6,7 @@ angular.module('quizRT')
      $rootScope.stylesheetName="topic";
      console.log("Hreloooisdjiskxnmksxmksmxlsxmmmmmmmmmmmmmm");
      var path = '/topicsHandler/topic/'+$scope.topicID;
-      $http.get(path)
+     $http.get(path)
            .success(function(data, status, headers, config) {
              console.log(data);
             $scope.topic = data;
