@@ -4,7 +4,9 @@ var router = express.Router();
 
 var Profile = require("../models/profile");
 router.get('/profileData', function(req, res, next) {
-       Profile.findOne({userId: "SA1"})
+  var usr = req.session.user.toUpperCase();
+  console.log(usr + " ##########################################");
+       Profile.findOne({userId: usr})
          .populate("topicsPlayed.topicId")
              .exec(function(err,data){
                profileData = data;
