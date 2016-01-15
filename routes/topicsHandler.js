@@ -3,7 +3,9 @@ var router = express.Router();
 var mongoose = require( 'mongoose' );
 var bodyParser = require('body-parser');
 var Category = require("../models/category");
-
+var Topic = require("../models/topic");
+var Profile =require("../models/profile");
+var topic1={};
 
 
 //console.log(router);
@@ -36,17 +38,52 @@ var Category = require("../models/category");
 		});
 	});
 
+
   router.route('/topic/:id')
 
+    .get(function(req,res){
 
-  .get(function(req,res){
-    Topic.findById(req.params.id)
-     .exec(function(err,topic){
+      var usr = req.session.user.toUpperCase();
+
+        Profile.findOne({userId: usr})
+         .exec(function(err,data){
+
+        topic1.topicWins=0;
+        topic1.topicLosses=0;
+        topic1["topicLevel"]=1;
+        topic1["levelPercentage"]=0;
+        var topicsPlayed=data["topicsPlayed"];
+         var l=topicsPlayed.length;
+         for(var i=0;i<l;++i)
+         {
+           if(topicsPlayed[i].topicId === req.params.id)
+            break;
+         }
+         if(i!=l)
+         {
+         var topic2=topicsPlayed[i];
+         topic1["topicWins"]=topic2["gamesWon"];
+         topic1["topicLosses"]=topic2["gamesPlayed"]-topic2["gamesWon"];
+         topic1["topicLevel"]=topic2["level"];
+         topic1["levelPercentage"]=50;
+         topic1["isFollowed"]=topic2["isFollowed"];
+       }
+      Topic.findById(req.params.id)
+       .exec(function(err,topic){
        if(err)
         return res.send(err);
-      console.log(req.user);
-      return res.json(topic);
-    });
+
+        topic1.topicId=topic._id;
+        topic1.topicName=topic.topicName;
+        topic1.topicDescription=topic.topicDescription;
+        topic1.topicIcon = topic.topicIcon;
+        topic1.topicFollowers=topic.topicFollowers;
+
+        res.json(JSON.stringify(topic1,null,4));
+
+      });
+      });
+
 
   });
 

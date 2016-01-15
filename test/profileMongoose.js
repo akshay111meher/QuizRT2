@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var fs = require('fs');
 var profileData = JSON.parse(fs.readFileSync('saurabh.json'));
-mongoose.connect('mongodb://172.23.238.253/quizRT');
+mongoose.connect('mongodb://localhost/quizRT2');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
