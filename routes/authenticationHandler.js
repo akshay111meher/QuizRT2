@@ -5,6 +5,12 @@ module.exports = function(passport){
 
 	//sends successful login state back to angular
 	router.get('/success', function(req, res){
+		req.session.user = req.user.username;
+		console.log("this is session object");
+		//  console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+		// console.log(req.session);
+		//  console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+		// console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		res.send({state: 'success', user: req.user ? req.user : null});
 	});
 
