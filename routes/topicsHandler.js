@@ -36,4 +36,18 @@ var Category = require("../models/category");
 		});
 	});
 
+  router.route('/topic/:id')
+
+
+  .get(function(req,res){
+    Topic.findById(req.params.id)
+     .exec(function(err,topic){
+       if(err)
+        return res.send(err);
+      console.log(req.user);
+      return res.json(topic);
+    });
+
+  });
+
 module.exports= router;
