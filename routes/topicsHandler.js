@@ -52,6 +52,8 @@ var topic1={};
         topic1.topicLosses=0;
         topic1["topicLevel"]=1;
         topic1["levelPercentage"]=0;
+        topic1["isFollowed"]= false;
+
         var topicsPlayed=data["topicsPlayed"];
          var l=topicsPlayed.length;
          for(var i=0;i<l;++i)
@@ -72,7 +74,8 @@ var topic1={};
        .exec(function(err,topic){
        if(err)
         return res.send(err);
-
+        console.log("##########");
+        console.log(topic.topicFollowers);
         topic1.topicId=topic._id;
         topic1.topicName=topic.topicName;
         topic1.topicDescription=topic.topicDescription;

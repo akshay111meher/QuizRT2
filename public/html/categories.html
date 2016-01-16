@@ -25,17 +25,17 @@
 
 				 <div class="topics-container-inside">
 
-				   <div class="topic col-xs-3" ng-repeat ="topic in category.categoryTopics|limitTo:5">
+				   <div  class="topic col-xs-3" ng-repeat ="topic in category.categoryTopics|limitTo:5">
 
-							 <div class="topic-icon">
-								 <a href="/topicsHandler/topic-play" class="topicPlay"><img ng-src="{{topic.topicIcon}}" alt=""></a>
+							 <div ng-click="showTopic(topic._id)" class="topic-icon">
+								 <a href="" class="topicPlay"><img ng-src="{{topic.topicIcon}}" alt=""></a>
 							 </div><!--end topic-icon-->
 
-							 <div>
+							 <div ng-click="showTopic(topic._id)">
 										 <a href=""><span class="topic-name">{{topic.topicName}}</span><br/></a>
 							 </div>
 
-							 <div>
+							 <div ng-click="showCategory(category._id)">
 							 		<a href=""><span class="category-name">{{topic.topicCategory[0]}}</span></a>
 							 </div>
 
