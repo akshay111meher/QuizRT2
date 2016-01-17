@@ -77,8 +77,8 @@
           <div class="col-xs-4 follow">
             <span>{{topic.topicFollowers}}</span>
           </div>
-          <button ng-hide="topic.isFollowed" ng-click="followUnfollowTopic()" class="btn-primary">Follow!!</button>
-          <button ng-show="topic.isFollowed" ng-click="followUnfollowTopic()" class="btn-success">Unfollow!!</button>
+          <button ng-hide="topic.isFollowed" ng-click="followUnfollow()" class="btn-primary">Follow!!</button>
+          <button ng-show="topic.isFollowed" ng-click="followUnfollow()" class="btn-success">Unfollow!!</button>
 
 
         </div><!--end followers-->
