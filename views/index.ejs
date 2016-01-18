@@ -8,7 +8,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <script type="text/javascript" src='js/lib/jquery-2.1.4.js'></script>
-
   <link rel="stylesheet" href="/css/lib/bootstrap.css">
   <link rel="stylesheet" href="css/lib/bootstrap.min.css">
   <link rel="stylesheet" ng-href="css/{{stylesheetName}}.css">
@@ -16,11 +15,10 @@
 
 <body >
     <nav class="navbar-fluid navbar-default">
-      <div>
-        <a class="navbar-brand pull left" ng-show="authenticated" href="#"> {{current_user}},Welcome to QuizRT</a>
+        <a class="navbar-brand" ng-show="authenticated" href="#">Welcome to QuizRT {{current_user}}</a>
         <a class="navbar-brand pull-right" ng-show="authenticated" ng-click="logout()">Logout</a>
         <a class="navbar-brand pull-right" ng-hide="authenticated" ng-href="/#/login">Login</a>
-        <a class="navbar-brand pull-right" ng-show="authenticated" ng-href="/#/quizPlayer">Play Ins</a>
+        <a class="navbar-brand pull-right" ng-hide="authenticated" ng-href="/#/register">Register</a>
         <a class="navbar-brand pull-right" ng-hide="authenticated" ng-href="/#/register">Register</a>
        </div>
   </nav>
@@ -28,17 +26,6 @@
     <div ng-view >
     </div>
     <script type="text/javascript" src='js/lib/socket-io-1.3.7.js'></script>
-    <!-- <script>
-          (function(){
-
-            var socket = io.connect('http://172.23.238.186:3000');
-
-          socket.on('connect', function(data) {
-              socket.emit('join', "message from the client ");
-          });
-        })();
-    </script> -->
-
     <script type="text/javascript" src='js/lib/jquery-2.1.4.js'></script>
     <script type="text/javascript" src='js/lib/bootstrap.min.js'></script>
     <script type="text/javascript" src='js/lib/angular.min.js'></script>

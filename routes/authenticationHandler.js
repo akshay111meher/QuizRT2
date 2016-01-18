@@ -25,9 +25,7 @@ module.exports = function(passport){
 		successRedirect: '/auth/success',
 		failureRedirect: '/auth/failure'
 	}));
-		// router.post('/login',function(req,res){
-		// 	console.log('login initialize');
-		// });
+
 	//sign up
 	router.post('/register', passport.authenticate('register', {
 		successRedirect: '/auth/success',

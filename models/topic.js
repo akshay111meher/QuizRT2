@@ -6,6 +6,7 @@ var topicSchema = new mongoose.Schema({
   topicIcon: String,
   topicCategory: Array,
   topicDescription: String,
+  topicFollowers: Number
 });
 
 Topic = mongoose.model('Topic', topicSchema, "topics_collection");

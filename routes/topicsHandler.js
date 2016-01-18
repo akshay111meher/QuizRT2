@@ -3,13 +3,10 @@ var router = express.Router();
 var mongoose = require( 'mongoose' );
 var bodyParser = require('body-parser');
 var Category = require("../models/category");
-
-
-
-//console.log(router);
-
+var Topic = require("../models/topic");
+var Profile =require("../models/profile");
+var topic1={};
  router.route('/categories')
-
   .get(function(req, res){
     Category.find()
       .populate("categoryTopics")
@@ -20,12 +17,7 @@ var Category = require("../models/category");
             return res.json(categories);
           });
  	});
-
   router.route('/category/:id')
-	//gets specified post
-
-
-
 	.get(function(req, res){
 		Category.findById(req.params.id)
       .populate("categoryTopics")
@@ -35,5 +27,91 @@ var Category = require("../models/category");
       			return res.json(category);
 		});
 	});
+  router.route('/topic/:id')
+    .get(function(req,res){
+      var usr = req.session.user.toUpperCase();
+        Profile.findOne({userId: usr})
+         .exec(function(err,data){
+        topic1.topicWins=0;
+        topic1.topicLosses=0;
+        topic1["topicLevel"]=1;
+        topic1["levelPercentage"]=0;
+        topic1["isFollowed"]= false;
 
+        var topicsPlayed=data["topicsPlayed"];
+         var l=topicsPlayed.length;
+         for(var i=0;i<l;++i)
+         {
+           if(topicsPlayed[i].topicId === req.params.id)
+            break;
+         }
+         if(i!=l)
+         {
+         var topic2=topicsPlayed[i];
+         topic1["topicWins"]=topic2["gamesWon"];
+         topic1["topicLosses"]=topic2["gamesPlayed"]-topic2["gamesWon"];
+         topic1["topicLevel"]=topic2["level"];
+         topic1["levelPercentage"]=50;
+         topic1["isFollowed"]=topic2["isFollowed"];
+       }
+      Topic.findById(req.params.id)
+       .exec(function(err,topic){
+       if(err)
+        return res.send(err);
+        topic1.topicId=topic._id;
+        topic1.topicName=topic.topicName;
+        topic1.topicDescription=topic.topicDescription;
+        topic1.topicIcon = topic.topicIcon;
+        topic1.topicFollowers=topic.topicFollowers;
+        res.json(topic1);
+      });
+      });
+  })
+  .put(function(req,res){
+    var usr = req.session.user.toUpperCase();
+      Profile.findOne({userId: usr})
+       .exec(function(err,data){
+      var topicsPlayed=data["topicsPlayed"];
+       var l=topicsPlayed.length;
+       for(var i=0;i<l;++i)
+       {
+         if(topicsPlayed[i].topicId === req.params.id)
+          break;
+       }
+       if(i==l)
+       {
+         var topic3={
+             "topicId":req.params.id,
+             "gamesPlayed":0,
+             "gamesWon":0,
+             "level":1,
+              "isFollowed":false,
+              "points":0
+         }
+         data.topicsPlayed.push(topic3);
+       }
+       data.topicsPlayed[i].isFollowed=!(data.topicsPlayed[i].isFollowed);
+       data.save(function(err){
+       if ( err ) console.log(err);
+       var topic2=topicsPlayed[i];
+       topic1["topicWins"]=topic2["gamesWon"];
+       topic1["topicLosses"]=topic2["gamesPlayed"]-topic2["gamesWon"];
+       topic1["topicLevel"]=topic2["level"];
+       topic1["levelPercentage"]=50;
+       topic1["isFollowed"]=topic2["isFollowed"];
+
+    Topic.findById(req.params.id)
+     .exec(function(err,topic){
+     if(err)
+      return res.send(err);
+    topic1.topicId=topic._id;
+    topic1.topicName=topic.topicName;
+    topic1.topicDescription=topic.topicDescription;
+    topic1.topicIcon = topic.topicIcon;
+    topic1.topicFollowers=topic.topicFollowers;
+    res.json(topic1);
+    });
+    });
+});
+});
 module.exports= router;

@@ -8,66 +8,64 @@ angular.module('quizRT', ['ngRoute', 'ngCookies']).run(function($rootScope,$http
           $http.get('auth/logout');
           $rootScope.authenticated = false;
           $rootScope.current_user = '';
+          // delete req.session.user;
           $location.path('/login');
+          // delete req.session.user;
       };
 })
   .factory('socket', function ($rootScope) {
           var socket = io.connect('http://172.23.238.192:3000');
-          return {
-            on: function (eventName, callback) {
-            socket.on(eventName, function () {
-            var args = arguments;
-            $rootScope.$apply(function () {
-              callback.apply(socket, args);
-            });
-            });
-            },
-
-            emit: function (eventName, data, callback) {
-            socket.emit(eventName, data, function () {
-            var args = arguments;
-            $rootScope.$apply(function () {
-              if (callback) {
-                callback.apply(socket, args);
-              }
-            });
-            })
-            }
-          }})
-        .config(function($routeProvider){
-
-          $routeProvider
-
-          .when('/quizPlayer',{
+    return {
+      on: function (eventName, callback) {
+       socket.on(eventName, function () {
+       var args = arguments;
+       $rootScope.$apply(function () {
+         callback.apply(socket, args);
+        });
+       });
+      },
+      emit: function (eventName, data, callback) {
+        socket.emit(eventName, data, function () {
+         var args = arguments;
+         $rootScope.$apply(function () {
+          if (callback) {
+          callback.apply(socket, args);
+          }
+         });
+        })
+       }
+     }
+    })
+   .config(function($routeProvider){
+     $routeProvider
+       .when('/quizPlayer',{
             'templateUrl': 'html/quizPlayer.html',
             'controller': 'quizPlayerController'
           })
-
-          .when('/userProfile',{
+       .when('/userProfile',{
             'templateUrl': 'html/userProfile.html',
             'controller': 'userProfileController'
           })
-          .when('/login', {
+       .when('/login', {
       			'templateUrl': 'html/login.html',
       			'controller': 'authController'
       		})
-          .when('/register', {
+      .when('/register', {
       			'templateUrl': 'html/register.html',
       			'controller': 'authController'
       		})
 
-          .when('/categories',{
+      .when('/categories',{
             'templateUrl': 'html/categories.html',
             'controller': 'categoriesController'
           })
 
-          .when('/category/:categoryID',{
+      .when('/category/:categoryID',{
             'templateUrl': 'html/category.html',
             'controller': 'categoryController'
-
           })
 
-          .when('/topic/:topicID',{
+      .when('/topic/:topicID',{
             'templateUrl': 'html/topic.html',
             'controller': 'topicController'
           });
