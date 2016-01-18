@@ -7,10 +7,7 @@ module.exports = function(passport){
 	router.get('/success', function(req, res){
 		req.session.user = req.user.username;
 		console.log("this is session object");
-		//  console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-		// console.log(req.session);
-		//  console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-		// console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+
 		res.send({state: 'success', user: req.user ? req.user : null});
 	});
 
@@ -24,9 +21,7 @@ module.exports = function(passport){
 		successRedirect: '/auth/success',
 		failureRedirect: '/auth/failure'
 	}));
-		// router.post('/login',function(req,res){
-		// 	console.log('login initialize');
-		// });
+
 	//sign up
 	router.post('/register', passport.authenticate('register', {
 		successRedirect: '/auth/success',
