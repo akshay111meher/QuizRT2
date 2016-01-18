@@ -1,7 +1,22 @@
 angular.module('quizRT')
-
- .controller('userProfileController',['$http','$scope','$rootScope','$location',function($http,$scope,$rootScope,$location)
+    
+  $rootScope.authenticated=true;
+  console.log("sbjndjs"+ $rootScope.authenticated);
+ .controller('userProfileController',function($http,$scope,$rootScope,$location)
  {
+    
+   $http.get('/auth/checkAuth')
+           .success(function(data, status, headers, config) {
+                          console.log("############"+ data);
+                          $rootScope.authenticated = data;
+                        })
+           .error(function(data, status, headers, config) {
+                          console.log(error);
+                        });
+           console.log($rootScope.authenticated);
+   if($rootScope.authenticated==false) $location.path('/login');
+
+
    $rootScope.stylesheetName="userProfile";
 
    $scope.a=11;
@@ -47,4 +62,4 @@ angular.module('quizRT')
      );
 
 
- }]);
+ });

@@ -8,7 +8,9 @@ angular.module('quizRT', ['ngRoute']).run(function($rootScope,$http,$location) {
           $http.get('auth/logout');
           $rootScope.authenticated = false;
           $rootScope.current_user = '';
+          // delete req.session.user;
           $location.path('/login');
+          // delete req.session.user;
       };
 })
   // .factory('socket', function ($rootScope) {
