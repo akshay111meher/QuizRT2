@@ -1,5 +1,5 @@
 angular.module('quizRT')
-  .controller('authController',function($scope,$http,$rootScope,$location){
+  .controller('authController',function($scope,$http,$rootScope,$location,$cookies){
     $rootScope.stylesheetName="style";
     $scope.user = {username: '', password: ''};
     $scope.error_message = '';
@@ -7,12 +7,14 @@ angular.module('quizRT')
     $scope.login = function(){
       $http.post('/auth/login', $scope.user).success(function(data){
         if(data.state == 'success'){
-          $rootScope.authenticated = true;
+          // $rootScope.authenticated = true;
           $rootScope.current_user = data.user.username;
           $location.path('/userProfile');
+          $cookies.put('isAuthenticated',true);
         }
         else{
           $scope.error_message = data.message;
+          $cookies.put('isAuthenticated',false);
         }
       });
     };

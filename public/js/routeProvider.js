@@ -1,4 +1,4 @@
-angular.module('quizRT', ['ngRoute']).run(function($rootScope,$http,$location) {
+angular.module('quizRT', ['ngRoute', 'ngCookies']).run(function($rootScope,$http,$location) {
       $rootScope.stylesheetName = "index";
 
       $rootScope.authenticated = false;
@@ -12,7 +12,7 @@ angular.module('quizRT', ['ngRoute']).run(function($rootScope,$http,$location) {
       };
 })
   .factory('socket', function ($rootScope) {
-          var socket = io.connect('http://172.23.238.186:3000');
+          var socket = io.connect('http://172.23.238.192:3000');
           return {
             on: function (eventName, callback) {
             socket.on(eventName, function () {

@@ -1,13 +1,17 @@
 var maxPlayers = 3;
 var arrayOfPlayers = [];
-module.exports = function(server) {
+module.exports = function(server,sessionMiddleware) {
   var io = require('socket.io')(server);
+
+  io.use(function(socket,next){
+    sessionMiddleware(socket.request, socket.request.res, next);
+  });
+
   io.on('connection', function(client) {
     client.on('join',function(data){
-
-      console.log(data);
-      console.log(arrayOfPlayers.indexOf(client));
-      
+      console.log("##############################");
+      console.log(client.request.session);
+      console.log("##############################");
       if(arrayOfPlayers.indexOf(client) == -1){
         arrayOfPlayers.push(client);
       }
@@ -24,4 +28,5 @@ module.exports = function(server) {
       delete arrayOfPlayers[arrayOfPlayers.indexOf(client)];
     });
   });
+
 }

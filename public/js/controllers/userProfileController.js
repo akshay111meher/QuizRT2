@@ -1,8 +1,14 @@
 angular.module('quizRT')
 
- .controller('userProfileController',['$http','$scope','$rootScope',function($http,$scope,$rootScope)
+ .controller('userProfileController',function($http,$scope,$rootScope,$cookies,$location)
  {
+   if(!$cookies.get('isAuthenticated')){
+      $location.path('/login');
+   }
+
+
    $rootScope.stylesheetName="userProfile";
+   $rootScope.authenticated = $cookies.get('isAuthenticated')
 
    $scope.a=11;
    $scope.see = true;
@@ -25,7 +31,6 @@ angular.module('quizRT')
       console.log("In Profile controller Testing");
       $http({method : 'GET',url:'/userProfile/profileData'})
        .success(function(data){
-         console.log(data);
          $scope.data = data;
          $scope.topicsFollowed = [];
          var k = 0;
@@ -39,4 +44,4 @@ angular.module('quizRT')
      );
 
 
- }]);
+ });
