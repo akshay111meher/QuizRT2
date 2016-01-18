@@ -74,7 +74,7 @@
 		<div class="row topicsinfo">
 			<div class="col-xs-2 topicsholder" ng-repeat="topic in topicsFollowed|limitTo:a|orderBy:'-level'">
 				<div>
-					<a href="#"><img ng-src="{{topic.topicId.topicIcon}}" class="img-rounded img-responsive" height="150px"></a>
+					<a><img ng-src="{{topic.topicId.topicIcon}}" ng-click="showFollowedTopic(topic.topicId._id)" class="img-rounded img-responsive" height="150px"></a>
 				</div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-8">

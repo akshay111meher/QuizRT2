@@ -24,10 +24,6 @@ var topic1={};
  	});
 
   router.route('/category/:id')
-	//gets specified post
-
-
-
 	.get(function(req, res){
 		Category.findById(req.params.id)
       .populate("categoryTopics")
@@ -40,7 +36,6 @@ var topic1={};
 
 
   router.route('/topic/:id')
-
     .get(function(req,res){
 
       var usr = req.session.user.toUpperCase();

@@ -1,6 +1,6 @@
 angular.module('quizRT')
 
- .controller('userProfileController',['$http','$scope','$rootScope',function($http,$scope,$rootScope)
+ .controller('userProfileController',['$http','$scope','$rootScope','$location',function($http,$scope,$rootScope,$location)
  {
    $rootScope.stylesheetName="userProfile";
 
@@ -22,6 +22,8 @@ angular.module('quizRT')
 
    }
 
+
+
       console.log("In Profile controller Testing");
       $http({method : 'GET',url:'/userProfile/profileData'})
        .success(function(data){
@@ -35,6 +37,12 @@ angular.module('quizRT')
               k++;
             }
          }
+         $scope.showFollowedTopic=function(topicID){
+           console.log(topicID);
+           var path = '/topic/'+topicID;
+           console.log(path);
+           $location.path(path);
+         };
        }
      );
 

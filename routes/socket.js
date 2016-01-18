@@ -7,7 +7,7 @@ module.exports = function(server) {
 
       console.log(data);
       console.log(arrayOfPlayers.indexOf(client));
-      
+
       if(arrayOfPlayers.indexOf(client) == -1){
         arrayOfPlayers.push(client);
       }

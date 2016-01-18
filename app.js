@@ -19,7 +19,7 @@ var index = require('./routes/index');
 var quizPlayerHandler = require('./routes/quizPlayerHandler');
 var authenticationHandler = require('./routes/authenticationHandler')(passport);
 
-mongoose.connect('mongodb://localhost/quizRT2');
+mongoose.connect('mongodb://172.23.238.253/quizRT');
 var db = mongoose.connection;
 
 var Quiz = require("./models/quiz");
