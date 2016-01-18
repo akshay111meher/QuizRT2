@@ -3,7 +3,6 @@ angular.module('quizRT')
     $rootScope.stylesheetName="style";
     $scope.user = {username: '', password: ''};
     $scope.error_message = '';
-
     $scope.login = function(){
       $http.post('/auth/login', $scope.user).success(function(data){
         if(data.state == 'success'){

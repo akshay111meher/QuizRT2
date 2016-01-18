@@ -19,12 +19,17 @@ module.exports = function(passport){
 		req.session.user = req.user.username;
 		req.session.isAuthenticated= true;
 		console.log("this is session object");
+<<<<<<< HEAD
 		console.log(req.user);
 		//  console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		// console.log(req.session);
 		//  console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		// console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		res.send({state: 'success', isAuthenticated: req.session.isAuthenticated ,user: req.user ? req.user : null});
+=======
+
+		res.send({state: 'success', user: req.user ? req.user : null});
+>>>>>>> f11fd175f1c9136986c50904d8b9f95a953adcb9
 	});
 
 	//sends failure login state back to angular
@@ -38,9 +43,7 @@ module.exports = function(passport){
 		successRedirect: '/auth/success',
 		failureRedirect: '/auth/failure'
 	}));
-		// router.post('/login',function(req,res){
-		// 	console.log('login initialize');
-		// });
+
 	//sign up
 	router.post('/register', passport.authenticate('register', {
 		successRedirect: '/auth/success',
