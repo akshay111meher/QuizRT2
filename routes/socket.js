@@ -2,7 +2,7 @@ var maxPlayers = 3;
 var arrayOfPlayers = [];
 module.exports = function(server,sessionMiddleware) {
   var io = require('socket.io')(server);
-
+  var myMap = new Map();
   io.use(function(socket,next){
     sessionMiddleware(socket.request, socket.request.res, next);
   });
@@ -10,22 +10,16 @@ module.exports = function(server,sessionMiddleware) {
   io.on('connection', function(client) {
     client.on('join',function(data){
       console.log("##############################");
-      console.log(client.request.session);
+      console.log(client.request.session.passport.user);
       console.log("##############################");
-      if(arrayOfPlayers.indexOf(client) == -1){
-        arrayOfPlayers.push(client);
-      }
-      console.log(arrayOfPlayers.length +"=total players");
-
-      if(arrayOfPlayers.length == maxPlayers){
-        arrayOfPlayers.forEach(function(player){
-          player.emit('startGame','starting the game');
-        });
-      }
+      myMap.set(client.request.session.passport.user,client);
+      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+      console.log(myMap.size);
+      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
     });
     client.on('disjoin',function(data){
-      delete arrayOfPlayers[arrayOfPlayers.indexOf(client)];
+      myMap.delete(client.request.session.passport.user);
     });
   });
 

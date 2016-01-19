@@ -20,6 +20,7 @@ angular.module('quizRT')
 											$scope.topperImage = "/images/userProfileImages/akshayk.jpg"
 											if(questionCounter == data.questions.length){
 												$interval.cancel(timeInterval);
+												socket.emit('disjoin',"leaving the game");
 											}
 											else{
 												temp = loadNextQuestion(data,questionCounter);
