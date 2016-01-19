@@ -13,7 +13,7 @@ module.exports = function(server,sessionMiddleware) {
       client.score = 0;
       console.log(client.request.session.passport.user);
       console.log("##############################");
-      Players.set(client.request.session.passport.user.client);
+      Players.set(client.request.session.passport.user,client);
       console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
       console.log(Players.size);
       console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
