@@ -3,12 +3,6 @@ angular.module('quizRT')
    if(!$cookies.get('isAuthenticated')){
       $location.path('/login');
    }
-   else if($cookies.get('isAuthenticated')==false){
-    console.log('hellow');
-
-    $location.path('/login');
-   }
-
 
      $rootScope.stylesheetName="userProfile";
    $rootScope.authenticated = $cookies.get('isAuthenticated')
