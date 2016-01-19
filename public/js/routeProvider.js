@@ -1,7 +1,8 @@
 angular.module('quizRT', ['ngRoute', 'ngCookies']).run(function($cookies, $rootScope,$http,$location) {
       $rootScope.stylesheetName = "index";
 
-      $rootScope.authenticated = false;
+      $rootScope.authenticated = $cookies.get('isAuthenticated');
+      // $rootScope.authenticated = false;
       $rootScope.current_user = '';
 
       $rootScope.logout = function(){
@@ -9,7 +10,6 @@ angular.module('quizRT', ['ngRoute', 'ngCookies']).run(function($cookies, $rootS
           $http.post('auth/logout').success(function(){
             console.log('success function of logout called');
             $cookies.remove('isAuthenticated');
-            // $cookies.put('isAuthenticated', false);
             $rootScope.authenticated = false;
             $rootScope.current_user = '';
             $location.path('/login');
