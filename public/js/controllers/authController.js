@@ -21,7 +21,7 @@ angular.module('quizRT')
     $scope.register = function(){
     $http.post('/auth/register', $scope.user).success(function(data){
       if(data.state == 'success'){
-        $rootScope.authenticated = 
+        $rootScope.authenticated =
         $rootScope.current_user = data.user.username;
         $location.path('/userProfile');
       }
@@ -30,5 +30,11 @@ angular.module('quizRT')
       }
     });
   };
+
+  $scope.logout= function(){
+    console.log('logout called');
+    $cookies.put('isAuthenticated',false);
+    $location.path('/login');
+  }
 
   });
