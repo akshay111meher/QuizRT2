@@ -1,14 +1,11 @@
 angular.module('quizRT')
  .controller('userProfileController',function($http,$scope,$rootScope,$location,$cookies){
+   
    if(!$cookies.get('isAuthenticated')){
       $location.path('/login');
-   }
-    
-
 
      $rootScope.stylesheetName="userProfile";
-   $rootScope.authenticated = $cookies.get('isAuthenticated')
-     $scope.a=11;
+     $scope.a=7;
      $scope.see = true;
      $scope.btnImg = "images/userProfileImages/seeall.jpg";
 
@@ -21,7 +18,7 @@ angular.module('quizRT')
        else{
          $scope.see = true;
          $scope.btnImg = "images/userProfileImages/seeall.jpg";
-         $scope.a=11;
+         $scope.a=7;
        }
      }
 
