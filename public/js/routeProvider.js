@@ -1,7 +1,7 @@
 angular.module('quizRT', ['ngRoute']).run(function($rootScope,$http,$location) {
       $rootScope.stylesheetName = "index";
 
-      $rootScope.authenticated = false;
+      $rootScope.authenticated = true;
       $rootScope.current_user = '';
 
       $rootScope.logout = function(){

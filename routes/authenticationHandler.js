@@ -7,7 +7,6 @@ module.exports = function(passport){
 	router.get('/success', function(req, res){
 		req.session.user = req.user.username;
 		console.log("this is session object");
-
 		res.send({state: 'success', user: req.user ? req.user : null});
 	});
 

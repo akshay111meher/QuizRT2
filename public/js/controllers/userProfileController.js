@@ -1,7 +1,7 @@
 angular.module('quizRT')
  .controller('userProfileController',['$http','$scope','$rootScope','$location',function($http,$scope,$rootScope,$location){
      $rootScope.stylesheetName="userProfile";
-     $scope.a=11;
+     $scope.a=7;
      $scope.see = true;
      $scope.btnImg = "images/userProfileImages/seeall.jpg";
 
@@ -14,7 +14,7 @@ angular.module('quizRT')
        else{
          $scope.see = true;
          $scope.btnImg = "images/userProfileImages/seeall.jpg";
-         $scope.a=11;
+         $scope.a=7;
        }
      }
 
