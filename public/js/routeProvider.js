@@ -1,18 +1,28 @@
-angular.module('quizRT', ['ngRoute']).run(function($rootScope,$http,$location) {
+angular.module('quizRT', ['ngRoute', 'ngCookies']).run(function($cookies, $rootScope,$http,$location) {
       $rootScope.stylesheetName = "index";
 
-      $rootScope.authenticated = true;
+      $rootScope.authenticated = $cookies.get('isAuthenticated');
+      // $rootScope.authenticated = false;
       $rootScope.current_user = '';
 
       $rootScope.logout = function(){
-          $http.get('auth/logout');
-          $rootScope.authenticated = false;
-          $rootScope.current_user = '';
-          $location.path('/login');
+          console.log('logout called');
+          $http.post('auth/logout').success(function(){
+            console.log('success function of logout called');
+            $cookies.remove('isAuthenticated');
+            $rootScope.authenticated = false;
+            $rootScope.current_user = '';
+            $location.path('/login');
+          });
+          // $rootScope.authenticated = false;
+          // $rootScope.current_user = '';
+          // delete req.session.user;
+          // $location.path('/login');
+          // delete req.session.user;
       };
 })
   .factory('socket', function ($rootScope) {
-    var socket = io.connect('http://172.23.238.186:3000');
+          var socket = io.connect('http://172.23.238.192:3000');
     return {
       on: function (eventName, callback) {
        socket.on(eventName, function () {

@@ -19,6 +19,7 @@ Vagrant.configure(2) do |config|
 
   # Map the guest os port 8080 to host os port 8080
   config.vm.network "forwarded_port", guest: 3000, host: 3040
+  config.vm.network "forwarded_port", guest: 6379, host: 6379
 
   if OS.windows?
 

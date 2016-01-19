@@ -6,13 +6,19 @@ module.exports = function(passport){
 	//sends successful login state back to angular
 	router.get('/success', function(req, res){
 		req.session.user = req.user.username;
+		req.session.isLoggedIn = true;
 		console.log("this is session object");
-		res.send({state: 'success', user: req.user ? req.user : null});
+		 console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+			console.log(req.session);
+		 console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+		// console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+		res.send({state: 'success',isLoggedIn: req.session.isLoggedIn, user: req.user ? req.user : null});
 	});
 
 	//sends failure login state back to angular
 	router.get('/failure', function(req, res){
 		res.send({state: 'failure', user: null, message: "Invalid username or password"});
+		req.session.user=null;
 	});
 
 	//log in
@@ -28,8 +34,11 @@ module.exports = function(passport){
 	}));
 
 	//log out
-	router.get('/logout', function(req, res) {
+	router.post('/logout', function(req, res) {
+		req.session.user=null;
+		console.log('logout of passsport called');
 		req.logout();
+		res.send(null);
 	});
 
 	return router;

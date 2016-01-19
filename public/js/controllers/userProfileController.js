@@ -1,5 +1,10 @@
 angular.module('quizRT')
- .controller('userProfileController',['$http','$scope','$rootScope','$location',function($http,$scope,$rootScope,$location){
+ .controller('userProfileController',function($http,$scope,$rootScope,$location,$cookies){
+   
+   if(!$cookies.get('isAuthenticated')){
+      $location.path('/login');
+   }
+
      $rootScope.stylesheetName="userProfile";
      $scope.a=7;
      $scope.see = true;
@@ -34,4 +39,4 @@ angular.module('quizRT')
           $location.path(path);
         };
       });
- }]);
+ });

@@ -20,8 +20,7 @@
         <a class="navbar-brand pull-right" ng-show="authenticated" ng-click="logout()">Logout</a>
         <a class="navbar-brand pull-right" ng-hide="authenticated" ng-href="/#/login">Login</a>
         <a class="navbar-brand pull-right" ng-hide="authenticated" ng-href="/#/register">Register</a>
-      </div>
-    </div>
+       </div>
   </nav>
 -->
     <div ng-view >
@@ -31,6 +30,7 @@
     <script type="text/javascript" src='js/lib/bootstrap.min.js'></script>
     <script type="text/javascript" src='js/lib/angular.min.js'></script>
     <script type="text/javascript" src='js/lib/angular-route.min.js'></script>
+    <script type="text/javascript" src="js/lib/angular-cookies.min.js"></script>
     <script type="text/javascript" src='js/routeProvider.js'></script>
     <script type="text/javascript" src='js/controllers/quizPlayerController.js'></script>
     <script type="text/javascript" src='js/controllers/userProfileController.js'></script>
