@@ -33,8 +33,10 @@ module.exports = function(passport){
 	}));
 
 	//log out
-	router.get('/logout', function(req, res) {
+	router.post('/logout', function(req, res) {
+		console.log('logout of passsport called');
 		req.logout();
+		res.send(null);
 	});
 
 	return router;

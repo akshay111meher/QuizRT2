@@ -8,7 +8,7 @@ angular.module('quizRT')
         if(data.state == 'success'){
           // $rootScope.authenticated = true;
           $rootScope.current_user = data.user.username;
-          $location.path('/userProfile');
+          $location.path('userProfile/');
           $cookies.put('isAuthenticated',true);
         }
         else{
@@ -31,10 +31,10 @@ angular.module('quizRT')
     });
   };
 
-  $scope.logout= function(){
-    console.log('logout called');
-    $cookies.put('isAuthenticated',false);
-    $location.path('/login');
-  }
+  // $scope.logout= function(){
+  //   console.log('+++++++++++++++++logout called');
+  //   $cookies.put('isAuthenticated',false);
+  //   // $location.path('/login');
+  // }
 
   });

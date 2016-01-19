@@ -4,7 +4,6 @@ angular.module('quizRT')
       $location.path('/login');
    }
 
-
      $rootScope.stylesheetName="userProfile";
    $rootScope.authenticated = $cookies.get('isAuthenticated')
      $scope.a=11;
