@@ -3,8 +3,7 @@ angular.module('quizRT')
 
    if(!$cookies.get('isAuthenticated')){
       $location.path('/login');
-   }
-
+    }
      $rootScope.stylesheetName="userProfile";
      $scope.a=7;
      $scope.see = true;
@@ -44,4 +43,4 @@ angular.module('quizRT')
           $location.path(path);
         }
       });
- });
+});
