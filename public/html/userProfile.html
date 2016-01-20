@@ -8,10 +8,10 @@
 		</div>
 
 		<div class="row user">
-			<div class="col-xs-3">
-				<img ng-src="{{data.imageLink}}"  width="120px" height="120px"  class="img-circle img-responsive pull-right">
+			<div class="col-xs-2">
+				<img ng-src="{{data.imageLink}}"  width="120px" height="120px"  class="img-circle img-responsive pull-left">
 			</div>
-			<div class="col-xs-4 usermiddle">
+			<div class="col-xs- usermiddle">
 				<span id="UserName">{{data.name}}
 				</span>
 				<span id="age">{{data.age}}</span>
@@ -22,49 +22,25 @@
 
 			</div>
 
-			<div class="col-xs-5 Followinfo">
-
-				<div class="game">
+			<div class="col-xs-5 GamesInfo">
+				<div class="row">
+				<div class="game col-xs-4">
 					<span>Games: </span>
 					<span>{{data.totalGames}}</span>
 				</div>
-				<div class="Followers">
-					<span>Followers:  </span>
-					<span>23</span>
+				<div class="col-xs-4" id="win">
+					<img  class="winpic" src ="/images/userProfileImages/win.png" class="img-circle img-responsive" >
+					<p>Wins</br>{{data.wins}}
+					</p>
 				</div>
-				<div class="Following">
-					<span>Following: </span>
-					<span>58</span>
+				<div class="col-xs-4" id="winpercentage">
+					<img class="winpic" src ="/images/userProfileImages/winpercent.png" class="img-circle img-responsive">
+					<p>Win%<br>{{data.wins/data.totalGames*100 | number : 2}}%
+					</p>
 				</div>
-
-			</div>
 		</div>
-
-
-		<div class="row" id="Games">
-			<div class="col-xs-12" id="cent">
-				Games
-			</div>
 		</div>
-		<div class="row" id="GamesInfo">
-			<div class="col-xs-4" id="win">
-				<img  class="winpic" src ="/images/userProfileImages/win.png" class="img-circle img-responsive" >
-				<p>Wins</br>{{data.wins}}
-				</p>
-			</div>
-			<div class="col-xs-4" id="loss">
-				<img class="winpic" src ="/images/userProfileImages/loss.png" class="img-circle img-responsive">
-
-				<p>Losses</br>{{data.totalGames - data.wins}}
-				</p>
-			</div>
-			<div class="col-xs-4" id="winpercentage">
-				<img class="winpic" src ="/images/userProfileImages/winpercent.png" class="img-circle img-responsive">
-
-				<p>Win%<br>{{data.wins/data.totalGames*100 | number : 2}}%
-				</p>
-			</div>
-		</div>
+	</div>
 		<div class="row" id="topics">
 			<div class="col-xs-12">
 				Followed Topics
@@ -96,8 +72,8 @@
 		<div class="newrows">
 		</div>
 		<div id="foot" class="row">
-					<button class="btn btn1 col-xs-4 btn-height">Home</button>
-					<button class="btn btn2 col-xs-4 btn-height">Play it</button>
+					<button class="btn btn1 col-xs-4 btn-height" ng-click="login()">Home</button>
+					<button class="btn btn2 col-xs-4 btn-height" ng-click="play()">Play it</button>
 					<button class="btn btn3 col-xs-4 btn-height">Activity</button>
 
 			</div>

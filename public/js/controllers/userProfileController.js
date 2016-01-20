@@ -1,6 +1,6 @@
 angular.module('quizRT')
  .controller('userProfileController',function($http,$scope,$rootScope,$location,$cookies){
-   
+
    if(!$cookies.get('isAuthenticated')){
       $location.path('/login');
    }
@@ -38,5 +38,10 @@ angular.module('quizRT')
           var path = '/topic/'+topicID;
           $location.path(path);
         };
+        $scope.play=function()
+        {
+          var path="/categories";
+          $location.path(path);
+        }
       });
  });
