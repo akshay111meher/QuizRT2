@@ -13,20 +13,20 @@
   .topicsinfo .badge{
     position: absolute;
     top:0;
-    right:6px;
-    width:20px;
+    right:20px;
+    width:15px;
     font-size: 8px;
   }
 
-  .Followinfo{
+  .Gamesinfo{
     color:white;
   }
 
-  #badge,#country,{
+  #badge,#country{
     font-size: 15px;
   }
 
-  .Following,.Followers,.game{
+  #games{
     font-size: 15px;
     margin-bottom: 5px;
   }
@@ -51,11 +51,21 @@
     color:white;
     font-size: 10px;
   }
-  #GamesInfo .winpic
-  {
-    height:12px;
-  }
 
+  .winpic
+ {
+   height:30px;
+ }
+ .topicsinfo .topicsholder{
+   width:25%;
+   height:40%;
+   padding: 5px 5px 5px 5px;
+ }
+ .topicsholder img
+ {
+   height:60%;
+   width:70%;
+ }
 
 }
 
@@ -72,14 +82,13 @@
   .topicsinfo .badge{
     position: absolute;
     top:0;
-    right:13px;
-    width:50px;
+    right:50px;
+    width:30px;
     font-size: 18px;
   }
 
-  .Followinfo{
+  #GamesInfo{
     color:white;
-    padding-left: 140px;
   }
 
   .topicsinfo .col-xs-2 .topicName{
@@ -109,12 +118,13 @@
     font-size: 20px;
   }
   .topicsinfo .topicsholder{
-    height:160px !important;
     width:25%;
+    height:80%
+    padding: 5px 5px 5px 5px;
   }
   .topicsholder img
   {
-    height:60%;
+    height:70%;
     width:70%;
   }
   #Quizzer{
@@ -123,16 +133,9 @@
     color:white;
     font-size: 30px;
   }
-
-    #Games{
-      background-color:black;
-      text-align:center;
-      color:white;
-      font-size:24px;
-    }
     #GamesInfo{
+        border-left: 2px red solid;
       padding-top:5px;
-      background-color: black;
       color:white;
     }
 
@@ -147,6 +150,10 @@
         .topicsinfo{
           margin-bottom: 5px;
         }
+        .winpic
+       {
+         height:60px;
+       }
 
 
 } /* end media queries */
@@ -199,31 +206,31 @@ height:100%;
 
 
   .usermiddle{
-    border-right: 2px red solid;
+
     color:white;
   }
 
   .user{
     background-color:rgb(67, 73, 74);
+    padding-top: 30px;
   }
 
  #win{
-  height:80%;
   text-align: center;
 
 }
-#GamesInfo  .winpic
+#games
 {
-  height:20%;
+  text-align: center;
 }
- #loss
+#age
 {
-  height:80%;
-text-align: center;
+  padding-left: 3px;
 }
  #winpercentage
 {
-  height:80%;
   text-align: center;
-
+}
+.topicsinfo{
+  padding-top:20px;
 }
