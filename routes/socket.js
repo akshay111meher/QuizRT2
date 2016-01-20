@@ -41,7 +41,7 @@ module.exports = function(server,sessionMiddleware) {
       console.log(data);
       console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
       var rankAndTopScore = getRankAndTopScore(data.gameID,data.score,client.request.session.passport.user);
-      console.log(client.request.session.passport.user+"\n"+"rank is "+rank);
+      console.log(client.request.session.passport.user+"\n"+"rank is "+rankAndTopScore.rank);
       client.emit('takeRank',rankAndTopScore);
     });
   });
