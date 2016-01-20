@@ -1,6 +1,3 @@
-p{
-  text-align: center;
-}
 
 @media (max-width:550px){
   h4{font-size: 10px;}
@@ -12,10 +9,6 @@ p{
   h2{font-size:24px;}
 
   h3{font-size: 18px;}
-
-  #button-height a{
-    font-size:20px;
-  }
 
   .topicsinfo .badge{
     position: absolute;
@@ -52,10 +45,17 @@ p{
     font-size: 7px;
     font-weight: bold;
   }
-  .topicsinfo .topicsholder
-  {
-    height:75px;
+  #Quizzer{
+    background-color:red;
+    text-align:center;
+    color:white;
+    font-size: 10px;
   }
+  #GamesInfo .winpic
+  {
+    height:12px;
+  }
+
 
 }
 
@@ -83,6 +83,7 @@ p{
   }
 
   .topicsinfo .col-xs-2 .topicName{
+    font-family: Bitter;
     font-size: 16px;
     padding-left:2px;
   }
@@ -107,95 +108,95 @@ p{
     border-right: 1px  red solid;
     font-size: 20px;
   }
-  .topicsinfo .topicsholder
-  {
-    height:200px;
+  .topicsinfo .topicsholder{
+    height:160px !important;
+    width:25%;
   }
-} /* end media queries */
-
+  .topicsholder img
+  {
+    height:60%;
+    width:70%;
+  }
   #Quizzer{
     background-color:red;
     text-align:center;
     color:white;
-    height: 10%;
-    font-size: 35px;
-
+    font-size: 30px;
   }
 
-  #Name{
-    background-color:rgb(67, 73, 74);
-    text-align:center;
-    height: 10%;
-    color:white;
-    font-size:24px;
-    padding-bottom: 10px;
-  }
+    #Games{
+      background-color:black;
+      text-align:center;
+      color:white;
+      font-size:24px;
+    }
+    #GamesInfo{
+      padding-top:5px;
+      background-color: black;
+      color:white;
+    }
 
-  #Name #profile{
-    display:inline !important;
-    text-align: center;
-  }
+      #topics{
+        background-color:lightyellow;
+        font-size:23px;
+        color:black;
+        text-align: center;
+      }
 
-  #info{
-    background-color:rgb(67, 73, 74);
-    color:white;
-  }
 
-  #Games{
-    background-color:black;
-    text-align:center;
-    height: 10%;
-    color:white;
-    font-size:24px;
-  }
+        .topicsinfo{
+          margin-bottom: 5px;
+        }
 
-  #GamesInfo{
-    padding-top:5px;
+
+} /* end media queries */
+@media (min-width: 900px) {
+  body{
     background-color: black;
-    color:white;
+  }
+.container{
+  border-style: solid;
+  border-width: medium;
+  border-color: #AAA;
+  background-color: #DDD;
+  width: 62%;
+  margin-left: 19%;
+  margin-right: 19%;
+  border-radius: 20px;
+  padding: 20px;
+}
+}
+
+
+.btn-height
+{
+height:100%;
+}
+#foot .btn1 {
+            background-color: green;
+            color:white;
+            height:100%;
+            padding:0px 0px 0px 0px;
+            font-size: 20px;
   }
 
-  #topics{
-    background-color:lightyellow;
-    font-size:23px;
-    height:10%;
-    color:black;
-    text-align: center;
-  }
-
-  .topicsinfo{
-    margin-bottom: 5px;
-  }
-
-  #button-height{
-    height:10%;
-  }
-
-  #button-height .btn1 {
-    background-color: green;
-    color:white;
-
-    height:10%;
-  }
-
-  #button-height .btn2 {
+  #foot .btn2 {
     background-color: red;
     color:white;
-
-    height:10%;
+    height:100%;
+      padding:0px 0px 0px 0px;
+        font-size: 20px;
   }
 
-  #button-height .btn3 {
+ #foot .btn3 {
     background-color: rgb(194, 214, 29);
     color:white;
-    height:10%;
+    height:100%;
+      padding:0px 0px 0px 0px;
+       font-size: 20px;
   }
 
-  #button-height a{
-    width:100%;
-    color:white;
-    font-size: 27px;
-  }
+
 
   .usermiddle{
     border-right: 2px red solid;
@@ -205,3 +206,24 @@ p{
   .user{
     background-color:rgb(67, 73, 74);
   }
+
+ #win{
+  height:80%;
+  text-align: center;
+
+}
+#GamesInfo  .winpic
+{
+  height:20%;
+}
+ #loss
+{
+  height:80%;
+text-align: center;
+}
+ #winpercentage
+{
+  height:80%;
+  text-align: center;
+
+}

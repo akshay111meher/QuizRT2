@@ -3,7 +3,7 @@ var slugify = require('slugify');
 var Quiz = require('../models/quiz.js');
 
 
- fs.readFile('quiz.json', 'utf8', function (err,data) {
+ fs.readFile('quiz2.json', 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
   }

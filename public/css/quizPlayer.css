@@ -143,7 +143,7 @@ body{
 
 @media (min-width: 1200px) {
   body{
-    background-color: white;
+    background-color: black;
     height: 500px;
   }
   .container{
@@ -151,9 +151,9 @@ body{
     border-width: medium;
     border-color: #AAA;
     background-color: #DDD;
-    width: 30%;
-    margin-left: 35%;
-    margin-right: 35%;
+    width: 62%;
+    margin-left: 19%;
+    margin-right: 19%;
     border-radius: 20px;
     padding: 20px;
   }

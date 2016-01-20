@@ -30,6 +30,8 @@ var topic1={};
   router.route('/topic/:id')
     .get(function(req,res){
       var usr = req.session.user.toUpperCase();
+      var tid=req.params.id;
+      req.session.tid=tid;
         Profile.findOne({userId: usr})
          .exec(function(err,data){
         topic1.topicWins=0;

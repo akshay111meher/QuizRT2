@@ -9,6 +9,7 @@ router.route('/quizData')
       Quiz.findOne()
           .populate('questions')
           .exec(function(err,data){
+            console.log(data);
             res.send(data);
           })
 });

@@ -6,14 +6,15 @@ angular.module('quizRT')
     $scope.login = function(){
       $http.post('/auth/login', $scope.user).success(function(data){
         if(data.state == 'success'){
-          // $rootScope.authenticated = true;
+          $rootScope.authenticated = true;
           $rootScope.current_user = data.user.username;
           $location.path('userProfile/');
           $cookies.put('isAuthenticated',true);
         }
         else{
           $scope.error_message = data.message;
-          $cookies.put('isAuthenticated',false);
+          $rootScope.authenticated = false;
+          $cookies.remove('isAuthenticated');
         }
       });
     };
@@ -21,7 +22,6 @@ angular.module('quizRT')
     $scope.register = function(){
     $http.post('/auth/register', $scope.user).success(function(data){
       if(data.state == 'success'){
-        $rootScope.authenticated =
         $rootScope.current_user = data.user.username;
         $location.path('/userProfile');
       }

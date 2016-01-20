@@ -18,6 +18,7 @@ module.exports = function(passport){
 	//sends failure login state back to angular
 	router.get('/failure', function(req, res){
 		res.send({state: 'failure', user: null, message: "Invalid username or password"});
+		req.session.user=null;
 	});
 
 	//log in
@@ -34,6 +35,7 @@ module.exports = function(passport){
 
 	//log out
 	router.post('/logout', function(req, res) {
+		req.session.user=null;
 		console.log('logout of passsport called');
 		req.logout();
 		res.send(null);

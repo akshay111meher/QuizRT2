@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 
 
 var questionSchema = mongoose.Schema({
-
   image: String,
   question : String,
   correctIndex: Number,
