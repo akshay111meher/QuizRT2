@@ -5,8 +5,10 @@ var topScore = 0;
 angular.module('quizRT')
 	.controller('quizPlayerController', function(socket,$scope, $interval,$http,$rootScope){
 		$rootScope.stylesheetName="quizPlayer";
+		console.log($rootScope.tId);
 		$scope.myscore = 0;
-		socket.emit('join','player joining');
+
+		socket.emit('join',$rootScope.tId);
 		socket.on('takeRank',function(data){
 			rank = data.rank;
 			topScore = data.topScore;
@@ -22,7 +24,7 @@ angular.module('quizRT')
 
 										if($scope.time == 0){
 											$scope.myrank = rank;
-											$scope.topScore = topScore;
+											$scope.topperScore = topScore;
 											$scope.isDisabled = false;
 											$scope.myImage = "/images/userProfileImages/akshay.jpg"
 											$scope.topperImage = "/images/userProfileImages/akshayk.jpg"

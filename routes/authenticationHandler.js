@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-
 module.exports = function(passport){
 
 	//sends successful login state back to angular
 	router.get('/success', function(req, res){
 		req.session.user = req.user.username;
 		req.session.isLoggedIn = true;
+		req.session.tid = "not assigned to game";
 		console.log("this is session object");
 		 console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 			console.log(req.session);

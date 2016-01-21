@@ -12,6 +12,7 @@ var session = require('express-session');
 var passport = require('passport');
 var redis = require('redis');
 var redisClient = redis.createClient();
+
 var RedisStore = require("connect-redis")(session);
 
 var server = http.createServer(app);
