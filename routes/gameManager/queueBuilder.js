@@ -8,6 +8,7 @@ module.exports = function(){
 			console.log(topicPlayers);
 			return topicPlayers;
 		},
+		
 		addPlayer: function(topicId,sessionId)
 		{
 			var tempQueue=topicPlayers.get(topicId);
