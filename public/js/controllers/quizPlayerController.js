@@ -4,7 +4,7 @@ angular.module('quizRT')
 	.controller('quizPlayerController', function(socket,$scope, $interval,$http,$rootScope){
 		$rootScope.stylesheetName="quizPlayer";
 		$scope.myscore = 0;
-		socket.emit('join','player joining');
+		socket.emit('join',$rootScope.tId);
 		socket.on('startGame',function(data){
 			console.log(data);
 			$http.post('/quizPlayer/quizData')

@@ -9,6 +9,8 @@ module.exports = function(server,sessionMiddleware) {
 
   io.on('connection', function(client) {
     client.on('join',function(data){
+     console.log("##############################");
+      console.log(data);
       console.log("##############################");
       client.score = 0;
       console.log(client.request.session.passport.user);
@@ -17,7 +19,6 @@ module.exports = function(server,sessionMiddleware) {
       console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
       console.log(Players.size);
       console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
       if(Players.size == maxPlayers){
         var match = new game(makeid(),Players,false)
         allGames.push(match);

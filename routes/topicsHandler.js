@@ -34,6 +34,7 @@ var topic1={};
       req.session.tid=tid;
         Profile.findOne({userId: usr})
          .exec(function(err,data){
+
         topic1.topicWins=0;
         topic1.topicLosses=0;
         topic1["topicLevel"]=1;
@@ -77,6 +78,8 @@ var topic1={};
        .exec(function(err,data){
       var topicsPlayed=data["topicsPlayed"];
        var l=topicsPlayed.length;
+       var tid=req.params.id;
+       req.session.tid=tid;
        for(var i=0;i<l;++i)
        {
          if(topicsPlayed[i].topicId === req.params.id)

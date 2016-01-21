@@ -47,6 +47,9 @@ module.exports = function(passport){
 	));
 
 	passport.use('register', new LocalStrategy({
+		  usernameField:username,
+			passwordField:password,
+			country:country,
 			passReqToCallback : true // allows us to pass back the entire request to the callback
 		},
 		function(req, username, password, done) {

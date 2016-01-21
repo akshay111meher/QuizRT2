@@ -4,6 +4,8 @@ angular.module('quizRT')
      $scope.topic="";
      $rootScope.stylesheetName="topic";
      var path = '/topicsHandler/topic/'+$scope.topicID;
+     $rootScope.tId=$scope.topicID;
+     console.log($rootScope.tId);
      socket.emit('disjoin',"leaving page topic play");
      $http.get(path)
           .success(function(data, status, headers, config) {
