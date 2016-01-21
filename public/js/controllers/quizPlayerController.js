@@ -1,10 +1,12 @@
+var topScore = 0;
 var questionCounter = 0;
 var temp;
 angular.module('quizRT')
 	.controller('quizPlayerController', function(socket,$scope, $interval,$http,$rootScope){
 		$rootScope.stylesheetName="quizPlayer";
+		console.log($rootScope.tId);
 		$scope.myscore = 0;
-		socket.emit('join','player joining');
+		socket.emit('join',$rootScope.tId);
 		socket.on('startGame',function(data){
 			console.log(data);
 			$http.post('/quizPlayer/quizData')
@@ -14,6 +16,7 @@ angular.module('quizRT')
 						  		var timeInterval= $interval(function(){
 						  			$scope.time--;
 										if($scope.time == 0){
+											$scope.topperScore = topScore;
 											$scope.isDisabled = false;
 											$scope.myImage = "/images/userProfileImages/akshay.jpg"
 											$scope.topperImage = "/images/userProfileImages/akshayk.jpg"

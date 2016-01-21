@@ -5,7 +5,6 @@ module.exports = function(){
 	return {
 
 		getTopicPlayers: function(){
-			console.log(topicPlayers);
 			return topicPlayers;
 		},
 		
