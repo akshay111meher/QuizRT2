@@ -10,7 +10,22 @@ module.exports = function(server,sessionMiddleware) {
     client.on('join',function(data){
       Players.set(client.request.session.passport.user,client);
       gameBuilder.queueBuilder.addPlayer(data,client.request.session.passport.user);
-     console.log(gameBuilder.topicPlayerCount());
+      var games_ready = gameBuilder.topicPlayerCount();
+     console.log(games_ready);
+     if(games_ready.length!=0){
+       var gameID = makeid();
+       games_ready.forEach(function(data){
+         Players.get(data.players[0]).join(gameID);
+         Players.get(data.players[1]).join(gameID);
+        //  Players.get(data.players[2]).join(gameID);
+        //  Players.get(data.players[3]).join(gameID);
+       });
+       io.in(gameID).emit('startGame');
+     }
+     else{
+
+     }
+
     });
 
 

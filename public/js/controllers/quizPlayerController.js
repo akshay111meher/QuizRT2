@@ -1,3 +1,4 @@
+var topScore = 0;
 var questionCounter = 0;
 var temp;
 angular.module('quizRT')
@@ -5,7 +6,6 @@ angular.module('quizRT')
 		$rootScope.stylesheetName="quizPlayer";
 		console.log($rootScope.tId);
 		$scope.myscore = 0;
-
 		socket.emit('join',$rootScope.tId);
 		socket.on('startGame',function(data){
 			console.log(data);

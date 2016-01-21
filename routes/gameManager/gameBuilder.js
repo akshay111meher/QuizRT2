@@ -1,7 +1,7 @@
 
 module.exports = function(){
 
-  var maxPlayers =4;
+  var maxPlayers =2;
   var queueBuild = require('./queueBuilder')();
   var topicPlayers= queueBuild.getTopicPlayers();
 
