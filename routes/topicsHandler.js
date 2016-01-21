@@ -32,6 +32,8 @@ var topic1={};
       var usr = req.session.user.toUpperCase();
       var tid=req.params.id;
       req.session.tid=tid;
+      console.log('+++++++++++++++=');
+      console.log(req.session);
         Profile.findOne({userId: usr})
          .exec(function(err,data){
         topic1.topicWins=0;
