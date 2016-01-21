@@ -1,5 +1,4 @@
-var maxPlayers = 3;
-var allGames = [];
+var gameBuilder = require('./gameManager/gameBuilder.js')();
 module.exports = function(server,sessionMiddleware) {
   var io = require('socket.io')(server);
   var Players = new Map();
@@ -9,18 +8,12 @@ module.exports = function(server,sessionMiddleware) {
 
   io.on('connection', function(client) {
     client.on('join',function(data){
-      console.log("##############################");
-      client.score = 0;
-      console.log(data+"\n"+"is topic id");
-      console.log(client.request.session);
-      console.log("##############################");
       Players.set(client.request.session.passport.user,client);
-      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-      console.log(Players.size);
-      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
-
+      gameBuilder.queueBuilder.addPlayer(data,client.request.session.passport.user);
+     console.log(gameBuilder.topicPlayerCount());
     });
+
+
     client.on('disjoin',function(data){
       Players.delete(client.request.session.passport.user);
     });
