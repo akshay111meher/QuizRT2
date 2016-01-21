@@ -71,6 +71,8 @@ var topic1={};
         topic1.topicDescription=topic.topicDescription;
         topic1.topicIcon = topic.topicIcon;
         topic1.topicFollowers=topic.topicFollowers;
+        console.log("######");
+        console.log(topic1);
         res.json(topic1);
       });
       });
