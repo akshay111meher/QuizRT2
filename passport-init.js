@@ -81,7 +81,7 @@ module.exports = function(passport){
 							throw err;
 						}
 						console.log(newUser.username + ' Registration succesful');
-						// return done(null, newUser);
+						//return done(null, newUser);
 					});
 					newProfile.save(function(err) {
 						if (err){
@@ -89,7 +89,7 @@ module.exports = function(passport){
 							throw err;
 						}
 						console.log(newProfile.userId + ' Registration succesful');
-						// return done(null, newProfile);
+						//return done(null, newProfile);
 					});
 				}
 			});
