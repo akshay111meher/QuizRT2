@@ -13,6 +13,7 @@ angular.module('quizRT')
 			$http.post('/quizPlayer/quizData')
 					.success(function(data, status, headers, config) {
 									$scope.time=3;
+									console.log(data);
 						  		var timeInterval= $interval(function(){
 						  			$scope.time--;
 										if($scope.time == 0){
