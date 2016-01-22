@@ -10,9 +10,7 @@ module.exports = function(){
 
     for(i=0;i<maxPlayers;++i)
       {
-        var player1 = queueBuild.popPlayer(topicId);
-        //console.log(topicId+","+player1);
-        playerSet.push(player1);
+        playerSet.push(queueBuild.popPlayer(topicId));
       }
       return playerSet;
   };
