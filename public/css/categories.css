@@ -1,19 +1,19 @@
-/*
-
-My Custom CSS
-=============
-
-Author:  Brad Hussey
-Updated: August 2013
-Notes:	 Hand coded for Udemy.com
-
-
-*/
-
-/* --------------------------------------
-   Navbar
-   -------------------------------------- */
-
+@media (min-width: 900px) {
+  body{
+    background-color: black;
+  }
+.container{
+  border-style: solid;
+  border-width: medium;
+  border-color: #AAA;
+  background-color: #DDD;
+  width: 62%;
+  margin-left: 19%;
+  margin-right: 19%;
+  border-radius: 20px;
+  padding: 20px;
+}
+}
    .navbar{
      background: grey;
      color: white;

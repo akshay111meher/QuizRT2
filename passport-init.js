@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var User = require('./models/user');
+var Profile=require('./models/profile');
 var LocalStrategy   = require('passport-local').Strategy;
 var bCrypt = require('bcrypt-nodejs');
 
@@ -50,7 +51,9 @@ module.exports = function(passport){
 			passReqToCallback : true // allows us to pass back the entire request to the callback
 		},
 		function(req, username, password, done) {
-
+           console.log("**********Hello*************");
+           console.log(req.body.country);
+           console.log("**********Hello*************");
 			// find a user in mongo with provided username
 			User.findOne({ 'username' :  username }, function(err, user) {
 				// In case of any error, return using the done method
@@ -65,11 +68,12 @@ module.exports = function(passport){
 				} else {
 					// if there is no user, create the user
 					var newUser = new User();
-
+                    var newProfile=new Profile();
 					// set the user's local credentials
 					newUser.username = username;
 					newUser.password = createHash(password);
-
+					newProfile.userId = username;
+                    newProfile.country=req.body.country;
 					// save the user
 					newUser.save(function(err) {
 						if (err){
@@ -77,7 +81,15 @@ module.exports = function(passport){
 							throw err;
 						}
 						console.log(newUser.username + ' Registration succesful');
-						return done(null, newUser);
+						//return done(null, newUser);
+					});
+					newProfile.save(function(err) {
+						if (err){
+							console.log('Error in Saving user: '+err);
+							throw err;
+						}
+						console.log(newProfile.userId + ' Registration succesful');
+						//return done(null, newProfile);
 					});
 				}
 			});

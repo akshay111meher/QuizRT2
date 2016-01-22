@@ -3,7 +3,7 @@ var slugify = require('slugify');
 var Question = require('../models/question.js');
 
 
- fs.readFile('questionBank.json', 'utf8', function (err,data) {
+ fs.readFile('questions.json', 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
   }

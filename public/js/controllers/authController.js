@@ -29,6 +29,10 @@ angular.module('quizRT')
         $scope.error_message = data.message;
       }
     });
+
+    $http.post('/auth/createProfile', $scope.user).success(function(data){
+
+    });
   };
 
   // $scope.logout= function(){

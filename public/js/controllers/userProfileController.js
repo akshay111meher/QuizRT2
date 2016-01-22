@@ -3,7 +3,7 @@ angular.module('quizRT')
 
    if(!$cookies.get('isAuthenticated')){
       $location.path('/login');
-}
+    }
      $rootScope.stylesheetName="userProfile";
      $scope.a=7;
      $scope.see = true;
@@ -37,5 +37,10 @@ angular.module('quizRT')
           var path = '/topic/'+topicID;
           $location.path(path);
         };
+        $scope.play=function()
+        {
+          var path="/categories";
+          $location.path(path);
+        }
       });
- });
+});
