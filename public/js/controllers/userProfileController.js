@@ -1,9 +1,9 @@
 angular.module('quizRT')
  .controller('userProfileController',function($http,$scope,$rootScope,$location,$cookies){
-   
+
    if(!$cookies.get('isAuthenticated')){
       $location.path('/login');
-
+}
      $rootScope.stylesheetName="userProfile";
      $scope.a=7;
      $scope.see = true;
