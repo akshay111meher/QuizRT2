@@ -13,6 +13,7 @@ module.exports = function(passport){
 		 console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		// console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		res.send({state: 'success',isLoggedIn: req.session.isLoggedIn, user: req.user ? req.user : null});
+
 	});
 
 	//sends failure login state back to angular
@@ -20,7 +21,6 @@ module.exports = function(passport){
 		res.send({state: 'failure', user: null, message: "Invalid username or password"});
 		req.session.user=null;
 	});
-
 	//log in
 	router.post('/login', passport.authenticate('login', {
 		successRedirect: '/auth/success',
@@ -32,6 +32,19 @@ module.exports = function(passport){
 		successRedirect: '/auth/success',
 		failureRedirect: '/auth/failure'
 	}));
+
+	//login using facebook
+	router.get('/facebook', passport.authenticate('facebook', {scope: ['email']}));
+
+	router.get('/facebook/callback',
+	passport.authenticate('facebook', { successRedirect: '/profile',
+																			failureRedirect: '/' }));
+	//login using google
+	router.get('/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+
+  router.get('/google/callback',
+	passport.authenticate('google', { successRedirect: '/profile',
+																			failureRedirect: '/' }));
 
 	//log out
 	router.post('/logout', function(req, res) {

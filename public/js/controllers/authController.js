@@ -29,6 +29,7 @@ angular.module('quizRT')
         $scope.error_message = data.message;
       }
     });
+
   };
 
   // $scope.logout= function(){

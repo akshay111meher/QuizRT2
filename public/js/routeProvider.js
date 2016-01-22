@@ -46,35 +46,42 @@ angular.module('quizRT', ['ngRoute', 'ngCookies']).run(function($cookies, $rootS
     })
    .config(function($routeProvider){
      $routeProvider
-       .when('/quizPlayer',{
-            'templateUrl': 'html/quizPlayer.html',
-            'controller': 'quizPlayerController'
-          })
-       .when('/userProfile',{
-            'templateUrl': 'html/userProfile.html',
-            'controller': 'userProfileController'
-          })
+       .when('/',{
+         'templateUrl' : 'html/loginregister.html'
+       })
        .when('/login', {
-      			'templateUrl': 'html/login.html',
-      			'controller': 'authController'
+      			'templateUrl': 'html/login.html'
       		})
+      .when('/locallogin', {
+         			'templateUrl': 'html/locallogin.html',
+         			'controller': 'authController'
+         		})
       .when('/register', {
       			'templateUrl': 'html/register.html',
       			'controller': 'authController'
       		})
+          .when('/userProfile',{
+               'templateUrl': 'html/userProfile.html',
+               'controller': 'userProfileController'
+             })
+         .when('/categories',{
+               'templateUrl': 'html/categories.html',
+               'controller': 'categoriesController'
+             })
 
-      .when('/categories',{
-            'templateUrl': 'html/categories.html',
-            'controller': 'categoriesController'
-          })
+         .when('/category/:categoryID',{
+               'templateUrl': 'html/category.html',
+               'controller': 'categoryController'
+             })
 
-      .when('/category/:categoryID',{
-            'templateUrl': 'html/category.html',
-            'controller': 'categoryController'
-          })
-
-      .when('/topic/:topicID',{
-            'templateUrl': 'html/topic.html',
-            'controller': 'topicController'
+         .when('/topic/:topicID',{
+               'templateUrl': 'html/topic.html',
+               'controller': 'topicController'
+             })
+       .when('/quizPlayer',{
+            'templateUrl': 'html/quizPlayer.html',
+            'controller': 'quizPlayerController'
           });
+
+
 });

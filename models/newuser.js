@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var bcrypt = require('bcrypt-nodejs');
 var userSchema = mongoose.Schema({
-
 	local: {
 		username: String,
 		password: String
@@ -19,5 +18,5 @@ var userSchema = mongoose.Schema({
 		name: String
 	}
 });
-var User = mongoose.model('User', userSchema,'Users_Collection');
-module.exports = User;
+
+module.exports = mongoose.model('User', userSchema,UserCred);
