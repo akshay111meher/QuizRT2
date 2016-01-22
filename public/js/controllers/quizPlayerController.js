@@ -80,7 +80,7 @@ function loadNextQuestion(data,questionNumber){
 		"question":data.questions[questionNumber].question,
 		"image":data.questions[questionNumber].image,
 		"correctIndex":data.questions[questionNumber].correctIndex
-	}
+	};
 	questionCounter++;
 	return obj;
 }

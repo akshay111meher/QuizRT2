@@ -1,4 +1,5 @@
 var gameBuilder = require('./gameManager/gameBuilder.js')();
+var games_ready;
 module.exports = function(server,sessionMiddleware) {
   var io = require('socket.io')(server);
   var Players = new Map();
@@ -10,17 +11,17 @@ module.exports = function(server,sessionMiddleware) {
     client.on('join',function(data){
       Players.set(client.request.session.passport.user,client);
       gameBuilder.queueBuilder.addPlayer(data,client.request.session.passport.user);
-      var games_ready = gameBuilder.topicPlayerCount();
-     console.log(games_ready);
+      games_ready = gameBuilder.topicPlayerCount();
+      console.log("11111111111111111111111111111111111111111111111111111111111");
+     console.log(games_ready[0]);
+     console.log("11111111111111111111111111111111111111111111111111111111111");
      if(games_ready.length!=0){
-       var gameID = makeid();
-       games_ready.forEach(function(data){
-         Players.get(data.players[0]).join(gameID);
-         Players.get(data.players[1]).join(gameID);
-        //  Players.get(data.players[2]).join(gameID);
-        //  Players.get(data.players[3]).join(gameID);
+       games_ready.forEach(function(data1){
+         var gameID = makeid();
+         Players.get(data1.players[0]).join(gameID);
+         Players.get(data1.players[1]).join(gameID);
+         io.in(gameID).emit('startGame',"his is game id "+gameID);
        });
-       io.in(gameID).emit('startGame');
      }
      else{
 

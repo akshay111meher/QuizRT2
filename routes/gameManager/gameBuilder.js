@@ -25,7 +25,7 @@ module.exports = function(){
   topicPlayerCount : function(){
     var temp= [];
     topicPlayers.forEach(function(item,key,value){
-      if((topicPlayers.get(key).length)>=4)
+      if((topicPlayers.get(key).length)>=maxPlayers)
         {
           data = {
             topic: key,
