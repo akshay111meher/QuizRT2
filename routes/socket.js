@@ -30,16 +30,16 @@ module.exports = function(server,sessionMiddleware) {
 
 
     client.on('disjoin',function(data){
-      Players.delete(client.request.session.passport.user);
+      // Players.delete(client.request.session.passport.user);
     });
 
     client.on('currentScore',function(data){
-      console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-      console.log(data);
-      console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-      var rankAndTopScore = getRankAndTopScore(data.gameID,data.score,client.request.session.passport.user);
-      console.log(client.request.session.passport.user+"\n"+"rank is "+rankAndTopScore.rank +"topscore is "+rankAndTopScore.topScore);
-      client.emit('takeRank',rankAndTopScore);
+      // console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+      // console.log(data);
+      // console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+      // var rankAndTopScore = getRankAndTopScore(data.gameID,data.score,client.request.session.passport.user);
+      // console.log(client.request.session.passport.user+"\n"+"rank is "+rankAndTopScore.rank +"topscore is "+rankAndTopScore.topScore);
+      // client.emit('takeRank',rankAndTopScore);
     });
   });
 
