@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var Category = require("../models/category");
 var Topic = require("../models/topic");
 var Profile =require("../models/profile");
+var topicInst;
 var topic1={};
  router.route('/categories')
   .get(function(req, res){
@@ -30,10 +31,13 @@ var topic1={};
   router.route('/topic/:id')
     .get(function(req,res){
       var usr = req.session.user.toUpperCase();
-      var tid=req.params.id;
-      req.session.tid=tid;
-      console.log('+++++++++++++++=');
-      console.log(req.session);
+      topicInst = req.params.id;
+      console.log("/////////////////////////////////////////////////");
+      console.log(topicInst);
+      req.session.tid = topicInst;
+      console.log("/////////////////////////////////////////////////");
+      console.log(req.session.tid);
+      console.log("/////////////////////////////////////////////////");
         Profile.findOne({userId: usr})
          .exec(function(err,data){
 

@@ -1,12 +1,48 @@
-var map=new Map();
+var topicPlayers= new Map();
 
-module.exports= function(sid, topicId){
-	map.set(topicId, addElement(sid, topicId));
-}
+module.exports = function(){
 
+	return {
 
-var addElement = new function(sid, topicId){
-	var temp = map.get(topicId);
-	temp.push(sid);
-	return temp;
-}
+		getTopicPlayers: function(){
+			return topicPlayers;
+		},
+		
+		addPlayer: function(topicId,sessionId)
+		{
+			var tempQueue=topicPlayers.get(topicId);
+			if(tempQueue==null)
+			{
+			 tempQueue=[];
+			 topicPlayers.set(topicId,tempQueue);
+			}
+			tempQueue=topicPlayers.get(topicId);
+			tempQueue.push(sessionId);
+		},
+
+		popPlayer: function(topicId)
+		{
+			var tempQueue=topicPlayers.get(topicId);
+			if(!tempQueue)
+			{
+				return null;
+			}
+			var player=tempQueue[0];
+			tempQueue.shift();
+			if(tempQueue.length==0)
+			{
+				topicPlayers.delete(topicId);
+			}
+			return player;
+		},
+
+		countPlayers : function(topicId)
+		{
+			var tempQueue=topicPlayers.get(topicId);
+			if(tempQueue==null)
+			 return 0;
+
+			return tempQueue.length;
+		}
+	}
+};

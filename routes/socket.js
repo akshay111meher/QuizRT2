@@ -1,50 +1,64 @@
-var maxPlayers = 3;
-var allGames = [];
+var gameBuilder = require('./gameManager/gameBuilder.js')();
+var games_ready;
+var Players = new Map();
 module.exports = function(server,sessionMiddleware) {
   var io = require('socket.io')(server);
-  var Players = new Map();
   io.use(function(socket,next){
     sessionMiddleware(socket.request, socket.request.res, next);
   });
+  io.on('disconnect',function(client){
+      Players.delete(client.request.session.passport.user,client);
+      client.request.session.destroy();
+  })
 
   io.on('connection', function(client) {
     client.on('join',function(data){
-     console.log("##############################");
+      console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
       console.log(data);
       console.log("##############################");
-      client.score = 0;
       console.log(client.request.session.passport.user);
-      console.log(client.request.session);
-      console.log("##############################");
+      console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
       Players.set(client.request.session.passport.user,client);
-      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-      console.log(Players.size);
-      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-      if(Players.size == maxPlayers){
-        var match = new game(makeid(),Players,false)
-        allGames.push(match);
-        Players = new Map();
-      }
+      gameBuilder.queueBuilder.addPlayer(data,client.request.session.passport.user);
+      games_ready = gameBuilder.topicPlayerCount();
+     if(games_ready.length!=0){
+       games_ready.forEach(function(data1){
+         console.log("11111111111111111111111111111111111111111111111111111111111");
+         console.log(data1);
+        console.log("11111111111111111111111111111111111111111111111111111111111");
+         var gameID = makeid();
+        //  Players.get(data1.players[0]).join(gameID);
+        //  Players.get(data1.players[1]).join(gameID,function(){
+        //    io.in(gameID).emit('startGame',"this is game id "+gameID);
+        //  });
+         data1.players.forEach(function(player,index){
+            Players.get(player).join(gameID);
+            if(index == data1.players.length - 1){
+                io.in(gameID).emit('startGame',"this is game id "+gameID);
+            }
+         });
+        //  io.emit('startGame',"this is game id "+gameID);
+       });
+     }
+     else{
 
-      for (var i = 0; i < allGames.length; i++) {
-        if(allGames[i].isRunning == false){
-          renderThegame(allGames[i]);
-          allGames[i].isRunning == true;
-        }
-      }
+     }
 
     });
-    client.on('disjoin',function(data){
-      Players.delete(client.request.session.passport.user);
+
+
+    client.on('leaveGame',function(data){
+      console.log(data);
+      Players.delete(client.request.session.passport.user,client);
     });
 
     client.on('currentScore',function(data){
-      console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-      console.log(data);
-      console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-      var rankAndTopScore = getRankAndTopScore(data.gameID,data.score,client.request.session.passport.user);
-      console.log(client.request.session.passport.user+"\n"+"rank is "+rankAndTopScore.rank);
-      client.emit('takeRank',rankAndTopScore);
+      // console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+      // console.log(data);
+      // console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+      // var rankAndTopScore = getRankAndTopScore(data.gameID,data.score,client.request.session.passport.user);
+      // console.log(client.request.session.passport.user+"\n"+"rank is "+rankAndTopScore.rank +"topscore is "+rankAndTopScore.topScore);
+      // client.emit('takeRank',rankAndTopScore);
     });
   });
 
