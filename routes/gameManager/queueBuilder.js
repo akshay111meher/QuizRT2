@@ -7,6 +7,7 @@ module.exports = function(){
 		getTopicPlayers: function(){
 			return topicPlayers;
 		},
+		
 		addPlayer: function(topicId,sessionId)
 		{
 			var tempQueue=topicPlayers.get(topicId);
