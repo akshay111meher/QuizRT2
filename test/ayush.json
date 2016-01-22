@@ -35,6 +35,45 @@
         "level":12,
          "isFollowed":true,
          "points":300
-      }
+      },
+          {
+
+          "topicId":"Java",
+          "gamesPlayed":55,
+          "gamesWon":29,
+          "level":7,
+           "isFollowed":true,
+           "points":200
+        },
+
+            {
+
+            "topicId":"Web-Development",
+            "gamesPlayed":65,
+            "gamesWon":27,
+            "level":6,
+             "isFollowed":true,
+             "points":200
+          },
+
+              {
+
+              "topicId":"Indian-Mythology",
+              "gamesPlayed":15,
+              "gamesWon":10,
+              "level":4,
+               "isFollowed":true,
+               "points":200
+            },
+
+                {
+
+                "topicId":"Indian-History",
+                "gamesPlayed":25,
+                "gamesWon":20,
+                "level":3,
+                 "isFollowed":true,
+                 "points":200
+              }
     ]
 }
