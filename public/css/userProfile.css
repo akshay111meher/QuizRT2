@@ -1,14 +1,49 @@
+body{
+  background-color: #524f4f;
+  color: #ccc;
+  font-size: 12px;
+}
+.container{
+/*border-style: solid;
+border-width: medium;
+border-color: #AAA;*/
+background-color: #2f2d2d;
+width: 62%;
+margin-left: 19%;
+margin-right: 19%;
+border-radius: 5px;
+padding: 20px;
+margin-top:5px;
+}
+
+#Quizzer{
+  background-color:#337ab7;
+  text-align:center;
+  color:white;
+  padding-top: 15px;
+}
 
 @media (max-width:550px){
-  h4{font-size: 10px;}
-
+  h4{font-size: 1.1em;}
   h6{
     font-size:8px;
   }
 
-  h2{font-size:24px;}
+  h2{font-size:1.5em;}
 
-  h3{font-size: 18px;}
+  h3{font-size: 1.2em;}
+
+  .container{
+  /*border-style: solid;
+  border-width: medium;
+  border-color: #AAA;*/
+  width: 100%;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top:5px;
+  }
 
   .topicsinfo .badge{
     position: absolute;
@@ -22,19 +57,20 @@
     color:white;
   }
 
-  #badge,#country{
-    font-size: 15px;
+  #badge,#country,#age{
+    font-size: 1em;
+    padding-bottom: 4px;
   }
 
   #games{
-    font-size: 15px;
+    font-size: 1em;
     margin-bottom: 5px;
   }
 
   #UserName{
     padding-right: 3px;
     border-right: 1px pink solid;
-    font-size: 15px;
+    font-size: 1em;
   }
 
   .topicsinfo .col-xs-2 .topicName{
@@ -46,10 +82,7 @@
     font-weight: bold;
   }
   #Quizzer{
-    background-color:red;
-    text-align:center;
-    color:white;
-    font-size: 10px;
+    font-size: 2em;
   }
 
   .winpic
@@ -84,7 +117,9 @@
     top:0;
     right:50px;
     width:30px;
-    font-size: 18px;
+    font-size: 16px;
+    background-color: #337ab7;
+    border-radius: 2px;
   }
 
   #GamesInfo{
@@ -128,10 +163,11 @@
     width:70%;
   }
   #Quizzer{
-    background-color:red;
+    background-color:#337ab7;
     text-align:center;
     color:white;
     font-size: 30px;
+    padding-top: 15px;
   }
     #GamesInfo{
         border-left: 2px red solid;
@@ -159,21 +195,26 @@
 } /* end media queries */
 @media (min-width: 900px) {
   body{
-    background-color: black;
+    background-color: #524f4f;
+    color: #ccc;
   }
 .container{
-  border-style: solid;
+  /*border-style: solid;
   border-width: medium;
-  border-color: #AAA;
-  background-color: #DDD;
+  border-color: #AAA;*/
+  background-color: #2f2d2d;
   width: 62%;
   margin-left: 19%;
   margin-right: 19%;
-  border-radius: 20px;
+  border-radius: 5px;
   padding: 20px;
+  margin-top:5px;
 }
 }
 
+.wins{
+  color: #72af21;
+}
 
 .btn-height
 {
