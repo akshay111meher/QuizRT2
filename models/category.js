@@ -6,7 +6,6 @@ var categorySchema = mongoose.Schema({
 
   _id: String,
   categoryName:String,
-  categoryIcon: String,
   categoryTopics: [{ type: String, ref: 'Topic' }]
 });
 

@@ -8,58 +8,60 @@
 		</div>
 
 		<div class="row user">
-			<div class="col-xs-2">
+			<div class="col-xs-offset-1 col-xs-5 col-sm-offset-0	col-sm-2">
 				<img ng-src="{{data.imageLink}}"  width="120px" height="120px"  class="img-circle img-responsive pull-left">
 			</div>
-			<div class="col-xs-4 usermiddle">
-				<span id="UserName">{{data.name}}
-				</span>
-				<span id="age">{{data.age}}</span>
-				<div id="badge">{{data.badge}}</div>
-				<span id="flag"><img ng-src="{{data.flagLink}}" alt="user image" width="30px" height="30px" class="img-rounded">
-				</span>
-				<span id="country">{{data.country}}</span>
+			<div class="col-xs-6 col-sm-4 usermiddle">
+				<h4>{{data.name}},
+			{{data.age}}</h4>
+				<h5>{{data.badge}}</h5>
+			<!--	<span id="flag"><img ng-src="{{data.flagLink}}" alt="user image" width="30px" height="30px" class="img-rounded">
+			</span> -->
+				<h6 id="country">{{data.country}}</h6>
 
 			</div>
 
-			<div class="col-xs-6" id="GamesInfo">
+			<div class="col-xs-12 col-sm-6" id="GamesInfo">
 				<div class="row info">
 				<div class=" col-xs-4" id="games">
-					<img class="winpic" src ="/images/userProfileImages/game.png" class="img-circle img-responsive" >
+					<span class="glyphicon glyphicon-tower glyph"></span>
 					<p>Games</br>{{data.totalGames}}
 					</p>
 				</div>
 				<div class="col-xs-4" id="win">
-					<img class="winpic" src ="/images/userProfileImages/win.png" class="img-circle img-responsive" >
+					<span class="glyphicon glyphicon-thumbs-up glyph"></span>
 					<p>Wins</br>{{data.wins}}
 					</p>
 				</div>
 				<div class="col-xs-4" id="winpercentage">
-					<img class="winpic" src ="/images/userProfileImages/winpercent.png" class="img-circle img-responsive">
+					<span class="glyph glyphicon glyphicon-stats"></span>
 					<p>Win%<br>{{data.wins/data.totalGames*100 | number : 2}}%
 					</p>
 				</div>
 		</div>
 		</div>
 	</div>
-		<div class="row" id="topics">
-			<div class="col-xs-12">
-				Followed Topics
-			</div>
+		<div class="row" id="topics">Followed Topics
 		</div>
-		<div class="row topicsinfo">
-			<div class="col-xs-3 topicsholder" ng-repeat="topic in topicsFollowed|limitTo:a|orderBy:'-level'">
-					<a><img ng-src="{{topic.topicId.topicIcon}}" ng-click="showFollowedTopic(topic.topicId._id)" class="img-rounded"></a>
-				<div class="row">
-					<div class="col-xs-12 col-sm-8">
-						<span class="topicName">{{topic.topicId.topicName}}</span>
-					</div>
-					<div class="col-xs-12 col-sm-4">
-						<span class="wins">{{topic.gamesWon}}/{{topic.gamesPlayed}}</span>
-					</div>
-				</div>
-				<span class="badge">{{topic.level}}</span>
+		<div class="row topic-info">
+			<div class="topicsholder" ng-repeat="topic in topicsFollowed|limitTo:a|orderBy:'-level'">
+
+			<div class="topic-panel panel panel-default">
+			  <div class="panel-body content">
+
+					<a><img ng-src="{{topic.topicId.topicIcon}}" ng-click="showFollowedTopic(topic.topicId._id)"></a>
+					<span class="badge">{{topic.level}}</span>
+
+			  </div>
+
+			  <div class="panel-footer">
+					<p>{{topic.topicId.topicName}}</p>
+					<span class="win-loss">
+					<span class="wins">{{topic.gamesWon}}</span> /<span class= "played"> {{topic.gamesPlayed}} </span>
+				</span>
+								  </div>
 			</div>
+		</div><!-- end topicsholder-->
 
 				<div class="col-xs-3 topicsholder" ng-if="topicsFollowed.length>11">
 					<div>
@@ -69,23 +71,13 @@
 
 		</div> <!-- end topicinfo row -->
 		<div id="foot" class="row">
-					<button class="btn btn1 col-xs-4 btn-height" ng-click="login()">Home</button>
-					<button class="btn btn2 col-xs-4 btn-height" ng-click="play()">Play it</button>
-					<button class="btn btn3 col-xs-4 btn-height">Activity</button>
-
+			<div col-xs-12 class="play-button-bar">
+					<button class="play-now-button btn btn-success" ng-click="play()">Play now!</button>
+			</div>
 			</div>
 </div>
 </div>
-<script type="text/javascript">
-       var a=window.outerHeight;
-			 console.log(a);
-			 var b=$('#Quizzer').height(0.1*a);
-			 console.log(b.height());
-			 var c=$('.user').height(0.25*a);
-				var e=$('#topics').height(0.05*a);
-				var f=$('.topicsinfo').height(0.5*a);
-				var g=$('#foot').height(0.1*a);
-</script>
+
 <!-- end container -->
 
 	<!-- All Javascript at the bottom of the page for faster page loading -->
