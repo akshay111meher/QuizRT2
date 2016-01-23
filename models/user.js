@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var userSchema = mongoose.Schema({
-
 	local: {
 		username: String,
 		password: String
