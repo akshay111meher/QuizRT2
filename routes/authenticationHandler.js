@@ -38,7 +38,7 @@ module.exports = function(passport){
 	router.get('/facebook', passport.authenticate('facebook', {scope: ['email']}));
 
 	router.get('/facebook/callback',
-	passport.authenticate('facebook', { successRedirect: '/profile',
+	passport.authenticate('facebook', { successRedirect: '/success',
 																			failureRedirect: '/' }));
 	//login using google
 	router.get('/google', passport.authenticate('google', {scope: ['profile', 'email']}));

@@ -24,7 +24,7 @@ angular.module('quizRT', ['ngRoute', 'ngCookies']).run(function($cookies, $rootS
       };
 })
   .factory('socket', function ($rootScope) {
-          var socket = io.connect('http://172.23.238.192:3000');
+          var socket = io.connect('http://192.168.2.19:3000');
     return {
       on: function (eventName, callback) {
        socket.on(eventName, function () {
@@ -52,7 +52,8 @@ angular.module('quizRT', ['ngRoute', 'ngCookies']).run(function($cookies, $rootS
          'templateUrl' : 'html/loginregister.html'
        })
        .when('/login', {
-      			'templateUrl': 'html/login.html'
+      			'templateUrl': 'html/login.html',
+            'controller':'authController'
       		})
       .when('/locallogin', {
          			'templateUrl': 'html/locallogin.html',
@@ -84,7 +85,11 @@ angular.module('quizRT', ['ngRoute', 'ngCookies']).run(function($cookies, $rootS
             'templateUrl': 'html/quizPlayer.html',
             'controller': 'quizPlayerController',
             'reload':true
-          });
+          })
+          .when('/quizResult',{
+               'templateUrl': 'html/result.html'
+             });
+
 
 
 });

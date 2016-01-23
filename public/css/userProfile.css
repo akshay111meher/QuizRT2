@@ -12,7 +12,7 @@
   white-space: nowrap;
   width: 104%;
   display: inline-block;
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
   margin-top: 20px;
 }
@@ -55,6 +55,10 @@
   position: relative;
 }
 
+.content{
+  padding:25px;
+}
+
 
   #GamesInfo{
     border-left: 2px red solid;
@@ -74,9 +78,7 @@
   color: green;
 }
 
-.userPage{
-  height:100%;
-}
+
 .played {
   color: slategray;
 }

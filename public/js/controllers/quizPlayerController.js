@@ -7,11 +7,12 @@ angular.module('quizRT')
 		console.log($rootScope.tId);
 		$scope.myscore = 0;
 		socket.emit('join',$rootScope.tId);
+
 		socket.on('startGame',function(gid){
 			console.log(gid);
 			$http.post('/quizPlayer/quizData')
 					.success(function(data, status, headers, config) {
-									$scope.time=3;
+									$scope.time=1;
 									console.log(data);
 						  		var timeInterval= $interval(function(){
 						  			$scope.time--;
@@ -22,8 +23,8 @@ angular.module('quizRT')
 											$scope.topperImage = "/images/userProfileImages/akshayk.jpg"
 											if(questionCounter == data.questions.length){
 												$interval.cancel(timeInterval);
-												socket.emit('leaveGame',"leaving the game");
-												// $route.reload();
+												//socket.emit('leaveGame',"leaving the game");
+												$location.path('/login');
 												// $location.path('/login');
 												// $window.location.href='/#login';
 												location.replace('/');
@@ -31,7 +32,6 @@ angular.module('quizRT')
 											else{
 												temp = loadNextQuestion(data,questionCounter);
 												$scope.changeColor = function(id,element){
-
 														if(id == "option"+(temp.correctIndex)){
 							                $(element.target).addClass('btn-success');
 															$scope.myscore = $scope.myscore + $scope.time + 10;
@@ -42,6 +42,7 @@ angular.module('quizRT')
 															$scope.myscore = $scope.myscore - 5;
 							              }
 							              $scope.isDisabled = true;
+														socket.emit('updateStatus',{score:$scope.myscore,gameID:gid,name:'tom',image:$rootScope.myImage});
 							            };
 
 												$scope.question = temp.question;
@@ -53,8 +54,7 @@ angular.module('quizRT')
 												else{
 													$scope.questionImage = null;
 												}
-												socket.emit('updateStatus',{score:$scope.myscore,gameID:gid});
-												$scope.time = 3;
+												$scope.time = 10;
 											}
 										}
 
@@ -64,7 +64,13 @@ angular.module('quizRT')
 					.error(function(data, status, headers, config) {
 						console.log(error);
 					});
-		})
+		});
+		socket.on('takeScore', function(data){
+			console.log("takeScore log emitted");
+			console.log("rank= "+data.myRank);
+			$scope.myrank= data.myRank;
+			$scope.topperScore = data.topperScore;
+		});
  });
 
 function loadNextQuestion(data,questionNumber){

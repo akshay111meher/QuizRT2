@@ -77,6 +77,16 @@ module.exports = function(passport){
 					newUser.local.password = createHash(password);
 					newProfile.userId = username;
           newProfile.country=req.body.country;
+					newProfile.age=req.body.age;
+					newProfile.name=req.body.DisplayName;
+					newProfile.topicsPlayed=[];
+					newProfile.badge="Beginner";
+					newProfile.imageLink="/images/userProfileImages/user.png";
+					newProfile.wins=0;
+					newProfile.totalGames=0;
+           console.log("**********************");
+					console.log(newProfile);
+					   console.log("**********************");
 					// save the user
 					newUser.save(function(err) {
 						if (err){
@@ -84,7 +94,7 @@ module.exports = function(passport){
 							throw err;
 						}
 						console.log(newUser.local.username + ' Registration succesful');
-						//return done(null, newUser);
+						return done(null, newUser);
 					});
 					newProfile.save(function(err) {
 						if (err){
@@ -92,7 +102,7 @@ module.exports = function(passport){
 							throw err;
 						}
 						console.log(newProfile.userId + ' Registration succesful');
-						//return done(null, newProfile);
+						return done(null, newProfile);
 					});
 				}
 			});
@@ -103,7 +113,7 @@ module.exports = function(passport){
 	    clientID: configAuth.facebookAuth.clientID,
 	    clientSecret: configAuth.facebookAuth.clientSecret,
 	    callbackURL: configAuth.facebookAuth.callbackURL,
-			profileFields:['id','email','name','displayName']
+			profileFields:['id','email','name','displayName','photos']
 	  },
 	  function(accessToken, refreshToken, profile, done) {
 	    	process.nextTick(function(){
@@ -119,12 +129,34 @@ module.exports = function(passport){
 	    				newUser.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;
 	    				newUser.facebook.email = profile.emails[0].value;
 
+							var newProfile=new Profile();
+							newProfile.userId = profile.id;
+							newProfile.name=profile.name.givenName +' ' + profile.name.familyName;
+							newProfile.country='India';
+		 					newProfile.age=20;
+		 					//newProfile.name=req.body.DisplayName;
+		 					newProfile.topicsPlayed=[];
+		 					newProfile.badge="Beginner";
+		 					newProfile.imageLink=profile.photos[0].value;
+		 					newProfile.wins=0;
+		 					newProfile.totalGames=0;
+		            console.log("**********************");
+		 					console.log(newProfile);
 	    				newUser.save(function(err){
 	    					if(err)
 	    						throw err;
 	    					return done(null, newUser);
 	    				})
 	    				console.log(profile);
+							newProfile.save(function(err) {
+								if (err){
+									console.log('Error in Saving user: '+err);
+									throw err;
+								}
+								//req.session.user = newUser;
+								console.log(newProfile.userId + ' Registration succesful');
+								return done(null, newUser);
+							});
 	    			}
 	    		});
 	    	});

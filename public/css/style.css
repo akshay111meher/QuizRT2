@@ -18,15 +18,16 @@ body {
 
 .row{
 	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .container{
 background-color: #2f2d2d;
-width: 62%;
-margin-left: 19%;
-margin-right: 19%;
-border-radius: 0px;
+width: 80%;
+margin:auto;
+border-radius: 5px;
 margin-top:5px;
+
 }
 
 .topic-panel{

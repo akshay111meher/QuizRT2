@@ -79,7 +79,7 @@ var topic1={};
       });
   })
   .put(function(req,res){
-    var usr = req.session.user.toUpperCase();
+    var usr = req.session.user.local.username;
       Profile.findOne({userId: usr})
        .exec(function(err,data){
       var topicsPlayed=data["topicsPlayed"];
