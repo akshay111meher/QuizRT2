@@ -82,7 +82,12 @@ angular.module('quizRT', ['ngRoute', 'ngCookies']).run(function($cookies, $rootS
        .when('/quizPlayer',{
             'templateUrl': 'html/quizPlayer.html',
             'controller': 'quizPlayerController'
-          });
+          })
+
+          .when('/quizResult',{
+               'templateUrl': 'html/result.html'
+             });
+
 
 
 });
