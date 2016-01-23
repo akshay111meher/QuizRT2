@@ -27,7 +27,7 @@ module.exports = function(passport){
 		},
 		function(req, username, password, done) {
 			// check in mongo if a user with username exists or not
-			User.findOne({ 'username' :  username },
+			User.findOne({ 'local.username' :  username },
 				function(err, user) {
 					// In case of any error, return using the done method
 					if (err)
@@ -58,7 +58,7 @@ module.exports = function(passport){
            console.log(req.body.country);
            console.log("**********Hello*************");
 			// find a user in mongo with provided username
-			User.findOne({ 'username' :  username }, function(err, user) {
+			User.findOne({ 'local.username' :  username }, function(err, user) {
 				// In case of any error, return using the done method
 				if (err){
 					console.log('Error in register: '+err);
@@ -73,8 +73,8 @@ module.exports = function(passport){
 					var newUser = new User();
           var newProfile=new Profile();
 					// set the user's local credentials
-					newUser.username = username;
-					newUser.password = createHash(password);
+					newUser.local.username = username;
+					newUser.local.password = createHash(password);
 					newProfile.userId = username;
           newProfile.country=req.body.country;
 					// save the user
@@ -165,7 +165,7 @@ module.exports = function(passport){
 	));
 
 	var isValidPassword = function(user, password){
-		return bCrypt.compareSync(password, user.password);
+		return bCrypt.compareSync(password, user.local.password);
 	};
 	// Generates hash using bCrypt
 	var createHash = function(password){

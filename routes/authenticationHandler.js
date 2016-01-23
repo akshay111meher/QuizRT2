@@ -4,13 +4,14 @@ module.exports = function(passport){
 
 	//sends successful login state back to angular
 	router.get('/success', function(req, res){
-		req.session.user = req.user.username;
+		console.log(req.user);
+		req.session.user = req.user;
 		req.session.isLoggedIn = true;
 		req.session.tid = "not assigned to game";
-		console.log("this is session object");
-		 console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-			console.log(req.session);
-		 console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+		//console.log("this is session object");
+		 //console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+			//console.log(req.session);
+		 //console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		// console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		res.send({state: 'success',isLoggedIn: req.session.isLoggedIn, user: req.user ? req.user : null});
 

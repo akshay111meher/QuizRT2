@@ -7,8 +7,8 @@ angular.module('quizRT')
       $http.post('/auth/login', $scope.user).success(function(data){
         if(data.state == 'success'){
           $rootScope.authenticated = true;
-          $rootScope.current_user = data.user.username;
-          $location.path('userProfile/');
+          $rootScope.current_user = data.user.local.username;
+          $location.path('/userProfile');
           $cookies.put('isAuthenticated',true);
         }
         else{
