@@ -4,6 +4,7 @@ angular.module('quizRT')
      $scope.topic="";
      $rootScope.stylesheetName="topic";
      $rootScope.tId= $scope.topicID;
+
     //  console.log($rootScope.tId);
      var path = '/topicsHandler/topic/'+$scope.topicID;
      $rootScope.tId=$scope.topicID;
@@ -19,14 +20,15 @@ angular.module('quizRT')
            });
 
      $scope.followUnfollow=function(){
-       $http.put(path)
-            .success(function(data, status, headers, config) {
-              console.log(data);
-              $scope.topic = data;
-            })
-            .error(function(data, status, headers, config) {
-              console.log(error);
-            });
+       $scope.topic.isFollowed = !$scope.topic.isFollowed;
+      //  $http.put(path)
+      //       .success(function(data, status, headers, config) {
+      //         console.log(data);
+      //         $scope.topic = data;
+      //       })
+      //       .error(function(data, status, headers, config) {
+      //         console.log(error);
+      //       });
     };
 
   });

@@ -6,12 +6,22 @@
   padding: 10px;
 }
 
+.progress {
+  margin-top: 15px;
+}
+
 .topic-icon{
+  text-align: center;
 }
 
 .topic-icon img{
   margin: auto;
   border-radius: 20px;
+}
+
+.follow {
+  display: inline-block;
+  margin:auto;
 }
 
 .level{

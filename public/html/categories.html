@@ -1,41 +1,41 @@
-<div class="container" id="main" >
+<link href='https://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
 
-	<div class="navbar navbar-fixed-top">
-		<div class="heading pull-left">
-			<span id="heading-name">Topic Store</span>
+  <div class="container" >
+		<div class="row" id="Quizzer">
+			<a href="#/userProfile" class="col-xs-offset-1 col-xs-9">
+				Quizart
+			</a>
+			<div class="col-xs-2">
+				<a ng-click="logout()" class="glyphicon glyphicon-off">
+				</a>
+			</div>
 		</div>
-		<button type="submit" class="btn btn-default pull-right search-topic">
-			<span class="glyphicon glyphicon-search"></span>
-		</button>
-	</div><!--end navbar-->
 
-  <div class="content">
-	  <div class="row collection-widget" ng-repeat ="category in categories">
-			<div class="collection-widget-inside">
+  <div class="row topic-info" ng-repeat ="category in categories">
+      <div class="row">
+        <h4 class ="topic-category-name col-xs-9 pull-left ">{{category.categoryName}}</h4>
+      </div>
 
-			  <div class="row">
-					<h4 class ="topic-category-name col-xs-9 pull-left ">{{category.categoryName}}</h4>
-					<a class="col-xs-3 btn btn-default more-button pull-right" ng-click="showCategory(category._id)">More..</a>
-        </div>
+			<div class="topicsholder"  ng-repeat ="topic in category.categoryTopics|limitTo:5">
 
-        <div class="row topics-container" >
-				 	<div class="topics-container-inside">
-						<div  class="topic col-xs-3" ng-repeat ="topic in category.categoryTopics|limitTo:5">
-							<div ng-click="showTopic(topic._id)" class="topic-icon">
-								<a href="" class="topicPlay"><img ng-src="{{topic.topicIcon}}" alt=""></a>
-							</div><!--end topic-icon-->
-							<div ng-click="showTopic(topic._id)">
-								<a href=""><span class="topic-name">{{topic.topicName}}</span><br/></a>
-							</div>
-							<div ng-click="showCategory(category._id)">
-								<a href=""><span class="category-name">{{topic.topicCategory[0]}}</span></a>
-							</div>
-				 	 	</div><!--end to  pic-->
-			   	</div><!--end topics-container-inside-->
-				</div><!--end topics-container-->
+			<div class="topic-panel panel panel-default">
+				<div class="panel-body content">
+					<div ng-click="showTopic(topic._id)" class="topic-icon">
+						<a href="" class="topicPlay"><img ng-src="{{topic.topicIcon}}" alt=""></a>
+					</div><!--end topic-icon-->
+				</div>
+			<div class="panel-footer">
+					<div ng-click="showTopic(topic._id)">
+						<p>{{topic.topicName}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
 
-			</div><!--collection-widget-inside-->
-	  </div><!--end collection-widget-->
-	</div><!--end content-->
-
-</div><!--end main-->
+	</div> <!--topic info ends every category row -->
+ <!-- end topicinfo row -->
+		<div id="foot" class="row">
+			<div col-xs-12 class="play-button-bar">
+			</div>
+		</div>
+</div>
