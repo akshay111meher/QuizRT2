@@ -1,3 +1,5 @@
+
+
 <div  class="container" id="main">
 
   <div class="navbar">
@@ -20,15 +22,11 @@
   </div><!--end navigation bar -->
 
   <div class="row" id="statusInfo">
-    <div class="col-xs-4 col-sm-4 myPadding">
-      <button type="button" class="btn btn-large btn-success btn-block myPadding" id="correct-answers">Correct-{{correct-answerers}}</button>
-    </div>
-    <div class="col-xs-3 col-sm-3 myPadding">
-      <button type="button" class="btn btn-large btn-danger btn-block myPadding" id="incorrect-answers">Wrong-{{wrong-answerers}}</button>
-    </div>
-    <div class="col-xs-5 col-sm-5 myPadding">
-      <button type="button" class="btn btn-large btn-primary btn-block myPadding" id="unanswered">UnAttempt-{{un-attempted}}</button>
-    </div>
+    <h5 class="center-align">
+      <span class="label label-success">Correct - {{correct-answerers}}</span>
+      <span class="label label-danger">Wrong - {{wrong-answerers}}</span>
+      <span class="label label-primary">Skipped - {{un-attempted}}</span>
+    </h5>
   </div><!-- End status Info-->
 
   <div class="row" id="questionInfo">

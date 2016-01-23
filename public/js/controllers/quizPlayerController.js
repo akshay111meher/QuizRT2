@@ -12,7 +12,7 @@ angular.module('quizRT')
 			$scope.myscore = dat;
 			$http.post('/quizPlayer/quizData')
 					.success(function(data, status, headers, config) {
-									$scope.time=3;
+									$scope.time=1;
 						  		var timeInterval= $interval(function(){
 						  			$scope.time--;
 										if($scope.time == 0){
@@ -22,8 +22,8 @@ angular.module('quizRT')
 											$scope.topperImage = "/images/userProfileImages/akshayk.jpg"
 											if(questionCounter == data.questions.length){
 												$interval.cancel(timeInterval);
-												socket.emit('leaveGame',"leaving the game");
-												$location.path('/login');
+												//socket.emit('leaveGame',"leaving the game");
+												//$location.path('/login');
 											}
 											else{
 												temp = loadNextQuestion(data,questionCounter);
@@ -50,7 +50,7 @@ angular.module('quizRT')
 												else{
 													$scope.questionImage = null;
 												}
-												$scope.time = 10;
+												$scope.time = 5;
 											}
 										}
 

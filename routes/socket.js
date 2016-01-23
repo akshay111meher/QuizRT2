@@ -13,36 +13,37 @@ module.exports = function(server,sessionMiddleware) {
 
   io.on('connection', function(client) {
     client.on('join',function(data){
-      console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
-      console.log(data);
-      console.log("##############################");
-      console.log(client.request.session.passport.user);
-      console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
-      Players.set(client.request.session.passport.user,client);
-      gameBuilder.queueBuilder.addPlayer(data,client.request.session.passport.user);
-      games_ready = gameBuilder.topicPlayerCount();
-     if(games_ready.length!=0){
-       games_ready.forEach(function(data1){
-         console.log("11111111111111111111111111111111111111111111111111111111111");
-         console.log(data1);
-        console.log("11111111111111111111111111111111111111111111111111111111111");
-         var gameID = makeid();
-        //  Players.get(data1.players[0]).join(gameID);
-        //  Players.get(data1.players[1]).join(gameID,function(){
-        //    io.in(gameID).emit('startGame',"this is game id "+gameID);
-        //  });
-         data1.players.forEach(function(player,index){
-            Players.get(player).join(gameID);
-            if(index == data1.players.length - 1){
-                io.in(gameID).emit('startGame',"this is game id "+gameID);
-            }
-         });
-        //  io.emit('startGame',"this is game id "+gameID);
-       });
-     }
-     else{
-
-     }
+      client.emit('startGame',"xyz");
+    //   console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
+    //   console.log(data);
+    //   console.log("##############################");
+    //   console.log(client.request.session.passport.user);
+    //   console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
+    //   Players.set(client.request.session.passport.user,client);
+    //   gameBuilder.queueBuilder.addPlayer(data,client.request.session.passport.user);
+    //   games_ready = gameBuilder.topicPlayerCount();
+    //  if(games_ready.length!=0){
+    //    games_ready.forEach(function(data1){
+    //      console.log("11111111111111111111111111111111111111111111111111111111111");
+    //      console.log(data1);
+    //     console.log("11111111111111111111111111111111111111111111111111111111111");
+    //      var gameID = makeid();
+    //     //  Players.get(data1.players[0]).join(gameID);
+    //     //  Players.get(data1.players[1]).join(gameID,function(){
+    //     //    io.in(gameID).emit('startGame',"this is game id "+gameID);
+    //     //  });
+    //      data1.players.forEach(function(player,index){
+    //         Players.get(player).join(gameID);
+    //         if(index == data1.players.length - 1){
+    //             io.in(gameID).emit('startGame',"this is game id "+gameID);
+    //         }
+    //      });
+    // //     //  io.emit('startGame',"this is game id "+gameID);
+    //    });
+    //  }
+    //  else{
+    //
+    //  }
 
     });
 

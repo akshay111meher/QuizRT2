@@ -1,3 +1,20 @@
+.container{
+  border-style: solid;
+  border-width: medium;
+  border-color: #AAA;
+  background-color: #DDD;
+  width: 62%;
+  margin-left: 19%;
+  margin-right: 19%;
+  border-radius: 20px;
+  padding: 20px;
+}
+#questionInfoPanel h4{
+  border-color: #AAA;
+  border-width: medium;
+}
+
+
 col-xs-12 img{
   width: 70%;
   height: 72%;
@@ -32,8 +49,11 @@ col-xs-12 img{
   border-color: black;
   border-radius: 10px;
   padding: 10px;
-  height: 28%;
   margin: 0%;
+}
+
+.center-align {
+  text-align: center;
 }
 
 #questionInfoPanel{
@@ -41,8 +61,7 @@ col-xs-12 img{
 }
 
 body{
-  background-color: #DDD;
-  margin: 0px;
+  color:black;
   overflow: scroll;
 }
 
@@ -58,7 +77,8 @@ body{
 .btn-1{
   white-space: normal; !important
   overflow:hidden;
-  height: 100%;
+  height: 50px;
+  font-size: 1em;
   font-weight: bold;
   margin: 1%;
 }
@@ -141,24 +161,6 @@ body{
   text-align: center;
 }
 
-@media (min-width: 1200px) {
-  body{
-    background-color: black;
-    height: 500px;
-  }
-  .container{
-    border-style: solid;
-    border-width: medium;
-    border-color: #AAA;
-    background-color: #DDD;
-    width: 62%;
-    margin-left: 19%;
-    margin-right: 19%;
-    border-radius: 20px;
-    padding: 20px;
-  }
-  #questionInfoPanel h4{
-    border-color: #AAA;
-    border-width: medium;
-  }
+@media (min-width: 768px) {
+
 }
