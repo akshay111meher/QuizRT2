@@ -1,6 +1,6 @@
 var gameManager = require('./gameManager2/gameManager2.js');
-
-var maxPlayers=2;
+var leaderBoard = require('./gameManager2/leaderboard.js');
+var maxPlayers=3;
 // var games_ready;
 // var Players = new Map();
 module.exports = function(server,sessionMiddleware) {
@@ -14,15 +14,27 @@ module.exports = function(server,sessionMiddleware) {
   })
 
   io.on('connection', function(client) {
-    client.on('join',function(data){
+    client.on('updateStatus',function(data){
 
-      gameManager.addPlayer(data, client.request.sessionID, client);
+    });
+    client.on('join',function(data){
+      console.log(data);
+      console.log("88888888888888888888888888888888888888");
+      console.log(client.request.session.passport.user);
+      console.log("88888888888888888888888888888888888888");
+      gameManager.addPlayer(data, client.request.session.passport.user, client);
 
       if(gameManager.players.get(data).size==maxPlayers){
         var topicPlayers= gameManager.popPlayers(data);
-
-
+        console.log("666666666666666666666666666666666");
         console.log(topicPlayers);
+        console.log("666666666666666666666666666666666");
+
+        var gameId= makeid();
+
+        topicPlayers.forEach(function(player){
+        player.client.join(gameId);
+        });
       }
 
 
@@ -62,7 +74,6 @@ module.exports = function(server,sessionMiddleware) {
 
     client.on('leaveGame',function(data){
       console.log(data);
-      Players.delete(client.request.session.passport.user,client);
     });
 
     client.on('currentScore',function(data){

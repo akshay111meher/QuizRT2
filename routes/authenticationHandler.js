@@ -44,7 +44,7 @@ module.exports = function(passport){
 	router.get('/google', passport.authenticate('google', {scope: ['profile', 'email']}));
 
   router.get('/google/callback',
-	passport.authenticate('google', { successRedirect: '/profile',
+	passport.authenticate('google', { successRedirect: '/userProfile',
 																			failureRedirect: '/' }));
 
 	//log out
