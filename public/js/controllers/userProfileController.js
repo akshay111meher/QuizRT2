@@ -27,12 +27,16 @@ angular.module('quizRT')
         $scope.data = data;
         $scope.topicsFollowed = [];
         var k = 0;
+        if($scope.data.topicsPlayed!=null)
+        {
         for(var i = 0;i < $scope.data.topicsPlayed.length;i++){
           if($scope.data.topicsPlayed[i].isFollowed){
             $scope.topicsFollowed[k] =$scope.data.topicsPlayed[i];
             k++;
           }
         }
+      }
+        //console.log($scope.topicsFollowed);
         $scope.showFollowedTopic=function(topicID){
           var path = '/topic/'+topicID;
           $location.path(path);

@@ -50,7 +50,8 @@ angular.module('quizRT', ['ngRoute', 'ngCookies']).run(function($cookies, $rootS
          'templateUrl' : 'html/loginregister.html'
        })
        .when('/login', {
-      			'templateUrl': 'html/login.html'
+      			'templateUrl': 'html/login.html',
+            'controller':'authController'
       		})
       .when('/locallogin', {
          			'templateUrl': 'html/locallogin.html',

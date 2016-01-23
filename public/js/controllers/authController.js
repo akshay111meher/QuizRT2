@@ -19,11 +19,15 @@ angular.module('quizRT')
       });
     };
 
+  
+
     $scope.register = function(){
     $http.post('/auth/register', $scope.user).success(function(data){
       if(data.state == 'success'){
-        $rootScope.current_user = data.user.username;
-        $location.path('/userProfile');
+        $rootScope.current_user = data.user.local.username;
+        console.log('Hello2');
+        $location.path('/locallogin');
+        console.log('Helo3');
       }
       else{
         $scope.error_message = data.message;
