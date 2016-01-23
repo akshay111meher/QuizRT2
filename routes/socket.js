@@ -71,9 +71,6 @@ module.exports = function(server,sessionMiddleware) {
         leaderBoard.addPlayer(gameId, player.sid, player.clientData.client, player.clientData.name, 0,player.clientData.imageUrl);
         player.clientData.client.emit('startGame',gameId);
         });
-        // console.log("9999999999999999999999999999999999999999999999999");
-        // console.log(leaderBoard.leaderBoard.get(gameId));
-        // console.log("9999999999999999999999999999999999999999999999999");
       }
 
     });

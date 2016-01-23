@@ -12,7 +12,7 @@ angular.module('quizRT')
 			console.log(gid);
 			$http.post('/quizPlayer/quizData')
 					.success(function(data, status, headers, config) {
-									$scope.time=1;
+									$scope.time=3;
 									console.log(data);
 						  		var timeInterval= $interval(function(){
 						  			$scope.time--;
