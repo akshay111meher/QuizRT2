@@ -11,13 +11,13 @@ module.exports = function(passport){
 
 	// Passport needs to be able to serialize and deserialize users to support persistent login sessions
 	passport.serializeUser(function(user, done) {
-		//console.log('serializing user:',user.local.username);
+		//console.log('serializing user:',user.username);
 		done(null, user._id);
 	});
 
 	passport.deserializeUser(function(id, done) {
 		User.findById(id, function(err, user) {
-			//console.log('deserializing user:',user.local.username);
+			//console.log('deserializing user:',user.username);
 			done(err, user);
 		});
 	});
@@ -83,7 +83,7 @@ module.exports = function(passport){
 							console.log('Error in Saving user: '+err);
 							throw err;
 						}
-						console.log(newUser.username + ' Registration succesful');
+						console.log(newUser.local.username + ' Registration succesful');
 						//return done(null, newUser);
 					});
 					newProfile.save(function(err) {
