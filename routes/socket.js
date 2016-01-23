@@ -1,26 +1,43 @@
 var gameBuilder = require('./gameManager/gameBuilder.js')();
 var games_ready;
+var Players = new Map();
 module.exports = function(server,sessionMiddleware) {
   var io = require('socket.io')(server);
-  var Players = new Map();
   io.use(function(socket,next){
     sessionMiddleware(socket.request, socket.request.res, next);
   });
+  io.on('disconnect',function(client){
+      Players.delete(client.request.session.passport.user,client);
+      client.request.session.destroy();
+  })
 
   io.on('connection', function(client) {
     client.on('join',function(data){
+      console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
+      console.log(data);
+      console.log("##############################");
+      console.log(client.request.session.passport.user);
+      console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
       Players.set(client.request.session.passport.user,client);
       gameBuilder.queueBuilder.addPlayer(data,client.request.session.passport.user);
       games_ready = gameBuilder.topicPlayerCount();
-      console.log("11111111111111111111111111111111111111111111111111111111111");
-     console.log(games_ready[0]);
-     console.log("11111111111111111111111111111111111111111111111111111111111");
      if(games_ready.length!=0){
        games_ready.forEach(function(data1){
+         console.log("11111111111111111111111111111111111111111111111111111111111");
+         console.log(data1);
+        console.log("11111111111111111111111111111111111111111111111111111111111");
          var gameID = makeid();
-         Players.get(data1.players[0]).join(gameID);
-         Players.get(data1.players[1]).join(gameID);
-         io.in(gameID).emit('startGame',"his is game id "+gameID);
+        //  Players.get(data1.players[0]).join(gameID);
+        //  Players.get(data1.players[1]).join(gameID,function(){
+        //    io.in(gameID).emit('startGame',"this is game id "+gameID);
+        //  });
+         data1.players.forEach(function(player,index){
+            Players.get(player).join(gameID);
+            if(index == data1.players.length - 1){
+                io.in(gameID).emit('startGame',"this is game id "+gameID);
+            }
+         });
+        //  io.emit('startGame',"this is game id "+gameID);
        });
      }
      else{
@@ -30,8 +47,9 @@ module.exports = function(server,sessionMiddleware) {
     });
 
 
-    client.on('disjoin',function(data){
-      // Players.delete(client.request.session.passport.user);
+    client.on('leaveGame',function(data){
+      console.log(data);
+      Players.delete(client.request.session.passport.user,client);
     });
 
     client.on('currentScore',function(data){

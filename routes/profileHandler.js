@@ -9,7 +9,7 @@ router.get('/profileData', function(req, res, next) {
      var usr = "qqqq";
    }
    else{
-      var usr = req.session.user.toUpperCase();
+      var usr = req.session.user.local.username.toUpperCase();
    }
   // console.log(usr + " ##########################################");
   // console.log("this is from profile controller\n"+req.session.isLoggedIn);

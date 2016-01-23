@@ -11,7 +11,7 @@
     "topicsPlayed":
     [
         {
-        "topicId":"Awards",
+        "topicId":"Football-Players",
         "gamesPlayed":45,
         "gamesWon":38,
         "level":63,
@@ -19,7 +19,7 @@
          "points":500
         },
         {
-        "topicId":"Growing-stuff",
+        "topicId":"Cricket-World-Cup",
         "gamesPlayed":5,
         "gamesWon":2,
         "level":29,
@@ -27,7 +27,7 @@
          "points":100
         },
         {
-        "topicId":"Nutcase-mechanics",
+        "topicId":"Cartoons",
         "gamesPlayed":10,
         "gamesWon":3,
         "level":16,
@@ -35,7 +35,7 @@
          "points":800
         },
         {
-        "topicId":"Inventors",
+        "topicId":"Game-of-Thrones",
         "gamesPlayed":9,
         "gamesWon":6,
         "level":22,
@@ -43,7 +43,7 @@
            "points":100
         },
         {
-       "topicId":"Machines",
+       "topicId":"Indian-Literature",
        "gamesPlayed":7,
        "gamesWon":5,
        "level":17,
@@ -51,7 +51,7 @@
         "points":800
         },
         {
-       "topicId":"Landmarks",
+       "topicId":"Indian-Politics",
        "gamesPlayed":8,
        "gamesWon":3,
        "level":34,
@@ -59,7 +59,7 @@
          "points":800
         },
         {
-       "topicId": "Wild-world",
+       "topicId": "Indian-Celebrities",
        "gamesPlayed":15,
        "gamesWon":10,
        "level":22,
@@ -67,7 +67,7 @@
         "points":300
         },
         {
-       "topicId":"Mountains",
+       "topicId":"Animals",
        "gamesPlayed":12,
        "gamesWon":7,
        "level":2,
@@ -75,7 +75,7 @@
         "points":800
         },
         {
-        "topicId":"Cities",
+        "topicId":"Birds",
        "gamesPlayed":20,
        "gamesWon":15,
        "level":27,
@@ -83,7 +83,7 @@
         "points":800
         },
         {
-        "topicId":"Blues",
+       "topicId":"Bollywood-Movies",
        "gamesPlayed":22,
        "gamesWon":13,
        "level":27,
@@ -91,7 +91,7 @@
         "points":400
         },
         {
-        "topicId": "Name-the-animal",
+        "topicId": "Harry-Potter-Movies",
        "gamesPlayed":120,
        "gamesWon":102,
        "level":54,
@@ -99,36 +99,12 @@
         "points":600
         },
         {
-        "topicId": "Manufacturers-and-models",
+        "topicId": "States-of-India",
        "gamesPlayed":21,
        "gamesWon":10,
        "level":7,
         "isFollowed":false,
          "points":200
-        },
-        {
-        "topicId":"Weird-cars-and-trivia",
-       "gamesPlayed":70,
-       "gamesWon":55,
-       "level":25,
-       "isFollowed":false,
-        "points":500
-        },
-        {
-        "topicId": "Great-games",
-       "gamesPlayed":200,
-       "gamesWon":159,
-       "level":78,
-        "isFollowed":true,
-         "points":200
-        },
-        {
-        "topicId": "Players",
-       "gamesPlayed":80,
-       "gamesWon":65,
-       "level":29,
-        "isFollowed":true,
-         "points":800
         }
    ]
 }

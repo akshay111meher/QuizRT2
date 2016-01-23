@@ -10,7 +10,7 @@ var Quiz = require('../models/quiz.js');
   var json=JSON.parse(data);
 
   var mongoose = require('mongoose');
-  mongoose.connect('mongodb://172.23.238.253/quizRT');
+  mongoose.connect('mongodb://localhost/quizRT');
 
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));

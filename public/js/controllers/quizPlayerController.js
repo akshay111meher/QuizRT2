@@ -2,16 +2,16 @@ var topScore = 0;
 var questionCounter = 0;
 var temp;
 angular.module('quizRT')
-	.controller('quizPlayerController', function(socket,$scope, $interval,$http,$rootScope){
+	.controller('quizPlayerController', function(socket,$scope,$location, $interval,$http,$rootScope){
 		$rootScope.stylesheetName="quizPlayer";
 		console.log($rootScope.tId);
 		$scope.myscore = 0;
 		socket.emit('join',$rootScope.tId);
-		socket.on('startGame',function(data){
-			console.log(data);
+		socket.on('startGame',function(dat){
+			console.log(dat);
+			$scope.myscore = dat;
 			$http.post('/quizPlayer/quizData')
 					.success(function(data, status, headers, config) {
-
 									$scope.time=3;
 						  		var timeInterval= $interval(function(){
 						  			$scope.time--;
@@ -22,6 +22,8 @@ angular.module('quizRT')
 											$scope.topperImage = "/images/userProfileImages/akshayk.jpg"
 											if(questionCounter == data.questions.length){
 												$interval.cancel(timeInterval);
+												socket.emit('leaveGame',"leaving the game");
+												$location.path('/login');
 											}
 											else{
 												temp = loadNextQuestion(data,questionCounter);
@@ -53,8 +55,6 @@ angular.module('quizRT')
 										}
 
 						  		},1000);
-
-						console.log(data);
 
 					})
 					.error(function(data, status, headers, config) {
