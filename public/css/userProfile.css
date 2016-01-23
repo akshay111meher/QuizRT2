@@ -1,142 +1,145 @@
-body{
-  background-color: #524f4f;
-  color: #ccc;
-  font-size: 12px;
+
+.badge{
+  position: absolute;;
+    top: 0px;
+    right: 0px;
+    width: 30px;
+    border-radius: 5px;
+    background-color: #337ab7;
+    color: white;
 }
-.container{
-/*border-style: solid;
-border-width: medium;
-border-color: #AAA;*/
-background-color: #2f2d2d;
-width: 62%;
-margin-left: 19%;
-margin-right: 19%;
-border-radius: 5px;
-padding: 20px;
-margin-top:5px;
+.topic-info{
+  white-space: nowrap;
+  width: 104%;
+  display: inline-block;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin-top: 20px;
+}
+.topic-info .topicsholder{
+  width:25%;
+  height:80%
+  padding: 5px 5px 5px 5px;
+  display: inline-block;
+  margin: 0px 3px;
+}
+.panel-body {
+  padding: 0;
+}
+.topicsholder img
+{
+  height:100%;
+  width:100%;
+}
+
+.panel-footer {
+  position:relative;
+  padding:10px 5px;
+  font-size: 1.1em;
+  color: slategrey;
+  word-wrap: break-word;
+}
+.panel-footer p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.win-loss {
+  position:absolute;
+  bottom: 3%;
+  right: 3%;
+  font-weight: bold;
+}
+.content {
+  position: relative;
+}
+
+
+  #GamesInfo{
+    border-left: 2px red solid;
+    padding-top:5px;
+    color:white;
+  }
+
+  #topics{
+    background-color:lightyellow;
+    font-size:23px;
+    color:black;
+    text-align: center;
+    }
+
+
+.wins{
+  color: green;
+}
+
+.played {
+  color: slategray;
+}
+
+.btn-height
+{
+height:100%;
 }
 
 #Quizzer{
   background-color:#337ab7;
   text-align:center;
   color:white;
-  padding-top: 15px;
+  font-size: 30px;
+  padding-top: 2px;
 }
 
-@media (max-width:550px){
-  h4{font-size: 1.1em;}
+.play-button-bar{
+  text-align: center;
+}
+
+.play-now-button{
+  width:100px;
+}
+
+.topicName{
+  font-family: Bitter;
+  font-size: 1.3em;
+  padding-left:2px;
+  word-wrap: break-word;
+}
+
+.topics-info .wins{
+  margin-left: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.usermiddle{
+  color:white;
+}
+
+.user{
+  background-color:rgb(67, 73, 74);
+  padding-top: 30px;
+}
+
+#win, #games, #age, #winpercentage{
+text-align: center;
+}
+
+@media(min-width:768px){
+
+  h4 {
+    font-size: 1.3em;
+  }
   h6{
-    font-size:8px;
+    font-size: 1.2em;
   }
 
-  h2{font-size:1.5em;}
-
-  h3{font-size: 1.2em;}
-
-  .container{
-  /*border-style: solid;
-  border-width: medium;
-  border-color: #AAA;*/
-  width: 100%;
-  margin-left: 5%;
-  margin-right: 5%;
-  border-radius: 5px;
-  padding: 20px;
-  margin-top:5px;
-  }
-
-  .topicsinfo .badge{
-    position: absolute;
-    top:0;
-    right:20px;
-    width:15px;
-    font-size: 8px;
-  }
-
-  .Gamesinfo{
-    color:white;
-  }
-
-  #badge,#country,#age{
-    font-size: 1em;
-    padding-bottom: 4px;
-  }
-
-  #games{
-    font-size: 1em;
-    margin-bottom: 5px;
-  }
-
-  #UserName{
-    padding-right: 3px;
-    border-right: 1px pink solid;
-    font-size: 1em;
-  }
-
-  .topicsinfo .col-xs-2 .topicName{
-    font-size: 9px;
-  }
-
-  .topicsinfo .col-xs-2 .wins{
-    font-size: 7px;
-    font-weight: bold;
-  }
-  #Quizzer{
-    font-size: 2em;
-  }
-
-  .winpic
- {
-   height:30px;
- }
- .topicsinfo .topicsholder{
-   width:25%;
-   height:40%;
-   padding: 5px 5px 5px 5px;
- }
- .topicsholder img
- {
-   height:60%;
-   width:70%;
- }
-
-}
-
-@media(min-width:550px){
-
-  h4,h6{font-size: 16px;}
-
-  p{font-size:18px;}
+  p{font-size:1em;}
 
   #button-height a{
     font-size:20px;
   }
 
-  .topicsinfo .badge{
-    position: absolute;
-    top:0;
-    right:50px;
-    width:30px;
-    font-size: 16px;
-    background-color: #337ab7;
-    border-radius: 2px;
-  }
-
-  #GamesInfo{
-    color:white;
-  }
-
-  .topicsinfo .col-xs-2 .topicName{
-    font-family: Bitter;
-    font-size: 16px;
-    padding-left:2px;
-  }
-
-  .topicsinfo .col-xs-2 .wins{
-    margin-left: 0;
-    font-size: 14px;
-    font-weight: bold;
-  }
 
   #badge,#country{
     font-size: 20px;
@@ -147,79 +150,156 @@ margin-top:5px;
     margin-bottom: 7px;
   }
 
-  #UserName{
-    padding-right: 3px;
-    border-right: 1px  red solid;
-    font-size: 20px;
+  .glyph {
+    font-size: 4em;
   }
-  .topicsinfo .topicsholder{
-    width:25%;
-    height:80%
-    padding: 5px 5px 5px 5px;
-  }
-  .topicsholder img
-  {
-    height:70%;
-    width:70%;
-  }
-  #Quizzer{
-    background-color:#337ab7;
-    text-align:center;
-    color:white;
-    font-size: 30px;
+
+  .user {
     padding-top: 15px;
+    padding-bottom: 15px;
   }
-    #GamesInfo{
-        border-left: 2px red solid;
-      padding-top:5px;
-      color:white;
-    }
 
-      #topics{
-        background-color:lightyellow;
-        font-size:23px;
-        color:black;
-        text-align: center;
-      }
+}
+
+@media (min-width:500px) and (max-width:768px){
+  h4 {
+    font-size: 2em;
+  }
+
+  h5 {
+    font-size: 1.5em;
+  }
+
+  h6 {
+    font-size: 1.2em;
+  }
+
+  p {
+    font-size:1em;
+  }
+
+  #button-height a {
+    font-size:20px;
+  }
 
 
-        .topicsinfo{
-          margin-bottom: 5px;
-        }
-        .winpic
-       {
-         height:60px;
-       }
+  #badge,#country {
+    font-size: 1em;
+  }
+
+  .Following,.Followers,.game{
+    font-size: 20px;
+    margin-bottom: 7px;
+  }
+
+  .glyph {
+    font-size: 2em;
+  }
+
+  #GamesInfo {
+    padding-top:5px;
+    color:white;
+    border:none;
+  }
+
+  #topics {
+    background-color:lightyellow;
+    color:black;
+    text-align: center;
+    padding-bottom: 0px;
+  }
+  .user {
+      padding-top: 15px;
+   }
+
+   .container {
+     width: 100%;
+     margin: 0px;
+   }
+
+   .panel-body {
+     padding: 0;
+   }
 
 
-} /* end media queries */
+   .topicsholder img {
+     height:100%;
+     width:100%;
+   }
+}
+
+
+ /* end media queries */
 @media (min-width: 900px) {
-  body{
-    background-color: #524f4f;
-    color: #ccc;
+}
+
+@media (max-width:500px){
+  h4 {
+    font-size: 2em;
   }
-.container{
-  /*border-style: solid;
-  border-width: medium;
-  border-color: #AAA;*/
-  background-color: #2f2d2d;
-  width: 62%;
-  margin-left: 19%;
-  margin-right: 19%;
-  border-radius: 5px;
-  padding: 20px;
-  margin-top:5px;
-}
+
+  h5 {
+    font-size: 1.5em;
+  }
+
+  h6 {
+    font-size: 1.2em;
+  }
+
+  p {
+    font-size:1em;
+  }
+
+  #button-height a {
+    font-size:20px;
+  }
+
+
+  #badge,#country {
+    font-size: 1em;
+  }
+
+  .Following,.Followers,.game{
+    font-size: 20px;
+    margin-bottom: 7px;
+  }
+
+  .glyph {
+    font-size: 2em;
+  }
+
+  #GamesInfo {
+    padding-top:5px;
+    color:white;
+    border:none;
+  }
+
+  #topics {
+    background-color:lightyellow;
+    color:black;
+    text-align: center;
+    padding-bottom: 0px;
+  }
+  .user {
+      padding-top: 15px;
+   }
+
+   .container {
+     width: 100%;
+     margin: 0px;
+   }
+
+   .panel-body {
+     padding: 0;
+   }
+
+
+   .topicsholder img {
+     height:100%;
+     width:100%;
+   }
 }
 
-.wins{
-  color: #72af21;
-}
-
-.btn-height
-{
-height:100%;
-}
 #foot .btn1 {
             background-color: green;
             color:white;
@@ -243,35 +323,3 @@ height:100%;
       padding:0px 0px 0px 0px;
        font-size: 20px;
   }
-
-
-
-  .usermiddle{
-
-    color:white;
-  }
-
-  .user{
-    background-color:rgb(67, 73, 74);
-    padding-top: 30px;
-  }
-
- #win{
-  text-align: center;
-
-}
-#games
-{
-  text-align: center;
-}
-#age
-{
-  padding-left: 3px;
-}
- #winpercentage
-{
-  text-align: center;
-}
-.topicsinfo{
-  padding-top:20px;
-}
