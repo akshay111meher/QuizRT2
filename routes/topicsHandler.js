@@ -30,7 +30,7 @@ var topic1={};
 	});
   router.route('/topic/:id')
     .get(function(req,res){
-      var usr = req.session.user.toUpperCase();
+      var usr = req.session.user.local.username.toUpperCase();
       topicInst = req.params.id;
       console.log("/////////////////////////////////////////////////");
       console.log(topicInst);

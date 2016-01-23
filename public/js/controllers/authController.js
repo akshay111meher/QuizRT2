@@ -32,10 +32,10 @@ angular.module('quizRT')
 
   };
 
-  // $scope.logout= function(){
-  //   console.log('+++++++++++++++++logout called');
-  //   $cookies.put('isAuthenticated',false);
-  //   // $location.path('/login');
-  // }
+   $rootScope.logout= function(){
+    //console.log('+++++++++++++++++logout called');
+    $cookies.put('isAuthenticated',false);
+    $location.path('/login');
+  }
 
   });
