@@ -10,10 +10,7 @@ angular.module('quizRT')
 		socket.on('startGame',function(dat){
 			console.log(dat);
 			$scope.myscore = dat;
-			// var path='/quizPlayer/quizData/'+"Cartoons";
-			// console.log("kcdnkcd$$$$$^^^^^^^^^^^^^^^");
-			// console.log(path);
-			$http.post('/quizPlayer/quizData/');
+			$http.post('/quizPlayer/quizData')
 					.success(function(data, status, headers, config) {
 									$scope.time=1;
 						  		var timeInterval= $interval(function(){
