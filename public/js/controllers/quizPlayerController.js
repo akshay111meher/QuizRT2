@@ -28,7 +28,7 @@ angular.module('quizRT')
 											if(questionCounter == data.questions.length){
 												$interval.cancel(timeInterval);
 												//socket.emit('leaveGame',"leaving the game");
-												$location.path('/login');
+												//$location.path('/login');
 												// $location.path('/login');
 												// $window.location.href='/#login';
 												location.replace('/#quizResult');

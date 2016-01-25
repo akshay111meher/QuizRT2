@@ -29,6 +29,13 @@ module.exports = function(server,sessionMiddleware) {
         console.log("++++++++++++++++++++++++++++++++++++++++");
         console.log(tempLeaderBoard);
         console.log("++++++++++++++++++++++++++++++++++++++++");
+    //     //  Players.get(data1.players[1]).join(gameID,function(){
+    //     //    io.in(gameID).emit('startGame',"this is game id "+gameID);
+    //     //  });
+    //      data1.players.forEach(function(player,index){
+    //         Players.get(player).join(gameID);
+    //         if(index == data1.players.length - 1){
+    //         }
       });
       client.emit('takeResult',tempLeaderBoard);
     });
@@ -49,7 +56,6 @@ module.exports = function(server,sessionMiddleware) {
       }
     });
     client.on('updateStatus',function(data){
-
       // leaderBoard.addPlayer(data.gameID,client.request.session.passport.user,client,data.name,data.score,data.image);
       console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
       console.log(data);
