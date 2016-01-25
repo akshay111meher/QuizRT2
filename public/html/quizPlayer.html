@@ -23,16 +23,16 @@
 
   <div class="row" id="statusInfo">
     <h5 class="col-xs-12 center-align">
-      <span class="label label-success">Correct - {{correct-answerers}}</span>
-      <span class="label label-danger">Wrong - {{wrong-answerers}}</span>
-      <span class="label label-primary">Skipped - {{un-attempted}}</span>
+      <button class="btn btn-success"><span class="glyphicon glyphicon-user"></span><span class="glyphicon glyphicon-ok"></span> : {{correctAnswerers}}</button>
+      <button class="btn btn-danger"><span class="glyphicon glyphicon-user"></span><span class="glyphicon glyphicon-remove"></span> : {{wrongAnswerers}}</button>
+      <button class="btn btn-primary"><span class="glyphicon glyphicon-user"></span><span class="glyphicon glyphicon-ban-circle"></span> : {{unattempted}}</button>
     </h5>
   </div><!-- End status Info-->
 
   <div class="row" id="questionInfo">
     <div class="col-xs-12 col-sm-12" id="questionInfoPanel">
       <h4><strong>{{question}}</strong></h4>
-      <img src="{{questionImage}}" alt="">
+      <img class="img-responsive"style="height:100px; width:100px" src="{{questionImage}}" alt="">
     </div>
   </div><!-- end question info -->
 

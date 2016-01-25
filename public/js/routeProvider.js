@@ -24,7 +24,7 @@ angular.module('quizRT', ['ngRoute', 'ngCookies']).run(function($cookies, $rootS
       };
 })
   .factory('socket', function ($rootScope) {
-          var socket = io.connect('http://192.168.2.19:3000');
+          var socket = io.connect('http://172.23.238.171:3000');
     return {
       on: function (eventName, callback) {
        socket.on(eventName, function () {
@@ -87,7 +87,8 @@ angular.module('quizRT', ['ngRoute', 'ngCookies']).run(function($cookies, $rootS
             'reload':true
           })
           .when('/quizResult',{
-               'templateUrl': 'html/result.html'
+               'templateUrl': 'html/result.html',
+               'controller': 'resultController'
              });
 
 

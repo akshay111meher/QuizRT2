@@ -1,6 +1,6 @@
 var gameManager = require('./gameManager2/gameManager2.js');
 var leaderBoard = require('./gameManager2/leaderboard.js');
-var maxPlayers=2;
+var maxPlayers=3;
 
 module.exports = function(server,sessionMiddleware) {
   var io = require('socket.io')(server);
@@ -13,6 +13,41 @@ module.exports = function(server,sessionMiddleware) {
   })
 
   io.on('connection', function(client) {
+    client.on('getResult',function(data){
+      var tempLeaderBoard=[];
+      leaderBoard.leaderBoard.get(data).forEach(function(player) {
+        var temp={
+          'sid': player.sid,
+          'name': player.name,
+          'imageUrl': player.imageUrl,
+          'score': player.score
+        };
+        console.log("----------------------------------------");
+        console.log(player);
+        console.log("----------------------------------------");
+        tempLeaderBoard.push(temp);
+        console.log("++++++++++++++++++++++++++++++++++++++++");
+        console.log(tempLeaderBoard);
+        console.log("++++++++++++++++++++++++++++++++++++++++");
+      });
+      client.emit('takeResult',tempLeaderBoard);
+    });
+    client.on('confirmAnswer',function(data){
+      if(data.ans =='correct'){
+        //increment correct of allplayers
+        //decrement unsawered of all players
+        leaderBoard.leaderBoard.get(data.gameID).forEach(function(player){
+          player.client.emit('isCorrect');
+        });
+      }
+      else{
+        //increment wrong of allplayers
+        //decrement unsawered of all players
+        leaderBoard.leaderBoard.get(data.gameID).forEach(function(player){
+          player.client.emit('isWrong');
+        });
+      }
+    });
     client.on('updateStatus',function(data){
 
       // leaderBoard.addPlayer(data.gameID,client.request.session.passport.user,client,data.name,data.score,data.image);
@@ -50,15 +85,15 @@ module.exports = function(server,sessionMiddleware) {
             myRan= i+1;
           }
         }
-        player.client.emit('takeScore', {myRank: myRan,topperScore:leaderBoard.leaderBoard.get(data.gameID)[0].score});
+        player.client.emit('takeScore', {myRank: myRan,topperScore:leaderBoard.leaderBoard.get(data.gameID)[0].score,topperImage:leaderBoard.leaderBoard.get(data.gameID)[0].imageUrl});
       });
     });
 
     client.on('join',function(data){
-      gameManager.addPlayer(data, client.request.session.passport.user, client,'tom',"myimage");
+      gameManager.addPlayer(data.tid, client.request.session.passport.user, client,data.name,data.image);
 
-      if(gameManager.players.get(data).size==maxPlayers){
-        var topicPlayers= gameManager.popPlayers(data);
+      if(gameManager.players.get(data.tid).size==maxPlayers){
+        var topicPlayers= gameManager.popPlayers(data.tid);
         console.log("666666666666666666666666666666666");
         console.log(topicPlayers);
         console.log("666666666666666666666666666666666");

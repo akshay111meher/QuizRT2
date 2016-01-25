@@ -5,29 +5,33 @@ angular.module('quizRT')
 	.controller('quizPlayerController', function(socket,$route,$scope,$location, $interval,$http,$rootScope,$window){
 		$rootScope.stylesheetName="quizPlayer";
 		console.log($rootScope.tId);
+		$scope.question = "WAITING FOR OTHER PLAYERS";
 		$scope.myscore = 0;
-		socket.emit('join',$rootScope.tId);
+		$scope.correctAnswerers = 0;
+		$scope.wrongAnswerers = 0;
+		socket.emit('join',{tid:$rootScope.tId,name:$rootScope.fakeMyName,image:$rootScope.myImage});
 
 		socket.on('startGame',function(gid){
-			console.log(gid);
+			$rootScope.freakgid = gid;
 			$http.post('/quizPlayer/quizData')
 					.success(function(data, status, headers, config) {
-									$scope.time=3;
+									$scope.time=2;
 									console.log(data);
 						  		var timeInterval= $interval(function(){
 						  			$scope.time--;
 										if($scope.time == 0){
 											$scope.topperScore = topScore;
 											$scope.isDisabled = false;
-											$scope.myImage = "/images/userProfileImages/akshay.jpg"
-											$scope.topperImage = "/images/userProfileImages/akshayk.jpg"
+											$scope.wrongAnswerers=0;
+											$scope.correctAnswerers=0;
+											$scope.unattempted = 3; //this is hardcoded..get this data from the first socket
 											if(questionCounter == data.questions.length){
 												$interval.cancel(timeInterval);
 												//socket.emit('leaveGame',"leaving the game");
 												$location.path('/login');
 												// $location.path('/login');
 												// $window.location.href='/#login';
-												location.replace('/');
+												location.replace('/#quizResult');
 											}
 											else{
 												temp = loadNextQuestion(data,questionCounter);
@@ -35,14 +39,16 @@ angular.module('quizRT')
 														if(id == "option"+(temp.correctIndex)){
 							                $(element.target).addClass('btn-success');
 															$scope.myscore = $scope.myscore + $scope.time + 10;
+															socket.emit('confirmAnswer',{ans:"correct",gameID:gid});
 							              }
 							              else{
 							                $(element.target).addClass('btn-danger');
 							                angular.element('#option'+temp.correctIndex).addClass('btn-success');
 															$scope.myscore = $scope.myscore - 5;
+															socket.emit('confirmAnswer',{ans:"wrong",gameID:gid});
 							              }
 							              $scope.isDisabled = true;
-														socket.emit('updateStatus',{score:$scope.myscore,gameID:gid,name:'tom',image:$rootScope.myImage});
+														socket.emit('updateStatus',{score:$scope.myscore,gameID:gid,name:$rootScope.fakeMyName,image:$rootScope.myImage});
 							            };
 
 												$scope.question = temp.question;
@@ -54,7 +60,7 @@ angular.module('quizRT')
 												else{
 													$scope.questionImage = null;
 												}
-												$scope.time = 10;
+												$scope.time = 5;
 											}
 										}
 
@@ -70,7 +76,17 @@ angular.module('quizRT')
 			console.log("rank= "+data.myRank);
 			$scope.myrank= data.myRank;
 			$scope.topperScore = data.topperScore;
+			$scope.topperImage=data.topperImage;
+			console.log(data.topperImage);
 		});
+		socket.on('isCorrect',function(data){
+			$scope.correctAnswerers++;
+			$scope.unattempted--;
+		});
+		socket.on('isWrong',function(data){
+			$scope.wrongAnswerers++;
+			$scope.unattempted--;
+		})
  });
 
 function loadNextQuestion(data,questionNumber){
