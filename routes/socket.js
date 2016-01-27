@@ -1,6 +1,6 @@
 var gameManager = require('./gameManager2/gameManager2.js');
 var leaderBoard = require('./gameManager2/leaderboard.js');
-var maxPlayers=2;
+var maxPlayers=1;
 
 module.exports = function(server,sessionMiddleware) {
   var io = require('socket.io')(server);
@@ -104,6 +104,9 @@ module.exports = function(server,sessionMiddleware) {
     });
 
     client.on('join',function(data){
+      console.log('session object -------------------------------------');
+      console.log(client.request.session);
+      console.log('session object -------------------------------------');
       gameManager.addPlayer(data.tid, client.request.session.passport.user, client,data.name,data.image);
 
       if(gameManager.players.get(data.tid).size==maxPlayers){
