@@ -5,47 +5,76 @@ var mongoose = require( 'mongoose' );
 var Quiz = require("../models/quiz");
 var Question=require("../models/question.js");
 
-router.route('/quizData')
-    .post(function(req, res) {
+router.route('/quizData/:id')
+.post(function(req, res) {
 
-      var topicInst = "Cartoons";
+  var topicInst = req.params.id;
+  var temp=topicInst.split(",");
+  var topicId1=temp[0];
+  var groupId=temp[1];
 
-      Question.find({'topicId':topicInst})
+  Quiz.findOne({gameId:groupId})
+  .exec(function(err,data){
+    //  console.log(data);
+    if(data==null)
+    {
+      Question.find({'topicId':topicId1})
 
       .exec(function(err,data){
         var myReservoir = Reservoir(5);
         data.forEach(function(e) {
-              myReservoir.pushSome(e);
-          });
+          myReservoir.pushSome(e);
+        });
         var quiz1=new Quiz();
-        quiz1.topicId=topicInst;
+        quiz1.topicId=topicId1;
+        quiz1.gameId=groupId;
         var myReservoir = Reservoir(5);
         data.forEach(function(e) {
-              myReservoir.pushSome(e);
-          });
-          quiz1.questions=[];
-          for(var i=0;i<5;++i)
-          {
-            quiz1.questions.push(myReservoir[i]._id);
-      }
+          myReservoir.pushSome(e);
+        });
+        quiz1.questions=[];
+        for(var i=0;i<5;++i)
+        {
+          quiz1.questions.push(myReservoir[i]._id);
+        }
 
         console.log("hdkjsksdskdskdnskdnskd");
         console.log(quiz1);
         console.log("dvkdmfkdmfkdmd");
         quiz1.save(function(err){
-        if ( err ) console.log(err);
-          });
+          if ( err ) console.log(err);
 
-
-      Quiz.findOne()
-          .populate('questions')
-          .exec(function(err,data){
-            console.log(data);
-            res.send(data);
-          })
+                Quiz.findOne({gameId:groupId})
+                .populate('questions')
+                .exec(function(err,data){
+                  console.log("dcndjcndjcnjcnjdcndjcraghav");
+                  console.log(data);
+                  console.log("dcndjcndjcnjcnjdcndjcraghav");
+                  res.send(data);
+                });
+        });
 
       });
 
+
+
+    }
+
+else{
+  Quiz.findOne({gameId:groupId})
+  .populate('questions')
+  .exec(function(err,data){
+    console.log(data);
+    res.send(data);
+  });
+
+}
+
+
+
+
+
+});
 });
 
 module.exports= router;

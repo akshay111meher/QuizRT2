@@ -5,7 +5,9 @@ var quizSchema = mongoose.Schema({
 
   topicId: String,
   multiplier: Number,
-  questions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Question' }]
+  questions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Question' }],
+  gameId: {type:String, unique:true}
+
 });
 
 Quiz = mongoose.model('Quiz', quizSchema,'quiz_collection');
