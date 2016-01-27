@@ -11,11 +11,11 @@ angular.module('quizRT')
 		$scope.wrongAnswerers = 0;
 		socket.emit('join',{tid:$rootScope.tId,name:$rootScope.fakeMyName,image:$rootScope.myImage});
 
-		socket.on('startGame',function(gid){
-			$rootScope.freakgid = gid;
+		socket.on('startGame',function(startGameData.gameId){
+			$rootScope.freakgid = startGameData.gameId;
 			$http.post('/quizPlayer/quizData')
 					.success(function(data, status, headers, config) {
-									$scope.time=2;
+									$scope.time=5;
 									console.log(data);
 						  		var timeInterval= $interval(function(){
 						  			$scope.time--;
@@ -24,7 +24,7 @@ angular.module('quizRT')
 											$scope.isDisabled = false;
 											$scope.wrongAnswerers=0;
 											$scope.correctAnswerers=0;
-											$scope.unattempted = 3; //this is hardcoded..get this data from the first socket
+											$scope.unattempted = startGameData.maxPlayers; //this is hardcoded..get this data from the first socket
 											if(questionCounter == data.questions.length){
 												$interval.cancel(timeInterval);
 												//socket.emit('leaveGame',"leaving the game");
@@ -39,16 +39,16 @@ angular.module('quizRT')
 														if(id == "option"+(temp.correctIndex)){
 							                $(element.target).addClass('btn-success');
 															$scope.myscore = $scope.myscore + $scope.time + 10;
-															socket.emit('confirmAnswer',{ans:"correct",gameID:gid});
+															socket.emit('confirmAnswer',{ans:"correct",gameID:startGameData.gameId});
 							              }
 							              else{
 							                $(element.target).addClass('btn-danger');
 							                angular.element('#option'+temp.correctIndex).addClass('btn-success');
 															$scope.myscore = $scope.myscore - 5;
-															socket.emit('confirmAnswer',{ans:"wrong",gameID:gid});
+															socket.emit('confirmAnswer',{ans:"wrong",gameID:startGameData.gameId});
 							              }
 							              $scope.isDisabled = true;
-														socket.emit('updateStatus',{score:$scope.myscore,gameID:gid,name:$rootScope.fakeMyName,image:$rootScope.myImage});
+														socket.emit('updateStatus',{score:$scope.myscore,gameID:startGameData.gameId,name:$rootScope.fakeMyName,image:$rootScope.myImage});
 							            };
 
 												$scope.question = temp.question;
@@ -60,7 +60,7 @@ angular.module('quizRT')
 												else{
 													$scope.questionImage = null;
 												}
-												$scope.time = 5;
+												$scope.time = 10;
 											}
 										}
 

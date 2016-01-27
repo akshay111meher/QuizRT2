@@ -1,6 +1,6 @@
 var gameManager = require('./gameManager2/gameManager2.js');
 var leaderBoard = require('./gameManager2/leaderboard.js');
-var maxPlayers=3;
+var maxPlayers=2;
 
 module.exports = function(server,sessionMiddleware) {
   var io = require('socket.io')(server);
@@ -110,7 +110,7 @@ module.exports = function(server,sessionMiddleware) {
 
         topicPlayers.forEach(function(player){
         leaderBoard.addPlayer(gameId, player.sid, player.clientData.client, player.clientData.name, 0,player.clientData.imageUrl);
-        player.clientData.client.emit('startGame',gameId);
+        player.clientData.client.emit('startGame',{gameId:gameId,maxPlayers:maxPlayers);
         });
       }
 
