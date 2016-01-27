@@ -23,7 +23,7 @@ angular.module('quizRT')
 						  		var timeInterval= $interval(function(){
 						  			$scope.time--;
 										if($scope.time == 0){
-											$scope.topperScore = topScore;
+											// $scope.topperScore = topScore;
 											$scope.isDisabled = false;
 											$scope.wrongAnswerers=0;
 											$scope.correctAnswerers=0;
