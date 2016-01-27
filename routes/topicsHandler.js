@@ -7,6 +7,29 @@ var Topic = require("../models/topic");
 var Profile =require("../models/profile");
 var topicInst;
 var topic1={};
+var points = 0;
+var level =1;
+
+findPercentage = function(points,level)
+{
+  return ((points-levelScore(level))/(levelScore(level+1)-levelScore(level)))*100;
+}
+
+levelScore = function(n)
+{
+  return ((35 * (n * n)) +(95*n)-130);
+}
+findLevel = function(points){
+
+  i=1;
+  while(points>=levelScore(i))
+  {
+    i++;
+  }
+
+  return i-1;
+
+}
  router.route('/categories')
   .get(function(req, res){
     Category.find()
@@ -32,19 +55,14 @@ var topic1={};
     .get(function(req,res){
       var usr = req.session.user.local.username;
       topicInst = req.params.id;
-      console.log("/////////////////////////////////////////////////");
-      console.log(topicInst);
       req.session.tid = topicInst;
-      console.log("/////////////////////////////////////////////////");
-      console.log(req.session.tid);
-      console.log("/////////////////////////////////////////////////");
         Profile.findOne({userId: usr})
          .exec(function(err,data){
 
         topic1.topicWins=0;
         topic1.topicLosses=0;
         topic1["topicLevel"]=1;
-        topic1["levelPercentage"]=0;
+        topic1["levelPercentage"]=50;
         topic1["isFollowed"]= false;
 
         var topicsPlayed=data["topicsPlayed"];
@@ -59,8 +77,14 @@ var topic1={};
          var topic2=topicsPlayed[i];
          topic1["topicWins"]=topic2["gamesWon"];
          topic1["topicLosses"]=topic2["gamesPlayed"]-topic2["gamesWon"];
-         topic1["topicLevel"]=topic2["level"];
-         topic1["levelPercentage"]=50;
+         points =topic2["points"];
+         level= findLevel(points);
+         topic1["topicLevel"]=level;
+         console.log("djcnbjdcnjcnjdcraghav");
+         console.log(points);
+         console.log(findLevel(points));
+         console.log("jdsjdbjsdnksdksraghav");
+         topic1["levelPercentage"]=findPercentage(points,level);
          topic1["isFollowed"]=topic2["isFollowed"];
        }
       Topic.findById(req.params.id)
@@ -117,12 +141,22 @@ var topic1={};
      .exec(function(err,topic){
      if(err)
       return res.send(err);
+      if(data.topicsPlayed[i].isFollowed==true)
+      {
+        topic.topicFollowers=topic.topicFollowers+1;
+      }
+      else {
+        topic.topicFollowers=topic.topicFollowers-1;
+      }
+      topic.save(function(err){
+      if ( err ) console.log(err);
     topic1.topicId=topic._id;
     topic1.topicName=topic.topicName;
     topic1.topicDescription=topic.topicDescription;
     topic1.topicIcon = topic.topicIcon;
     topic1.topicFollowers=topic.topicFollowers;
     res.json(topic1);
+  });
     });
     });
 });

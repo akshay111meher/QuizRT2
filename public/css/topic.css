@@ -28,6 +28,14 @@
 .level{
 }
 
+#level-bar{
+  color:red;
+}
+
+.progess .ng-binding{
+  color:red;
+}
+
 .wins{
 }
 

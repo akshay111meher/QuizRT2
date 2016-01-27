@@ -32,6 +32,7 @@ module.exports = function(server,sessionMiddleware) {
                 topic.gamesWon++;
             }
             topic.points+=data.score;
+            topic.level = findLevel(topic.points);
           }
         });
         profileData.save();
@@ -103,6 +104,7 @@ module.exports = function(server,sessionMiddleware) {
         });
       }
     });
+
     client.on('updateStatus',function(data){
       // leaderBoard.addPlayer(data.gameID,client.request.session.passport.user,client,data.name,data.score,data.image);
       console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
@@ -132,14 +134,21 @@ module.exports = function(server,sessionMiddleware) {
       // console.log("*******************************************************************");
 
       // client.emit('takeScore', {myRank:myRan});
-      leaderBoard.leaderBoard.get(data.gameID).forEach(function(player){
-        var myRan=0;
-        for (var i = 0; i <leaderBoard.leaderBoard.get(data.gameID).length; i++) {
-          if (leaderBoard.leaderBoard.get(data.gameID)[i].sid == player.client.request.session.passport.user){
-            myRan= i+1;
-          }
-        }
-        player.client.emit('takeScore', {myRank: myRan,topperScore:leaderBoard.leaderBoard.get(data.gameID)[0].score,topperImage:leaderBoard.leaderBoard.get(data.gameID)[0].imageUrl});
+      // leaderBoard.leaderBoard.get(data.gameID).forEach(function(player){
+      //   var myRan=0;
+      //   for (var i = 0; i <leaderBoard.leaderBoard.get(data.gameID).length; i++) {
+      //     if (leaderBoard.leaderBoard.get(data.gameID)[i].sid == player.client.request.session.passport.user){
+      //       myRan= i+1;
+      //     }
+      //   }
+      //   player.client.emit('takeScore', {myRank: myRan,topperScore:leaderBoard.leaderBoard.get(data.gameID)[0].score,topperImage:leaderBoard.leaderBoard.get(data.gameID)[0].imageUrl});
+      // });
+
+      leaderBoard.leaderBoard.get(data.gameID).forEach(function(player, index){
+        console.log('my rank');
+        console.log(index+1);
+        console.log('my rank');
+        player.client.emit('takeScore', {myRank: index+1, topperScore:leaderBoard.leaderBoard.get(data.gameID)[0].score, topperImage:leaderBoard.leaderBoard.get(data.gameID)[0].imageUrl});
       });
     });
 
@@ -226,4 +235,20 @@ function getMatch(gameId){
     }
   }
   return null;
+};
+
+levelScore = function(n)
+{
+  return ((35 * (n * n)) +(95*n)-130);
+};
+findLevel = function(points){
+
+  i=1;
+  while(points>=levelScore(i))
+  {
+    i++;
+  }
+
+  return i-1;
+
 };
