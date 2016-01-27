@@ -1,5 +1,5 @@
-var gameManager = require('./gameManager2/gameManager2.js');
-var leaderBoard = require('./gameManager2/leaderboard.js');
+var gameManager = require('./gameManager/gameManager.js');
+var leaderBoard = require('./gameManager/leaderboard.js');
 var uuid= require('node-uuid');
 var Game = require("./../models/game");
 var Profile = require("./../models/profile");
@@ -241,9 +241,10 @@ levelScore = function(n)
 {
   return ((35 * (n * n)) +(95*n)-130);
 };
+
 findLevel = function(points){
 
-  i=1;
+  var i=1;
   while(points>=levelScore(i))
   {
     i++;

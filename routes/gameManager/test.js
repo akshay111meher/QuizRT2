@@ -1,24 +1,13 @@
-var GameBuilder= require('./gameBuilder')();
+var leaderBoard= require('./leaderboard.js');
 
-GameBuilder.queueBuilder.addPlayer('topic1','raghav1');
-GameBuilder.queueBuilder.addPlayer('topic2','raghav2');
-GameBuilder.queueBuilder.addPlayer('topic2','raghav3');
-GameBuilder.queueBuilder.addPlayer('topic1','raghav4');
-GameBuilder.queueBuilder.addPlayer('topic2','raghav5');
-GameBuilder.queueBuilder.addPlayer('topic1','raghav6');
-GameBuilder.queueBuilder.addPlayer('topic1','raghav11');
-GameBuilder.queueBuilder.addPlayer('topic2','raghav21');
-GameBuilder.queueBuilder.addPlayer('topic2','raghav31');
-GameBuilder.queueBuilder.addPlayer('topic1','raghav41');
-GameBuilder.queueBuilder.addPlayer('topic2','raghav51');
-GameBuilder.queueBuilder.addPlayer('topic1','raghav61');
-GameBuilder.queueBuilder.addPlayer('topic1','raghav221');
-GameBuilder.queueBuilder.addPlayer('topic1','raghav61111');
-GameBuilder.queueBuilder.addPlayer('topic1','raghav61231');
+for(i=1; i<=10; i++){
+leaderBoard.addPlayer((i%2)+'gid', 'sid'+i, 'clid'+i, 'name'+i, i, 'image'+i);
+if(i>2){
+console.log('game 0');
+console.log(leaderBoard.getGamePlayers('0gid'));
 
-//console.log(GameBuilder.queueBuilder);
+console.log('game 1');
+console.log(leaderBoard.getGamePlayers('1gid'));
+}
 
-// console.log(GameBuilder.queueBuilder.getTopicPlayers().get('topic1'));
-
-
-console.log(GameBuilder.topicPlayerCount());
+}

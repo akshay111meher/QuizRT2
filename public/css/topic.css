@@ -9,6 +9,7 @@
 
 .progress {
   margin-top: 15px;
+  padding: 0;
 }
 
 .topic-icon{
@@ -81,4 +82,10 @@
 .play-button button{
   width: 100%;
   font-size: 22px;
+}
+#levelperc{
+  color: white;
+}
+#levelnum{
+  color:white;
 }

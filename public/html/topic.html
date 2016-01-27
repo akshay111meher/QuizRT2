@@ -46,11 +46,12 @@
             </div>
           </div> <!--end losses-->
           <div class=" losses row">
-            <div class="progress col-xs-10">
-              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" id="level-bar" style="width:{{topic.levelPercentage}}%">
-                Level <span id="levelnum">{{topic.topicLevel}}</span> <span id="levelperc">{{topic.levelPercentage}}</span>% Complete (success)
-              </div>
+            <div class="progress col-xs-10 col-sm-10 col-md-10 col-lg-10">
+              <div class="progress-bar progress-bar-striped progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" id="level-bar" style="width:{{topic.levelPercentage}}%">
+                     <span id="levelperc">{{topic.levelPercentage}}%</span>
+                </div>
             </div>
+            <div class="col-xs-2 col-sm-2 col-lg-2">  <button class="btn btn-danger">Level <span id="levelnum">{{topic.topicLevel}}</span></button></div>
           </div>
 
         </div> <!--end topic-user-->
