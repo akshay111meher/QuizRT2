@@ -1,6 +1,6 @@
 var gameManager = require('./gameManager2/gameManager2.js');
 var leaderBoard = require('./gameManager2/leaderboard.js');
-var maxPlayers=3;
+var maxPlayers=2;
 
 module.exports = function(server,sessionMiddleware) {
   var io = require('socket.io')(server);
