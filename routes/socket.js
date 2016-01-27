@@ -3,7 +3,6 @@ var leaderBoard = require('./gameManager/leaderboard.js');
 var uuid= require('node-uuid');
 var Game = require("./../models/game");
 var Profile = require("./../models/profile");
-var maxPlayers=2;
 
 module.exports = function(server,sessionMiddleware) {
   var io = require('socket.io')(server);
@@ -153,6 +152,9 @@ module.exports = function(server,sessionMiddleware) {
     });
 
     client.on('join',function(data){
+      console.log('session object -------------------------------------');
+      console.log(client.request.session);
+      console.log('session object -------------------------------------');
       gameManager.addPlayer(data.tid, client.request.session.passport.user, client,data.name,data.image);
 
       if(gameManager.players.get(data.tid).size==maxPlayers){
