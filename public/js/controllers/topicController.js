@@ -22,15 +22,15 @@ angular.module('quizRT')
            });
 
      $scope.followUnfollow=function(){
-       $scope.topic.isFollowed = !$scope.topic.isFollowed;
-      //  $http.put(path)
-      //       .success(function(data, status, headers, config) {
-      //         console.log(data);
-      //         $scope.topic = data;
-      //       })
-      //       .error(function(data, status, headers, config) {
-      //         console.log(error);
-      //       });
+      // $scope.topic.isFollowed = !$scope.topic.isFollowed;
+       $http.put(path)
+            .success(function(data, status, headers, config) {
+              console.log(data);
+              $scope.topic = data;
+            })
+            .error(function(data, status, headers, config) {
+              console.log(error);
+            });
     };
 
   });

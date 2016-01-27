@@ -80,6 +80,9 @@ var topic1={};
   })
   .put(function(req,res){
     var usr = req.session.user.local.username;
+    console.log("jdnbjcnbdjcbdjcdraghavg");
+    console.log(usr);
+    console.log("jdnbjcnbdjcbdjcdraghavg");
       Profile.findOne({userId: usr})
        .exec(function(err,data){
       var topicsPlayed=data["topicsPlayed"];
@@ -117,12 +120,22 @@ var topic1={};
      .exec(function(err,topic){
      if(err)
       return res.send(err);
+      if(data.topicsPlayed[i].isFollowed==true)
+      {
+        topic.topicFollowers=topic.topicFollowers+1;
+      }
+      else {
+        topic.topicFollowers=topic.topicFollowers-1;
+      }
+      topic.save(function(err){
+      if ( err ) console.log(err);
     topic1.topicId=topic._id;
     topic1.topicName=topic.topicName;
     topic1.topicDescription=topic.topicDescription;
     topic1.topicIcon = topic.topicIcon;
-    topic1.topicFollowers=topic.topicFollowers;
+      topic1.topicFollowers=topic.topicFollowers;
     res.json(topic1);
+  });
     });
     });
 });
