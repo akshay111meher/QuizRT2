@@ -3,7 +3,7 @@ var leaderBoard = require('./gameManager/leaderboard.js');
 var uuid= require('node-uuid');
 var Game = require("./../models/game");
 var Profile = require("./../models/profile");
-
+var maxPlayers =4;
 module.exports = function(server,sessionMiddleware) {
   var io = require('socket.io')(server);
   io.use(function(socket,next){

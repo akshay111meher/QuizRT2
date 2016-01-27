@@ -64,6 +64,7 @@ findLevel = function(points){
         topic1["topicLevel"]=1;
         topic1["levelPercentage"]=50;
         topic1["isFollowed"]= false;
+        topic1['points']=0;
 
         var topicsPlayed=data["topicsPlayed"];
          var l=topicsPlayed.length;
@@ -82,6 +83,7 @@ findLevel = function(points){
          topic1["topicLevel"]=topic2["level"];
          topic1["levelPercentage"]=findPercentage(points,level);
          topic1["isFollowed"]=topic2["isFollowed"];
+         topic1["points"]=points;
        }
       Topic.findById(req.params.id)
        .exec(function(err,topic){
@@ -131,6 +133,7 @@ findLevel = function(points){
        topic1["topicLosses"]=topic2["gamesPlayed"]-topic2["gamesWon"];
        topic1["topicLevel"]=topic2["level"];
        topic1["levelPercentage"]=50;
+       topic1["points"]=topic2["points"];
        topic1["isFollowed"]=topic2["isFollowed"];
 
     Topic.findById(req.params.id)
