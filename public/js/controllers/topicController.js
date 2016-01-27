@@ -5,6 +5,8 @@ angular.module('quizRT')
      $rootScope.stylesheetName="topic";
      $rootScope.tId= $scope.topicID;
 
+     socket.emit('leaveGame', $scope.topicID);
+
     //  console.log($rootScope.tId);
      var path = '/topicsHandler/topic/'+$scope.topicID;
      $rootScope.tId=$scope.topicID;

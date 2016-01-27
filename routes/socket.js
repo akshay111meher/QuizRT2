@@ -106,8 +106,6 @@ module.exports = function(server,sessionMiddleware) {
 
         var gameId= makeid();
 
-
-
         topicPlayers.forEach(function(player){
         leaderBoard.addPlayer(gameId, player.sid, player.clientData.client, player.clientData.name, 0,player.clientData.imageUrl);
         player.clientData.client.emit('startGame',{gameId:gameId,maxPlayers:maxPlayers});
@@ -117,8 +115,9 @@ module.exports = function(server,sessionMiddleware) {
     });
 
 
-    client.on('leaveGame',function(data){
-      console.log(data);
+    client.on('leaveGame',function(topicID){
+      // console.log(data);
+      if(gameManager.players.get(topicID)) gameManager.players.get(topicID).delete(client.request.session.passport.user);
     });
 
   });
