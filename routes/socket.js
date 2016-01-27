@@ -1,5 +1,8 @@
 var gameManager = require('./gameManager2/gameManager2.js');
 var leaderBoard = require('./gameManager2/leaderboard.js');
+var uuid= require('node-uuid');
+var Game = require("./../models/game");
+var Profile = require("./../models/profile");
 var maxPlayers=2;
 
 module.exports = function(server,sessionMiddleware) {
@@ -13,6 +16,51 @@ module.exports = function(server,sessionMiddleware) {
   })
 
   io.on('connection', function(client) {
+    client.on('updateProfile',function(data){
+      console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+      console.log(data);
+      console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+      Profile.findOne({userId:data.userID},function(err,profileData){
+        profileData.totalGames++;
+        if(data.rank == 1){
+            profileData.wins++;
+        }
+        profileData.topicsPlayed.forEach(function(topic){
+          if(topic.topicId == data.topicid){
+            topic.gamesPlayed++;
+            if(data.rank == 1){
+                topic.gamesWon++;
+            }
+            topic.points+=data.score;
+          }
+        });
+        profileData.save();
+      });
+    });
+    client.on('storeResult',function(gameData){
+      var playerlist = [];
+      leaderBoard.leaderBoard.get(gameData).forEach(function(player,index){
+          var temp = {
+            'userId': player.sid,
+            'rank':index+1,
+            'score': player.score
+          }
+          playerlist.push(temp);
+      });
+      var game1= new Game({
+        gId: gameData,
+        players:playerlist
+      });
+      game1.save(function (err, data) {
+      if (err) console.log(err);
+      else {
+        console.log('$&$&$&$&$&$&$&$&$&$&$&$&$&$&$&&$&$$&$&$&$&$&$&$&$&$&$&$&$&$');
+        console.log('Saved ');
+        console.log('$&$&$&$&$&$&$&$&$&$&$&$&$&$&$&&$&$$&$&$&$&$&$&$&$&$&$&$&$&$');
+      }
+      });
+
+    });
     client.on('getResult',function(data){
       var tempLeaderBoard=[];
       leaderBoard.leaderBoard.get(data).forEach(function(player) {
@@ -138,13 +186,14 @@ function renderThegame(matches){
 
 function makeid()
 {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    for( var i=0; i < 5; i++ )
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-    return text;
+    // var text = "";
+    // var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    //
+    // for( var i=0; i < 10; i++ )
+    //     text += possible.charAt(Math.floor(Math.random() * possible.length));
+    //
+    // return text;
+    return uuid.v1();
 };
 
 function game(gameId,Players,isRunning){

@@ -11,10 +11,10 @@ angular.module('quizRT')
 		$scope.wrongAnswerers = 0;
 		socket.emit('join',{tid:$rootScope.tId,name:$rootScope.fakeMyName,image:$rootScope.myImage});
 
-		socket.on('startGame',function(startGameData.gameId){
+		socket.on('startGame',function(startGameData){
 			$rootScope.freakgid = startGameData.gameId;
 			var tId=$rootScope.tId;
-			var gId2=gid;
+			var gId2=startGameData.gameId;
 		  var path ='/quizPlayer/quizData/'+ tId + ',' + gId2;
 			$http.post(path)
 					.success(function(data, status, headers, config) {
@@ -23,7 +23,7 @@ angular.module('quizRT')
 						  		var timeInterval= $interval(function(){
 						  			$scope.time--;
 										if($scope.time == 0){
-											$scope.topperScore = topScore;
+											// $scope.topperScore = topScore;
 											$scope.isDisabled = false;
 											$scope.wrongAnswerers=0;
 											$scope.correctAnswerers=0;
@@ -34,6 +34,8 @@ angular.module('quizRT')
 												//$location.path('/login');
 												// $location.path('/login');
 												// $window.location.href='/#login';
+												$rootScope.finalScore = $scope.myscore;
+												$rootScope.finalRank = $scope.myrank;
 												location.replace('/#quizResult');
 											}
 											else{

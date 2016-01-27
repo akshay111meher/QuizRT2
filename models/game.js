@@ -2,13 +2,12 @@ var mongoose = require('mongoose');
 
 var gameSchema = mongoose.Schema({
 
-  gId: String,
-  quizId: String,
+  gId: {type:String, unique:true},
   players:[{
     userId: String,
     score: Number,
-    rank:number
-  }];
+    rank:Number
+  }]
 });
 
 Game = mongoose.model('Game', gameSchema,'game_collection');

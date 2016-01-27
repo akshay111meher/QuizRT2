@@ -39,6 +39,7 @@ angular.module('quizRT')
       $rootScope.myImage=$scope.data.imageLink;
       $rootScope.fakeMyName=$scope.data.name;
       $rootScope.topperImage=$scope.data.imageLink;
+      $rootScope.userIdnew=$scope.data.userId;
         //console.log($scope.topicsFollowed);
         $scope.showFollowedTopic=function(topicID){
           var path = '/topic/'+topicID;
