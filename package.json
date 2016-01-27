@@ -32,6 +32,7 @@
     "querystring": "^0.2.0",
     "redis": "^2.4.2",
     "redis-server": "0.0.1",
+    "reservoir": "^0.1.2",
     "serve-favicon": "~2.3.0",
     "session.socket.io": "^0.2.1",
     "session.socket.io-express4": "^0.1.1",
