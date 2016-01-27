@@ -110,7 +110,7 @@ module.exports = function(server,sessionMiddleware) {
 
         topicPlayers.forEach(function(player){
         leaderBoard.addPlayer(gameId, player.sid, player.clientData.client, player.clientData.name, 0,player.clientData.imageUrl);
-        player.clientData.client.emit('startGame',{gameId:gameId,maxPlayers:maxPlayers);
+        player.clientData.client.emit('startGame',{gameId:gameId,maxPlayers:maxPlayers});
         });
       }
 

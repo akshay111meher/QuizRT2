@@ -13,7 +13,10 @@ angular.module('quizRT')
 
 		socket.on('startGame',function(startGameData.gameId){
 			$rootScope.freakgid = startGameData.gameId;
-			$http.post('/quizPlayer/quizData')
+			var tId=$rootScope.tId;
+			var gId2=gid;
+		  var path ='/quizPlayer/quizData/'+ tId + ',' + gId2;
+			$http.post(path)
 					.success(function(data, status, headers, config) {
 									$scope.time=5;
 									console.log(data);
