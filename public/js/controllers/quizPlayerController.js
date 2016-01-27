@@ -11,10 +11,10 @@
 //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
-//   
+//
 //   Name of Developers  Raghav Goel, Kshitij Jain, Lakshay Bansal, Ayush Jain, Saurabh Gupta, Akshay Meher
-//  
- 
+//
+
 var topScore = 0;
 var questionCounter = 0;
 var temp;
@@ -82,7 +82,7 @@ angular.module('quizRT')
 												else{
 													$scope.questionImage = null;
 												}
-												$scope.time = 10;
+												$scope.time = 15;
 											}
 										}
 

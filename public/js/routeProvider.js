@@ -11,10 +11,10 @@
 //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
-//   
+//
 //   Name of Developers  Raghav Goel, Kshitij Jain, Lakshay Bansal, Ayush Jain, Saurabh Gupta, Akshay Meher
-//  
- 
+//
+
 angular.module('quizRT', ['ngRoute', 'ngCookies']).run(function($cookies, $rootScope,$http,$location) {
       if($cookies.get('isAuthenticated')) $location.path('/userProfile');
 
@@ -41,7 +41,7 @@ angular.module('quizRT', ['ngRoute', 'ngCookies']).run(function($cookies, $rootS
       };
 })
   .factory('socket', function ($rootScope) {
-          var socket = io.connect('http://172.23.238.206:3000');
+          var socket = io.connect('http://172.23.238.200:3000');
     return {
       on: function (eventName, callback) {
        socket.on(eventName, function () {

@@ -12,9 +12,9 @@
 //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
-//   
+//
 //   Name of Developers  Raghav Goel, Kshitij Jain, Lakshay Bansal, Ayush Jain, Saurabh Gupta, Akshay Meher
-//  
+//
 -->
 <link rel="stylesheet" href="../css/quizPlayer.css">
 <div class="container">
@@ -28,7 +28,7 @@
     </div>
   </div>
 
-    <div class="panel panel-default col-xs-3 col-sm-3 col-lg-3"  ng-repeat="player in players | limitTo: 3">
+    <div class="panel panel-default col-xs-4 col-sm-4 col-lg-4"  ng-repeat="player in players">
       <div class="panel-heading">
         <h3 class="panel-title">Rank:{{players.indexOf(player) + 1}}</h3>
       </div>
@@ -44,7 +44,7 @@
 
   <div id="foot" class="row">
     <div  class="col-xs-12 play-button-bar">
-        <a ng-href="/#/quizPlayer" id="startGameButton" class="btn btn-success">Play Again</a>
+        <a ng-href="/" id="startGameButton" class="btn btn-success">Play Again</a>
     </div>
   </div>
 </div>
