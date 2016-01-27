@@ -78,12 +78,8 @@ findLevel = function(points){
          topic1["topicWins"]=topic2["gamesWon"];
          topic1["topicLosses"]=topic2["gamesPlayed"]-topic2["gamesWon"];
          points =topic2["points"];
-         level= findLevel(points);
-         topic1["topicLevel"]=level;
-         console.log("djcnbjdcnjcnjdcraghav");
-         console.log(points);
-         console.log(findLevel(points));
-         console.log("jdsjdbjsdnksdksraghav");
+         level= topic2["level"];
+         topic1["topicLevel"]=topic2["level"];
          topic1["levelPercentage"]=findPercentage(points,level);
          topic1["isFollowed"]=topic2["isFollowed"];
        }
@@ -156,9 +152,40 @@ findLevel = function(points){
     topic1.topicIcon = topic.topicIcon;
     topic1.topicFollowers=topic.topicFollowers;
     res.json(topic1);
+
   });
     });
     });
 });
+})
+.post(function(req,res){
+  var usr = req.session.user.local.username;
+    Profile.findOne({userId: usr})
+     .exec(function(err,data){
+    var topicsPlayed=data["topicsPlayed"];
+     var l=topicsPlayed.length;
+     var tid=req.params.id;
+     req.session.tid=tid;
+     for(var i=0;i<l;++i)
+     {
+       if(topicsPlayed[i].topicId === req.params.id)
+        break;
+     }
+     if(i==l)
+     {
+       var topic3={
+           "topicId":req.params.id,
+           "gamesPlayed":0,
+           "gamesWon":0,
+           "level":1,
+           "isFollowed":false,
+           "points":0
+       }
+       data.topicsPlayed.push(topic3);
+     }
+     data.save(function(err){
+     if ( err ) console.log(err)});
+
+  });
 });
 module.exports= router;

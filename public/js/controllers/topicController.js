@@ -33,4 +33,17 @@ angular.module('quizRT')
             });
     };
 
+    $scope.addToPlayedGames=function(){
+
+      $http.post(path)
+           .success(function(data, status, headers, config) {
+             console.log(data);
+            // $scope.topic = data;
+           })
+           .error(function(data, status, headers, config) {
+             console.log(error);
+           });
+
+    }
+
   });
