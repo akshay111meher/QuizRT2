@@ -22,8 +22,8 @@
           <img ng-src="{{topic.topicIcon}}"  class="img-responsive" alt="">
           <div class="follow">
             <h3>
-            <span class="glyphicon glyphicon-heart" ng-hide="topic.isFollowed" ng-click="followUnfollow()"></span>
-            <span class="glyphicon glyphicon-heart-empty" ng-show="topic.isFollowed" ng-click="followUnfollow()"></span>
+            <span class="glyphicon glyphicon-heart" ng-show="topic.isFollowed" ng-click="followUnfollow()"></span>
+            <span class="glyphicon glyphicon-heart-empty" ng-hide="topic.isFollowed" ng-click="followUnfollow()"></span>
             <span>{{topic.topicFollowers}}</span>
           </h3>
           </div>
