@@ -30,7 +30,13 @@ var topic1={};
 	});
   router.route('/topic/:id')
     .get(function(req,res){
+      if(req.session.user.local){
       var usr = req.session.user.local.username;
+    }
+    if(req.session.user.facebook){
+    var usr = req.session.user.facebook.id;
+  }
+
       topicInst = req.params.id;
       console.log("/////////////////////////////////////////////////");
       console.log(topicInst);
@@ -79,7 +85,12 @@ var topic1={};
       });
   })
   .put(function(req,res){
+    if(req.session.user.local){
     var usr = req.session.user.local.username;
+  }
+  if(req.session.user.facebook){
+  var usr = req.session.user.facebook.id;
+}
       Profile.findOne({userId: usr})
        .exec(function(err,data){
       var topicsPlayed=data["topicsPlayed"];

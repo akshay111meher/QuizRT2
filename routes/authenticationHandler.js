@@ -3,6 +3,21 @@ var router = express.Router();
 module.exports = function(passport){
 
 	//sends successful login state back to angular
+	router.get('/fbSuccess',function(req,res) {
+		console.log(req.user);
+		req.session.user = req.user;
+		req.session.isLoggedIn = true;
+		req.session.tid = "not assigned to game";
+		//console.log("this is session object");
+		 //console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+			//console.log(req.session);
+		 //console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+		// console.log(req.user.username + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+		console.log(res);
+		res.jsonp({state: 'success',isLoggedIn: req.session.isLoggedIn, user: req.user ? req.user : null});
+
+	});
+
 	router.get('/success', function(req, res){
 		console.log(req.user);
 		req.session.user = req.user;
@@ -34,17 +49,24 @@ module.exports = function(passport){
 		failureRedirect: '/auth/failure'
 	}));
 
+/*
+  router.get('/fbtest',function(req,res){
+		res.send('Hello facebook');
+	})*/
+
 	//login using facebook
+
 	router.get('/facebook', passport.authenticate('facebook', {scope: ['email']}));
 
+
 	router.get('/facebook/callback',
-	passport.authenticate('facebook', { successRedirect: '/success',
+	passport.authenticate('facebook', { successRedirect: '/',
 																			failureRedirect: '/' }));
 	//login using google
 	router.get('/google', passport.authenticate('google', {scope: ['profile', 'email']}));
 
   router.get('/google/callback',
-	passport.authenticate('google', { successRedirect: '/userProfile',
+	passport.authenticate('google', { successRedirect: '/',
 																			failureRedirect: '/' }));
 
 	//log out

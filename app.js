@@ -23,7 +23,7 @@ var profileHandler = require('./routes/profileHandler');
 var index = require('./routes/index');
 var quizPlayerHandler = require('./routes/quizPlayerHandler');
 var authenticationHandler = require('./routes/authenticationHandler')(passport);
-var redis_store = new RedisStore({ host: '172.23.238.171', port: 6379, client: redisClient});
+var redis_store = new RedisStore({ host: '172.23.238.253', port: 6379, client: redisClient});
 mongoose.connect('mongodb://172.23.238.253/quizRT');
 var db = mongoose.connection;
 

@@ -1,8 +1,10 @@
 angular.module('quizRT')
- .controller('userProfileController',function($http,$scope,$rootScope,$location,$cookies){
-
+ .controller('userProfileController',function($http,$scope,$routeParams,$rootScope,$location,$cookies){
+   //console.log(JSON.parse($routeParams.ProfileData).user.facebook);
+   //console.log("Profile Contoeol");
+   console.log($routeParams);
    if(!$cookies.get('isAuthenticated')){
-      $location.path('/login');
+      //$location.path('/login');
     }
      $rootScope.stylesheetName="userProfile";
      $scope.a=7;

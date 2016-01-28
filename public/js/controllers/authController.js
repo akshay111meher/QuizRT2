@@ -19,8 +19,6 @@ angular.module('quizRT')
       });
     };
 
-  
-
     $scope.register = function(){
     $http.post('/auth/register', $scope.user).success(function(data){
       if(data.state == 'success'){

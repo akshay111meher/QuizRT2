@@ -3,6 +3,9 @@ var bodyParser = require('body-parser');
 var router = express.Router();
 
 var Profile = require("../models/profile");
+
+
+
 router.get('/profileData', function(req, res, next) {
 
    console.log(req.session.user);
@@ -10,7 +13,12 @@ router.get('/profileData', function(req, res, next) {
      var usr = "qqqq";
    }
    else{
+     if(req.session.user.facebook){
+      var usr = req.session.user.facebook.id;
+    }
+    if(req.session.user.local){
       var usr = req.session.user.local.username;
+    }
    }
 
   // console.log(usr + " ##########################################");
