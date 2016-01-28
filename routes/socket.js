@@ -11,16 +11,16 @@
 //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
-//   
+//
 //   Name of Developers  Raghav Goel, Kshitij Jain, Lakshay Bansal, Ayush Jain, Saurabh Gupta, Akshay Meher
-//  
- 
+//
+
 var gameManager = require('./gameManager/gameManager.js');
 var leaderBoard = require('./gameManager/leaderboard.js');
 var uuid= require('node-uuid');
 var Game = require("./../models/game");
 var Profile = require("./../models/profile");
-var maxPlayers =4;
+var maxPlayers =2;
 module.exports = function(server,sessionMiddleware) {
   var io = require('socket.io')(server);
   io.use(function(socket,next){

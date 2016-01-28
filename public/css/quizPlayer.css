@@ -11,10 +11,10 @@
 //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
-//   
+//
 //   Name of Developers  Raghav Goel, Kshitij Jain, Lakshay Bansal, Ayush Jain, Saurabh Gupta, Akshay Meher
-*/  
- 
+*/
+
 .container{
   border-color: #AAA;
   background-color: #f5f5f5;
@@ -94,7 +94,7 @@ body{
 }
 
 .myRow{
-  padding-top: 10%;
+  padding-top: 1%;
   margin-top: 2%;
   height: 20%;
 }
@@ -189,5 +189,20 @@ body{
 }
 
 @media (min-width: 768px) {
+
+
+  .questionImage{
+    width: 40%;
+    height: 72%;
+    margin: 0% 15%;
+    border-radius: 20px;
+    padding: 2%;
+    margin: auto;
+  }
+
+  .myRow{
+    margin-top: -20px;
+    height: 40%;
+  }
 
 }
