@@ -24,12 +24,16 @@ angular.module('quizRT')
       socket.on('takeResult',function(data) {
   			data.sort(function(a,b) {
   				return b.score - a.score;
-  			})
-        $scope.topicName = $rootScope.tID;
+  			});
+        $scope.topicName = $rootScope.tId;
   			$scope.players = data;
   			socket.emit('storeResult',$rootScope.freakgid);
   			console.log($rootScope.userIdnew);
   			socket.emit('updateProfile',{score:$rootScope.finalScore,rank:$rootScope.finalRank,topicid:$rootScope.tId,userID:$rootScope.userIdnew});//score and rank
       });
+      $scope.home=function()
+      {
+        location.replace("/");
+      }
 		},3000);
   });
