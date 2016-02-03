@@ -1,4 +1,3 @@
-<!--
 //Copyright {2016} {NIIT Limited, Wipro Limited}
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,28 +14,37 @@
 //   
 //   Name of Developers  Raghav Goel, Kshitij Jain, Lakshay Bansal, Ayush Jain, Saurabh Gupta, Akshay Meher
 //  
--->
-<!-- views/index.ejs -->
-<!doctype html>
-<html>
-<head>
-	<title>Node Authentication</title>
- <!-- load fontawesome -->
-	<style>
-		body 		{ padding-top:80px; }
-	</style>
-</head>
-<body>
-<div class="container">
+ 
+var play=new Map();
+module.exports={
+	players: play,
+	addPlayer: function(topicId, sid, client, name, imageUrl){
+		var clientData = {
+			client:client,
+			name:name,
+			imageUrl: imageUrl
+		};
+		if(play.get(topicId)==null){
+			var temp= new Map();
+			temp.set(sid, clientData);
+		 	play.set(topicId, temp);
+		}
+		else
+			play.get(topicId).set(sid, clientData);
+	},
 
-	<div class="jumbotron text-center">
-		<h1><span class="fa fa-lock"></span>QuizArt</h1>
-
-		<p>Login or Register with:</p>
-		<a ng-href="/#login" class="btn btn-default"><span class="fa fa-user"></span> Login</a>
-		<a ng-href="/#register" class="btn btn-default"><span class="fa fa-user"></span> Register</a>
-	</div>
-
-</div>
-</body>
-</html>
+	popPlayers: function(topicId){
+		// play.get(topicId).delete(sid);
+		// if(play.get(topicId).size==0)
+		// 	play.delete(topicId);
+			var topicPlayers=[];
+		play.get(topicId).forEach(function(item, key, value){
+			topicPlayers.push({
+				sid: key,
+				clientData: item
+			});
+		});
+		play.delete(topicId);
+		return topicPlayers;
+	}
+};

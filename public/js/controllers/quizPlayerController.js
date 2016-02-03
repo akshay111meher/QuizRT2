@@ -1,3 +1,20 @@
+//Copyright {2016} {NIIT Limited, Wipro Limited}
+//
+//   Licensed under the Apache License, Version 2.0 (the "License");
+//   you may not use this file except in compliance with the License.
+//   You may obtain a copy of the License at
+//
+//       http://www.apache.org/licenses/LICENSE-2.0
+//
+//   Unless required by applicable law or agreed to in writing, software
+//   distributed under the License is distributed on an "AS IS" BASIS,
+//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//   See the License for the specific language governing permissions and
+//   limitations under the License.
+//
+//   Name of Developers  Raghav Goel, Kshitij Jain, Lakshay Bansal, Ayush Jain, Saurabh Gupta, Akshay Meher
+//
+
 var topScore = 0;
 var questionCounter = 0;
 var temp;
@@ -11,26 +28,31 @@ angular.module('quizRT')
 		$scope.wrongAnswerers = 0;
 		socket.emit('join',{tid:$rootScope.tId,name:$rootScope.fakeMyName,image:$rootScope.myImage});
 
-		socket.on('startGame',function(gid){
-			$rootScope.freakgid = gid;
-			$http.post('/quizPlayer/quizData')
+		socket.on('startGame',function(startGameData){
+			$rootScope.freakgid = startGameData.gameId;
+			var tId=$rootScope.tId;
+			var gId2=startGameData.gameId;
+		  var path ='/quizPlayer/quizData/'+ tId + ',' + gId2;
+			$http.post(path)
 					.success(function(data, status, headers, config) {
-									$scope.time=2;
+									$scope.time=5;
 									console.log(data);
 						  		var timeInterval= $interval(function(){
 						  			$scope.time--;
 										if($scope.time == 0){
-											$scope.topperScore = topScore;
+											// $scope.topperScore = topScore;
 											$scope.isDisabled = false;
 											$scope.wrongAnswerers=0;
 											$scope.correctAnswerers=0;
-											$scope.unattempted = 3; //this is hardcoded..get this data from the first socket
+											$scope.unattempted = startGameData.maxPlayers; //this is hardcoded..get this data from the first socket
 											if(questionCounter == data.questions.length){
 												$interval.cancel(timeInterval);
 												//socket.emit('leaveGame',"leaving the game");
 												//$location.path('/login');
 												// $location.path('/login');
 												// $window.location.href='/#login';
+												$rootScope.finalScore = $scope.myscore;
+												$rootScope.finalRank = $scope.myrank;
 												location.replace('/#quizResult');
 											}
 											else{
@@ -39,16 +61,16 @@ angular.module('quizRT')
 														if(id == "option"+(temp.correctIndex)){
 							                $(element.target).addClass('btn-success');
 															$scope.myscore = $scope.myscore + $scope.time + 10;
-															socket.emit('confirmAnswer',{ans:"correct",gameID:gid});
+															socket.emit('confirmAnswer',{ans:"correct",gameID:startGameData.gameId});
 							              }
 							              else{
 							                $(element.target).addClass('btn-danger');
 							                angular.element('#option'+temp.correctIndex).addClass('btn-success');
 															$scope.myscore = $scope.myscore - 5;
-															socket.emit('confirmAnswer',{ans:"wrong",gameID:gid});
+															socket.emit('confirmAnswer',{ans:"wrong",gameID:startGameData.gameId});
 							              }
 							              $scope.isDisabled = true;
-														socket.emit('updateStatus',{score:$scope.myscore,gameID:gid,name:$rootScope.fakeMyName,image:$rootScope.myImage});
+														socket.emit('updateStatus',{score:$scope.myscore,gameID:startGameData.gameId,name:$rootScope.fakeMyName,image:$rootScope.myImage});
 							            };
 
 												$scope.question = temp.question;
@@ -60,7 +82,7 @@ angular.module('quizRT')
 												else{
 													$scope.questionImage = null;
 												}
-												$scope.time = 5;
+												$scope.time = 15;
 											}
 										}
 

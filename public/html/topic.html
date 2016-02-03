@@ -1,3 +1,21 @@
+<!--
+//Copyright {2016} {NIIT Limited, Wipro Limited}
+//
+//   Licensed under the Apache License, Version 2.0 (the "License");
+//   you may not use this file except in compliance with the License.
+//   You may obtain a copy of the License at
+//
+//       http://www.apache.org/licenses/LICENSE-2.0
+//
+//   Unless required by applicable law or agreed to in writing, software
+//   distributed under the License is distributed on an "AS IS" BASIS,
+//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//   See the License for the specific language governing permissions and
+//   limitations under the License.
+//   
+//   Name of Developers  Raghav Goel, Kshitij Jain, Lakshay Bansal, Ayush Jain, Saurabh Gupta, Akshay Meher
+//  
+-->
 <div class="container fullHeight">
 
   <div class="row" id="Quizzer">
@@ -22,8 +40,8 @@
           <img ng-src="{{topic.topicIcon}}"  class="img-responsive" alt="">
           <div class="follow">
             <h3>
-            <span class="glyphicon glyphicon-heart" ng-hide="topic.isFollowed" ng-click="followUnfollow()"></span>
-            <span class="glyphicon glyphicon-heart-empty" ng-show="topic.isFollowed" ng-click="followUnfollow()"></span>
+            <span class="glyphicon glyphicon-heart" ng-show="topic.isFollowed" ng-click="followUnfollow()"></span>
+            <span class="glyphicon glyphicon-heart-empty" ng-hide="topic.isFollowed" ng-click="followUnfollow()"></span>
             <span>{{topic.topicFollowers}}</span>
           </h3>
           </div>
@@ -46,11 +64,12 @@
             </div>
           </div> <!--end losses-->
           <div class=" losses row">
-            <div class="progress col-xs-10">
-              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" id="level-bar" style="width:{{topic.levelPercentage}}%">
-                Level <span id="levelnum">{{topic.topicLevel}}</span> <span id="levelperc">{{topic.levelPercentage}}</span>% Complete (success)
-              </div>
+            <div class="progress col-xs-10 col-sm-10 col-md-10 col-lg-10">
+              <div class="progress-bar progress-bar-striped progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" id="level-bar" style="width:{{topic.levelPercentage}}%">
+                     <span id="levelperc">{{topic.levelPercentage}}%</span>
+                </div>
             </div>
+            <div class="col-xs-2 col-sm-2 col-lg-2">  <button class="btn btn-info">Level <span id="levelnum">{{topic.topicLevel}}</span></button><button class="btn btn-success">EXP: <span id="exp">{{topic.points}}</span></button></div>
           </div>
 
         </div> <!--end topic-user-->
@@ -59,14 +78,10 @@
     </div><!--end topic-info-->
     <div id="foot" class="row">
 			<div  class="col-xs-12 play-button-bar">
-					<a ng-href="/#/quizPlayer" id="startGameButton" class="btn btn-success">Play Now</a>
+					<a ng-href="/#/quizPlayer" id="startGameButton" class="btn btn-success" ng-click="addToPlayedGames()">Play Now</a>
 			</div>
 		</div>
-    <!-- <div class="play-button">
-      <div>
-        <a id="startGameButton" ng-href="/#/quizPlayer">Play ----</a>
-      </div>
-    </div><!--end play-button-->
+
 
   </div><!--end content-->
 

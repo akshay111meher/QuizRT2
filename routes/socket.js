@@ -1,9 +1,28 @@
-var gameManager = require('./gameManager2/gameManager2.js');
-var leaderBoard = require('./gameManager2/leaderboard.js');
-var maxPlayers=3;
+//Copyright {2016} {NIIT Limited, Wipro Limited}
+//
+//   Licensed under the Apache License, Version 2.0 (the "License");
+//   you may not use this file except in compliance with the License.
+//   You may obtain a copy of the License at
+//
+//       http://www.apache.org/licenses/LICENSE-2.0
+//
+//   Unless required by applicable law or agreed to in writing, software
+//   distributed under the License is distributed on an "AS IS" BASIS,
+//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//   See the License for the specific language governing permissions and
+//   limitations under the License.
+//
+//   Name of Developers  Raghav Goel, Kshitij Jain, Lakshay Bansal, Ayush Jain, Saurabh Gupta, Akshay Meher
+//
 
+var gameManager = require('./gameManager/gameManager.js');
+var leaderBoard = require('./gameManager/leaderboard.js');
+var uuid= require('node-uuid');
+var Game = require("./../models/game");
+var Profile = require("./../models/profile");
+var maxPlayers =2;
 module.exports = function(server,sessionMiddleware) {
-  var io = require('socket.io')(server);
+  var io = require('socket.io').listen(server);
   io.use(function(socket,next){
     sessionMiddleware(socket.request, socket.request.res, next);
   });
@@ -12,7 +31,53 @@ module.exports = function(server,sessionMiddleware) {
       client.request.session.destroy();
   })
 
-  io.on('connection', function(client) {
+  io.sockets.on('connection', function(client) {
+    client.on('updateProfile',function(data){
+      console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+      console.log(data);
+      console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+      Profile.findOne({userId:data.userID},function(err,profileData){
+        profileData.totalGames++;
+        if(data.rank == 1){
+            profileData.wins++;
+        }
+        profileData.topicsPlayed.forEach(function(topic){
+          if(topic.topicId == data.topicid){
+            topic.gamesPlayed++;
+            if(data.rank == 1){
+                topic.gamesWon++;
+            }
+            topic.points+=data.score;
+            topic.level = findLevel(topic.points);
+          }
+        });
+        profileData.save();
+      });
+    });
+    client.on('storeResult',function(gameData){
+      var playerlist = [];
+      leaderBoard.leaderBoard.get(gameData).forEach(function(player,index){
+          var temp = {
+            'userId': player.sid,
+            'rank':index+1,
+            'score': player.score
+          }
+          playerlist.push(temp);
+      });
+      var game1= new Game({
+        gId: gameData,
+        players:playerlist
+      });
+      game1.save(function (err, data) {
+      if (err) console.log(err);
+      else {
+        console.log('$&$&$&$&$&$&$&$&$&$&$&$&$&$&$&&$&$$&$&$&$&$&$&$&$&$&$&$&$&$');
+        console.log('Saved ');
+        console.log('$&$&$&$&$&$&$&$&$&$&$&$&$&$&$&&$&$$&$&$&$&$&$&$&$&$&$&$&$&$');
+      }
+      });
+
+    });
     client.on('getResult',function(data){
       var tempLeaderBoard=[];
       leaderBoard.leaderBoard.get(data).forEach(function(player) {
@@ -55,6 +120,7 @@ module.exports = function(server,sessionMiddleware) {
         });
       }
     });
+
     client.on('updateStatus',function(data){
       // leaderBoard.addPlayer(data.gameID,client.request.session.passport.user,client,data.name,data.score,data.image);
       console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
@@ -84,18 +150,28 @@ module.exports = function(server,sessionMiddleware) {
       // console.log("*******************************************************************");
 
       // client.emit('takeScore', {myRank:myRan});
-      leaderBoard.leaderBoard.get(data.gameID).forEach(function(player){
-        var myRan=0;
-        for (var i = 0; i <leaderBoard.leaderBoard.get(data.gameID).length; i++) {
-          if (leaderBoard.leaderBoard.get(data.gameID)[i].sid == player.client.request.session.passport.user){
-            myRan= i+1;
-          }
-        }
-        player.client.emit('takeScore', {myRank: myRan,topperScore:leaderBoard.leaderBoard.get(data.gameID)[0].score,topperImage:leaderBoard.leaderBoard.get(data.gameID)[0].imageUrl});
+      // leaderBoard.leaderBoard.get(data.gameID).forEach(function(player){
+      //   var myRan=0;
+      //   for (var i = 0; i <leaderBoard.leaderBoard.get(data.gameID).length; i++) {
+      //     if (leaderBoard.leaderBoard.get(data.gameID)[i].sid == player.client.request.session.passport.user){
+      //       myRan= i+1;
+      //     }
+      //   }
+      //   player.client.emit('takeScore', {myRank: myRan,topperScore:leaderBoard.leaderBoard.get(data.gameID)[0].score,topperImage:leaderBoard.leaderBoard.get(data.gameID)[0].imageUrl});
+      // });
+
+      leaderBoard.leaderBoard.get(data.gameID).forEach(function(player, index){
+        console.log('my rank');
+        console.log(index+1);
+        console.log('my rank');
+        player.client.emit('takeScore', {myRank: index+1, topperScore:leaderBoard.leaderBoard.get(data.gameID)[0].score, topperImage:leaderBoard.leaderBoard.get(data.gameID)[0].imageUrl});
       });
     });
 
     client.on('join',function(data){
+      console.log('session object -------------------------------------');
+      console.log(client.request.session);
+      console.log('session object -------------------------------------');
       gameManager.addPlayer(data.tid, client.request.session.passport.user, client,data.name,data.image);
 
       if(gameManager.players.get(data.tid).size==maxPlayers){
@@ -106,19 +182,18 @@ module.exports = function(server,sessionMiddleware) {
 
         var gameId= makeid();
 
-
-
         topicPlayers.forEach(function(player){
         leaderBoard.addPlayer(gameId, player.sid, player.clientData.client, player.clientData.name, 0,player.clientData.imageUrl);
-        player.clientData.client.emit('startGame',gameId);
+        player.clientData.client.emit('startGame',{gameId:gameId,maxPlayers:maxPlayers});
         });
       }
 
     });
 
 
-    client.on('leaveGame',function(data){
-      console.log(data);
+    client.on('leaveGame',function(topicID){
+      // console.log(data);
+      if(gameManager.players.get(topicID)) gameManager.players.get(topicID).delete(client.request.session.passport.user);
     });
 
   });
@@ -139,13 +214,14 @@ function renderThegame(matches){
 
 function makeid()
 {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    for( var i=0; i < 5; i++ )
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-    return text;
+    // var text = "";
+    // var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    //
+    // for( var i=0; i < 10; i++ )
+    //     text += possible.charAt(Math.floor(Math.random() * possible.length));
+    //
+    // return text;
+    return uuid.v1();
 };
 
 function game(gameId,Players,isRunning){
@@ -178,4 +254,21 @@ function getMatch(gameId){
     }
   }
   return null;
+};
+
+levelScore = function(n)
+{
+  return ((35 * (n * n)) +(95*n)-130);
+};
+
+findLevel = function(points){
+
+  var i=1;
+  while(points>=levelScore(i))
+  {
+    i++;
+  }
+
+  return i-1;
+
 };

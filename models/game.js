@@ -1,4 +1,3 @@
-<!--
 //Copyright {2016} {NIIT Limited, Wipro Limited}
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,28 +14,19 @@
 //   
 //   Name of Developers  Raghav Goel, Kshitij Jain, Lakshay Bansal, Ayush Jain, Saurabh Gupta, Akshay Meher
 //  
--->
-<!-- views/index.ejs -->
-<!doctype html>
-<html>
-<head>
-	<title>Node Authentication</title>
- <!-- load fontawesome -->
-	<style>
-		body 		{ padding-top:80px; }
-	</style>
-</head>
-<body>
-<div class="container">
+ 
+var mongoose = require('mongoose');
 
-	<div class="jumbotron text-center">
-		<h1><span class="fa fa-lock"></span>QuizArt</h1>
+var gameSchema = mongoose.Schema({
 
-		<p>Login or Register with:</p>
-		<a ng-href="/#login" class="btn btn-default"><span class="fa fa-user"></span> Login</a>
-		<a ng-href="/#register" class="btn btn-default"><span class="fa fa-user"></span> Register</a>
-	</div>
+  gId: {type:String, unique:true},
+  players:[{
+    userId: String,
+    score: Number,
+    rank:Number
+  }]
+});
 
-</div>
-</body>
-</html>
+Game = mongoose.model('Game', gameSchema,'game_collection');
+
+module.exports = Game;

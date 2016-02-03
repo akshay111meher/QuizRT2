@@ -1,3 +1,20 @@
+//Copyright {2016} {NIIT Limited, Wipro Limited}
+//
+//   Licensed under the Apache License, Version 2.0 (the "License");
+//   you may not use this file except in compliance with the License.
+//   You may obtain a copy of the License at
+//
+//       http://www.apache.org/licenses/LICENSE-2.0
+//
+//   Unless required by applicable law or agreed to in writing, software
+//   distributed under the License is distributed on an "AS IS" BASIS,
+//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//   See the License for the specific language governing permissions and
+//   limitations under the License.
+//
+//   Name of Developers  Raghav Goel, Kshitij Jain, Lakshay Bansal, Ayush Jain, Saurabh Gupta, Akshay Meher
+//
+
 var mongoose = require('mongoose');
 var User = require('./models/user');
 var Profile=require('./models/profile');
@@ -81,7 +98,14 @@ module.exports = function(passport){
 					newProfile.name=req.body.DisplayName;
 					newProfile.topicsPlayed=[];
 					newProfile.badge="Beginner";
-					newProfile.imageLink="/images/userProfileImages/user.png";
+          if(req.body.imageLink)
+          {
+						newProfile.imageLink=req.body.imageLink;
+
+        }
+        else {
+        newProfile.imageLink="/images/userProfileImages/user.png";  
+        }
 					newProfile.wins=0;
 					newProfile.totalGames=0;
            console.log("**********************");
@@ -132,8 +156,7 @@ module.exports = function(passport){
 							var newProfile=new Profile();
 							newProfile.userId = profile.id;
 							newProfile.name=profile.name.givenName +' ' + profile.name.familyName;
-							newProfile.country='India';
-		 					newProfile.age=20;
+							newProfile.country='';
 		 					//newProfile.name=req.body.DisplayName;
 		 					newProfile.topicsPlayed=[];
 		 					newProfile.badge="Beginner";
@@ -183,12 +206,32 @@ module.exports = function(passport){
 	    				newUser.google.name = profile.displayName;
 	    				newUser.google.email = profile.emails[0].value;
 
+							var newProfile=new Profile();
+							newProfile.userId = profile.id;
+							newProfile.name=profile.displayName;
+							newProfile.country='';
+		 					//newProfile.name=req.body.DisplayName;
+		 					newProfile.topicsPlayed=[];
+		 					newProfile.badge="Beginner";
+		 					newProfile.imageLink=profile.photos[0].value;
+		 					newProfile.wins=0;
+		 					newProfile.totalGames=0;
+		            console.log("**********************");
 	    				newUser.save(function(err){
 	    					if(err)
 	    						throw err;
 	    					return done(null, newUser);
-	    				})
+	    				});
 	    				console.log(profile);
+							newProfile.save(function(err) {
+								if (err){
+									console.log('Error in Saving user: '+err);
+									throw err;
+								}
+								//req.session.user = newUser;
+								console.log(newProfile.userId + ' Registration succesful');
+								return done(null, newUser);
+							});
 	    			}
 	    		});
 	    	});
