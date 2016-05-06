@@ -44,5 +44,11 @@ Copyright {2016} {NIIT Limited, Wipro Limited}
    
    Name of Developers  Raghav Goel, Kshitij Jain, Lakshay Bansal, Ayush Jain, Saurabh Gupta, Akshay Meher
   
- 
+---------
+Demo
+---------
+Play the game with two more players now at quizart.stackroute.in
+
+
+
 
